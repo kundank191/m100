@@ -1,0 +1,6 @@
+{
+  "name": "Mach100 Tech Solutions",
+  "description": "Fast, reliable software for businesses — custom websites, data engineering, and agentic AI automation",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
