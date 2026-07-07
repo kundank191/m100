@@ -4,27 +4,23 @@
  */
 
 import React from 'react';
-import { Plane } from 'lucide-react';
 
 interface LogoProps {
-  variant?: 'nav' | 'footer';
   className?: string;
 }
 
-export default function Logo({ variant = 'nav', className }: LogoProps) {
-  const isFooter = variant === 'footer';
-
+export default function Logo({ className }: LogoProps) {
   return (
     <div className={`flex items-center gap-2.5 ${className ?? ''}`}>
-      <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 shadow-lg shadow-cyan-500/20">
-        <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 rotate-45" strokeWidth={2.5} />
-      </div>
+      <img
+        src="/favicon.svg"
+        alt=""
+        aria-hidden="true"
+        className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-lg shadow-lg shadow-cyan-500/20"
+        draggable={false}
+      />
       <div className="leading-tight">
-        <span
-          className={`text-base sm:text-lg font-bold font-display tracking-tight ${
-            isFooter ? 'text-white' : 'text-white'
-          }`}
-        >
+        <span className="text-base sm:text-lg font-bold font-display tracking-tight text-white">
           Mach100
         </span>
         <span className="text-[10px] sm:text-xs block font-mono text-cyan-400 font-semibold tracking-widest uppercase">

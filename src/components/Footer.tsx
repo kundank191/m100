@@ -34,7 +34,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
           
           {/* Column 1: Brand details */}
           <div className="md:col-span-2 space-y-4">
-            <Logo variant="footer" />
+            <Logo />
             <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
               Fast, reliable software for businesses — custom websites, data engineering pipelines, and agentic AI automation. Engineered in India, deployed worldwide.
             </p>

@@ -59,10 +59,7 @@ export default function Navbar({ currentView, onViewChange, onScrollTo }: Navbar
             onClick={() => { onViewChange('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="flex items-center cursor-pointer group"
           >
-            <Logo
-              variant="nav"
-              className="group-hover:opacity-90 transition-opacity duration-300"
-            />
+            <Logo className="group-hover:opacity-90 transition-opacity duration-300" />
           </div>
 
           {/* Desktop Navigation */}
