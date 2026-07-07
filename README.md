@@ -133,9 +133,19 @@ Primary SEO content is in `index.html`:
 | `npm run lint` | Run TypeScript type check |
 | `npm run clean` | Remove `dist/` and `server.js` |
 
+## Public Repository
+
+This project is safe to publish as a public repo:
+
+- `.env` files are gitignored — never commit real API keys
+- No secrets, tokens, or credentials are stored in source
+- Contact email is intentionally public (business inquiry address)
+
+Before pushing, double-check you have not added a `.env` or `.env.local` file with real values.
+
 ## License
 
-Apache-2.0 (see SPDX headers in source files).
+Licensed under the [Apache License 2.0](LICENSE). Source files include SPDX headers (`Apache-2.0`).
 
 ## Contact
 
