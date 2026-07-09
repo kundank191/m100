@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { ViewState } from '../types';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 
 interface NavbarProps {
   currentView: ViewState;
@@ -70,27 +71,29 @@ export default function Navbar({ currentView, onViewChange, onScrollTo }: Navbar
                   key={item.label}
                   id={`nav-link-${item.label.toLowerCase()}`}
                   onClick={() => handleNavClick(item.id)}
-                  className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors duration-200 cursor-pointer relative py-1 group"
+                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer relative py-1 group"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
             </div>
 
-            <div className="flex items-center space-x-4 border-l border-slate-800/80 pl-6">
+            <div className="flex items-center space-x-3 border-l border-slate-800/80 pl-6">
+              <ThemeToggle />
               <button
                 id="nav-cta-button"
                 onClick={() => handleNavClick('contact-section')}
-                className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-cyan-50 hover:scale-[1.02] transition-all duration-300 shadow-md shadow-white/5 cursor-pointer"
+                className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 hover:scale-[1.02] transition-all duration-300 shadow-md shadow-white/5 cursor-pointer"
               >
                 Start a Project
               </button>
             </div>
           </div>
 
-          {/* Mobile Hamburger toggle */}
-          <div className="md:hidden flex items-center space-x-3">
+          {/* Mobile: theme + hamburger */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
@@ -116,7 +119,7 @@ export default function Navbar({ currentView, onViewChange, onScrollTo }: Navbar
                 key={item.label}
                 id={`mobile-nav-link-${item.label.toLowerCase()}`}
                 onClick={() => handleNavClick(item.id)}
-                className="text-left py-2 text-base font-medium text-slate-300 hover:text-cyan-400 transition-colors"
+                className="text-left py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
               >
                 {item.label}
               </button>
@@ -126,7 +129,7 @@ export default function Navbar({ currentView, onViewChange, onScrollTo }: Navbar
             <button
               id="mobile-nav-cta-button"
               onClick={() => handleNavClick('contact-section')}
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 text-sm font-semibold text-center hover:from-cyan-400 hover:to-blue-500 transition-colors"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-teal-500 to-teal-700 text-slate-950 text-sm font-semibold text-center hover:from-teal-400 hover:to-teal-600 transition-colors"
             >
               Build With Us
             </button>

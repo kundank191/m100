@@ -1,8 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('mach100-theme');
+          document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <!-- Primary SEO -->
@@ -49,7 +59,7 @@
         "@type": "Organization",
         "name": "Mach100 Tech Solutions",
         "legalName": "Mach100 Tech Solutions Private Limited",
-        "email": "kundank191@gmail.com",
+        "email": "contact@mach100.in",
         "logo": "/favicon.svg",
         "description": "Mach100 Tech Solutions delivers fast, reliable software including business websites, data engineering pipelines, and agentic AI automation for enterprises and growing businesses.",
         "areaServed": {
@@ -73,7 +83,7 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Mach100 Tech Solutions",
-        "email": "kundank191@gmail.com",
+        "email": "contact@mach100.in",
         "image": "/logo.jpeg",
         "description": "Software development company specializing in business websites, data engineering, and agentic AI automation frameworks.",
         "priceRange": "$$",

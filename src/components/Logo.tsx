@@ -16,14 +16,14 @@ export default function Logo({ className }: LogoProps) {
         src="/favicon.svg"
         alt=""
         aria-hidden="true"
-        className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-lg shadow-lg shadow-cyan-500/20"
+        className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-lg shadow-lg shadow-teal-500/20"
         draggable={false}
       />
       <div className="leading-tight">
         <span className="text-base sm:text-lg font-bold font-display tracking-tight text-white">
           Mach100
         </span>
-        <span className="text-[10px] sm:text-xs block font-mono text-cyan-400 font-semibold tracking-widest uppercase">
+        <span className="text-[10px] sm:text-xs block font-mono text-teal-400 font-semibold tracking-widest uppercase">
           Tech Solutions
         </span>
       </div>

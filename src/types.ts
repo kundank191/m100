@@ -8,6 +8,9 @@ export interface ProductMetric {
   value: string;
 }
 
+/** public-demo = open try-it URL; request-access = live product, contact for access */
+export type ProductAccess = 'public-demo' | 'request-access';
+
 export interface ProductDetail {
   id: 'mfleet' | 'pgpulse' | 'glucare';
   name: string;
@@ -16,6 +19,10 @@ export interface ProductDetail {
   icon: string;
   accentColor: string;
   bgGradient: string;
+  access: ProductAccess;
+  /** Public demo URL when access === 'public-demo' */
+  demoUrl?: string;
+  statusLabel: string;
   features: { title: string; desc: string }[];
   benefits: string[];
   metrics: ProductMetric[];

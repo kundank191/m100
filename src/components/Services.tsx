@@ -43,7 +43,7 @@ export default function Services() {
   return (
     <section
       id="services-section"
-      className="py-24 relative overflow-hidden bg-slate-950 border-t border-slate-900"
+      className="py-24 relative overflow-hidden bg-[#070b14] border-t border-slate-900"
     >
       <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] ambient-glow-blue opacity-35 -z-10 pointer-events-none"></div>
 
@@ -52,13 +52,13 @@ export default function Services() {
         {/* Pitch Column */}
         <div id="services-header" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           <div className="lg:col-span-5">
-            <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest block mb-4">
+            <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
               What We Build
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
               Software Services for Growing Businesses
             </h2>
-            <div className="h-1.5 w-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full mb-6"></div>
+            <div className="h-1.5 w-16 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full mb-6"></div>
           </div>
           <div className="lg:col-span-7">
             <p className="text-slate-400 text-base leading-relaxed">
@@ -80,13 +80,13 @@ export default function Services() {
                 id={`service-card-${index}`}
                 className="group relative rounded-xl glass-panel glass-panel-hover p-6 sm:p-8"
               >
-                <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-500 to-indigo-600 group-hover:w-full transition-all duration-300 rounded-t-xl"></div>
+                <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-teal-400 to-teal-600 group-hover:w-full transition-all duration-300 rounded-t-xl"></div>
 
-                <div className="w-10 h-10 rounded-lg bg-slate-950/60 border border-white/5 flex items-center justify-center text-cyan-400 group-hover:text-white group-hover:bg-gradient-to-tr group-hover:from-cyan-500 group-hover:to-indigo-600 transition-all duration-300 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-slate-950/60 border border-white/5 flex items-center justify-center text-teal-400 group-hover:text-white group-hover:bg-gradient-to-tr group-hover:from-teal-500 group-hover:to-teal-700 transition-all duration-300 mb-6">
                   <Icon className="w-5 h-5" />
                 </div>
 
-                <h3 className="text-lg font-bold font-display text-white mb-3 group-hover:text-cyan-400 transition-colors duration-200">
+                <h3 className="text-lg font-bold font-display text-white mb-3 group-hover:text-teal-400 transition-colors duration-200">
                   {svc.title}
                 </h3>
                 <p className="text-sm text-slate-400 leading-relaxed">
@@ -106,15 +106,15 @@ export default function Services() {
             Industries We Serve
           </span>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 text-slate-400 text-sm font-semibold font-display">
-            <span className="hover:text-cyan-400 transition-colors">Startups &amp; SaaS</span>
+            <span className="hover:text-teal-400 transition-colors">Startups &amp; SaaS</span>
             <span className="text-slate-800 hidden sm:inline">•</span>
-            <span className="hover:text-cyan-400 transition-colors">Logistics &amp; Fleet</span>
+            <span className="hover:text-teal-400 transition-colors">Logistics &amp; Fleet</span>
             <span className="text-slate-800 hidden sm:inline">•</span>
-            <span className="hover:text-cyan-400 transition-colors">Healthcare &amp; Wellness</span>
+            <span className="hover:text-teal-400 transition-colors">Healthcare &amp; Wellness</span>
             <span className="text-slate-800 hidden sm:inline">•</span>
-            <span className="hover:text-cyan-400 transition-colors">Real Estate &amp; Property</span>
+            <span className="hover:text-teal-400 transition-colors">Real Estate &amp; Property</span>
             <span className="text-slate-800 hidden sm:inline">•</span>
-            <span className="hover:text-cyan-400 transition-colors">Small &amp; Medium Businesses</span>
+            <span className="hover:text-teal-400 transition-colors">Small &amp; Medium Businesses</span>
           </div>
         </div>
 

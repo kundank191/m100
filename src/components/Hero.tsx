@@ -5,6 +5,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ChevronRight, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface HeroProps {
   onScrollTo: (elementId: string) => void;
@@ -12,6 +13,7 @@ interface HeroProps {
 
 export default function Hero({ onScrollTo }: HeroProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -19,6 +21,11 @@ export default function Hero({ onScrollTo }: HeroProps) {
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    const pageBg = isDark ? '#070b14' : '#f4f7fb';
+    const nodeColor = isDark ? 'rgba(45, 212, 191, 0.4)' : 'rgba(13, 148, 136, 0.45)';
+    const lineBase = isDark ? '45, 212, 191' : '13, 148, 136';
+    const mouseLine = isDark ? '129, 140, 248' : '99, 102, 241';
 
     let animationFrameId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
@@ -71,7 +78,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
       ctx.clearRect(0, 0, width, height);
 
       // Gradient backdrop
-      ctx.fillStyle = '#020617';
+      ctx.fillStyle = pageBg;
       ctx.fillRect(0, 0, width, height);
 
       // Draw particle lines
@@ -89,7 +96,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
         // Draw particle node
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(6, 182, 212, 0.4)'; // Cyan
+        ctx.fillStyle = nodeColor;
         ctx.fill();
 
         // Connect to other particles nearby
@@ -100,7 +107,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(6, 182, 212, ${0.12 * (1 - dist / 110)})`;
+            ctx.strokeStyle = `rgba(${lineBase}, ${0.14 * (1 - dist / 110)})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -112,7 +119,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(59, 130, 246, ${0.25 * (1 - mouseDist / mouse.radius)})`; // Blue
+          ctx.strokeStyle = `rgba(${mouseLine}, ${0.25 * (1 - mouseDist / mouse.radius)})`;
           ctx.lineWidth = 1.2;
           ctx.stroke();
         }
@@ -129,7 +136,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
       canvas.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isDark]);
 
   return (
     <header
@@ -156,13 +163,13 @@ export default function Hero({ onScrollTo }: HeroProps) {
         {/* Animated Badge */}
         <div 
           id="hero-badge"
-          className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/20 shadow-lg shadow-cyan-950/15 mb-8 animate-fade-in"
+          className="section-chip mb-8 shadow-lg shadow-teal-950/10 animate-fade-in"
         >
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span className="text-[11px] font-mono font-semibold text-slate-300 tracking-wider uppercase">
+          <Sparkles className="w-3.5 h-3.5 shrink-0" />
+          <span className="tracking-wider uppercase font-semibold">
             Software That Ships Fast &amp; Stays Reliable
           </span>
-          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+          <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-ping shrink-0"></span>
         </div>
 
         {/* Headline */}
@@ -171,7 +178,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-display tracking-tight text-white leading-[1.1] mb-6"
         >
           We Build{' '}
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent drop-shadow-md">
+          <span className="text-teal-400">
             Fast, Reliable
           </span>{' '}
           Software for Business
@@ -182,18 +189,18 @@ export default function Hero({ onScrollTo }: HeroProps) {
           id="hero-subheadline"
           className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-sans"
         >
-          Mach100 Tech Solutions delivers production-ready products — business websites, data engineering pipelines, and agentic AI automation — on time, every time. No fluff. Just software that works when your business needs it.
+          Mach100 Tech Solutions builds business websites, data engineering pipelines, and agentic AI automation — shipped on clear timelines with production-minded engineering. Explore our live product demos, then talk to us about a full build.
         </p>
 
         {/* Call to Actions */}
         <div 
           id="hero-cta-group"
-          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-14"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
         >
           <button
             id="hero-cta-explore"
             onClick={() => onScrollTo('products-section')}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-white/5 hover:bg-cyan-50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center space-x-2"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-white/5 hover:bg-teal-50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center space-x-2"
           >
             <span>See Our Products</span>
             <ArrowRight className="w-4 h-4 text-slate-950" />
@@ -215,7 +222,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 border-t border-white/5 pt-10 text-left max-w-4xl mx-auto"
         >
           <div className="flex items-start space-x-2.5">
-            <div className="p-1 rounded-md bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 mt-0.5">
+            <div className="p-1 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 mt-0.5">
               <Zap className="w-4 h-4" />
             </div>
             <div>
@@ -230,12 +237,12 @@ export default function Hero({ onScrollTo }: HeroProps) {
             </div>
             <div>
               <h4 className="text-sm font-semibold text-slate-100 font-display">Built to Last</h4>
-              <p className="text-xs text-slate-400">Reliable architecture with 99.9% uptime and systems that scale with you.</p>
+              <p className="text-xs text-slate-400">Reliable architecture, observability, and systems designed to scale with you.</p>
             </div>
           </div>
           
           <div className="flex items-start space-x-2.5 col-span-2 md:col-span-1">
-            <div className="p-1 rounded-md bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 mt-0.5">
+            <div className="p-1 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 mt-0.5">
               <Sparkles className="w-4 h-4" />
             </div>
             <div>

@@ -8,7 +8,8 @@ Built with React, TypeScript, and Tailwind CSS. Deploy-ready for [Vercel](https:
 
 - Responsive single-page site with product showcase and service pages
 - Product detail views for MFleet, PGPulse, and GluCare
-- Contact form that opens a pre-filled email inquiry
+- Contact form via Formspree (falls back to `contact@mach100.in` if unset)
+- Live demo links for MFleet, PGPulse, and GluCare
 - SEO meta tags, Open Graph, Twitter Cards, and JSON-LD structured data
 - `robots.txt` and `sitemap.xml` for search engines
 
@@ -95,15 +96,20 @@ m100/
 
 ## Configuration
 
-### Contact email
+### Contact email & form
 
-The contact form sends inquiries via `mailto:`. Update the address in:
+Business email: **contact@mach100.in** (displayed in Contact, footer, and JSON-LD).
 
+The contact form posts to [Formspree](https://formspree.io). Create a free form, point notifications to `contact@mach100.in`, then set:
+
+```bash
+# .env (or Vercel env)
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
 ```
-src/components/Contact.tsx
-```
 
-Current contact: `kundank191@gmail.com`
+See `.env.example`. Without this variable, the form shows a clear error and asks users to email directly.
+
+Contact component: `src/components/Contact.tsx`
 
 ### Branding & logo
 
@@ -150,4 +156,12 @@ Licensed under the [Apache License 2.0](LICENSE). Source files include SPDX head
 ## Contact
 
 **Mach100 Tech Solutions**  
-Email: [kundank191@gmail.com](mailto:kundank191@gmail.com)
+Email: [contact@mach100.in](mailto:contact@mach100.in)
+
+### Products
+
+| Product | Access |
+|---------|--------|
+| MFleet | Live product — request demo/access via contact form |
+| PGPulse | Public interactive demo: https://pg.mach100.in/ |
+| GluCare | Live product — request demo/access via contact form |

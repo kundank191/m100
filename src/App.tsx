@@ -42,6 +42,14 @@ export default function App() {
     }
   };
 
+  const handleRequestAccess = () => {
+    setSelectedProduct(null);
+    setCurrentView('home');
+    setTimeout(() => {
+      handleScrollTo('contact-section');
+    }, 100);
+  };
+
   const handleViewChange = (view: ViewState) => {
     setCurrentView(view);
     if (view === 'mfleet' || view === 'pgpulse' || view === 'glucare') {
@@ -55,11 +63,11 @@ export default function App() {
   };
 
   return (
-    <div id="app-wrapper" className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200 relative overflow-hidden">
-      {/* Sleek Interface background glow blobs */}
-      <div className="fixed top-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/10 to-indigo-600/10 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-slow"></div>
-      <div className="fixed bottom-[-10%] right-[10%] w-[700px] h-[700px] bg-gradient-to-tr from-indigo-600/10 to-cyan-500/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
-      <div className="fixed top-[40%] right-[-5%] w-[450px] h-[450px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow"></div>
+    <div id="app-wrapper" className="min-h-screen font-sans selection:bg-teal-500/25 selection:text-teal-700 relative overflow-hidden">
+      {/* Ambient brand glows — teal primary, soft indigo secondary */}
+      <div className="fixed top-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-500/12 to-indigo-500/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-slow"></div>
+      <div className="fixed bottom-[-10%] right-[10%] w-[700px] h-[700px] bg-gradient-to-tr from-indigo-500/8 to-teal-500/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+      <div className="fixed top-[40%] right-[-5%] w-[450px] h-[450px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow"></div>
 
       {/* Dynamic Sticky Navbar */}
       <Navbar 
@@ -98,6 +106,7 @@ export default function App() {
           <ProductDetailComponent 
             product={selectedProduct} 
             onBack={() => handleViewChange('home')}
+            onRequestAccess={handleRequestAccess}
           />
         )}
 

@@ -10,15 +10,15 @@ export default function About() {
   return (
     <section
       id="about-section"
-      className="py-24 relative overflow-hidden bg-slate-950 border-t border-white/5"
+      className="py-24 relative overflow-hidden bg-[#070b14] border-t border-white/5"
     >
       <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] ambient-glow-cyan opacity-20 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div id="about-headline" className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-4">
-            <Plane className="w-3.5 h-3.5 rotate-45 transform" />
+          <div className="section-chip mb-4">
+            <Plane className="w-3.5 h-3.5 rotate-45 transform shrink-0" />
             <span>Why Mach100</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
@@ -35,8 +35,8 @@ export default function About() {
         >
           <div className="md:col-span-2 rounded-2xl glass-panel glass-panel-hover p-8 flex flex-col justify-between">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-950/40 border border-white/5 text-cyan-400 mb-6">
-                <Zap className="w-5 h-5 text-cyan-400 fill-cyan-400/20" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-950/40 border border-white/5 text-teal-400 mb-6">
+                <Zap className="w-5 h-5 text-teal-400 fill-teal-400/20" />
               </div>
               <h3 className="text-xl font-bold font-display text-white mb-3">
                 We Ship in Weeks, Not Quarters
@@ -46,7 +46,7 @@ export default function About() {
               </p>
             </div>
             <div className="flex items-center space-x-2 border-t border-white/5 pt-4">
-              <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span className="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
               <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold">Average MVP delivery: 4–6 weeks</span>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function About() {
                 Agentic AI That Works
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                We build agentic automation frameworks — AI agents that handle customer support, process documents, trigger workflows, and make decisions within guardrails you define. Real automation, not demos.
+                Practical agentic systems with human oversight — tested in real workflows. AI agents that handle customer support, process documents, trigger actions, and stay inside the guardrails you define.
               </p>
             </div>
             <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold border-t border-white/5 pt-4">
@@ -81,13 +81,13 @@ export default function About() {
               </p>
             </div>
             <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold border-t border-white/5 pt-4">
-              99.9% uptime SLA on managed deployments
+              Uptime-focused design for managed deployments
             </span>
           </div>
 
           <div className="md:col-span-2 rounded-2xl glass-panel glass-panel-hover p-8 flex flex-col justify-between">
             <div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-950/40 border border-white/5 text-cyan-400 mb-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-950/40 border border-white/5 text-teal-400 mb-6">
                 <Database className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold font-display text-white mb-3">
@@ -104,13 +104,10 @@ export default function About() {
           </div>
         </div>
 
-        <div 
-          id="about-passion"
-          className="border border-white/5 bg-slate-900/10 rounded-full py-3.5 px-6 max-w-xs mx-auto text-center"
-        >
-          <div className="flex items-center justify-center space-x-2 text-slate-400 text-xs font-mono font-bold uppercase tracking-widest">
-            <Plane className="w-4 h-4 text-cyan-400 rotate-45 transform" />
-            <span>Engineered in India</span>
+        <div id="about-passion" className="flex justify-center">
+          <div className="section-chip section-chip-muted py-2.5 px-5">
+            <Plane className="w-4 h-4 rotate-45 transform shrink-0" />
+            <span className="uppercase tracking-widest font-bold">Engineered in India</span>
           </div>
         </div>
 

@@ -10,117 +10,123 @@ export const PRODUCTS: ProductDetail[] = [
     id: 'mfleet',
     name: 'MFleet',
     tagline: 'Fleet Management & Driver Operations Platform',
-    description: 'A reliable SaaS platform for cab operators and logistics companies. Track vehicles in real time, manage rental ledgers, reduce fuel costs, and automate driver payouts — all on a fast, resilient architecture built to handle high-volume operations.',
+    description:
+      'A live fleet operations product for cab operators and logistics teams — rental ledgers, fuel costs, driver payouts, rides, invoices, and role-based access. Request a demo or pilot access for your organisation.',
     icon: 'Truck',
-    accentColor: '#06b6d4',
-    bgGradient: 'from-cyan-950/40 to-blue-950/40',
+    accentColor: '#818cf8',
+    bgGradient: 'from-indigo-950/40 to-slate-950/40',
+    access: 'request-access',
+    statusLabel: 'Live Product',
     features: [
       {
-        title: 'Real-Time GPS Tracking',
-        desc: 'Live vehicle tracking with sub-second location updates, route history, and fleet-wide visibility from a single dashboard.'
-      },
-      {
         title: 'Automated Rental Ledgers',
-        desc: 'Automatically calculate driver rents, daily balances, fuel allocations, and toll reimbursements — no manual registers.'
+        desc: 'Calculate driver rents, daily balances, fuel allocations, and toll reimbursements without manual registers.',
       },
       {
         title: 'Instant Driver Payouts',
-        desc: 'Automated UPI split payments with itemized SMS and WhatsApp receipts sent to drivers after every shift.'
+        desc: 'UPI-ready payout flows with itemized SMS and WhatsApp-style receipt patterns after every shift.',
       },
       {
         title: 'AI Route Optimization',
-        desc: 'Machine learning models suggest efficient multi-stop routes and flag idle-time anomalies to cut fuel waste.'
-      }
+        desc: 'Route suggestions and idle-time flags designed to cut fuel waste on multi-stop schedules.',
+      },
     ],
     benefits: [
-      'Fast Sync: Fleet logs, route histories, and financial reports load in milliseconds.',
-      'Offline-First: Drivers can log mileage in dead zones — data syncs automatically when connectivity returns.',
-      'WhatsApp Alerts: Automated notifications in regional languages and English, delivered reliably.'
+      'Multi-user access: Owner, manager, and employee roles for real team workflows.',
+      'Production ops: Vehicles, drivers, rides, invoices, and payments in one system.',
+      'Pilot-ready: We onboard your org with secure access — no public open signup.',
     ],
     metrics: [
-      { label: 'GPS Location Accuracy', value: '99.8%' },
-      { label: 'Fuel Cost Reduction', value: '32%' },
-      { label: 'Driver Payout Speed', value: 'Instant' },
-      { label: 'Yearly Savings per Vehicle', value: '₹48,000+' }
+      { label: 'Access model', value: 'Invite-only' },
+      { label: 'Rental ledger automation', value: 'Built-in' },
+      { label: 'Driver payout flow', value: 'UPI-ready' },
+      { label: 'Team roles', value: 'RBAC' },
     ],
-    techStack: ['React Native Mobile App', 'Rust Telematics Core', 'SQLite Sync Engine', 'D3 Analytics Dashboard']
+    techStack: ['React + TypeScript', 'Supabase Auth', 'Tailwind CSS', 'Role-based dashboards'],
   },
   {
     id: 'pgpulse',
     name: 'PGPulse',
     tagline: 'PG & Co-living Property Management',
-    description: 'A fast, reliable platform for PG and hostel operators. Automate rent collection, track vacancies, onboard tenants digitally, and communicate via WhatsApp — eliminating the manual work that slows property businesses down.',
+    description:
+      'An interactive product demo for PG and hostel operators. Walk through rent collection, vacancy tracking, tenant onboarding, and WhatsApp-style communication — try the live demo freely in your browser.',
     icon: 'Home',
-    accentColor: '#3b82f6',
-    bgGradient: 'from-blue-950/40 to-indigo-950/40',
+    accentColor: '#60a5fa',
+    bgGradient: 'from-blue-950/40 to-slate-950/40',
+    access: 'public-demo',
+    demoUrl: 'https://pg.mach100.in/',
+    statusLabel: 'Interactive Demo',
     features: [
       {
         title: 'Automated Rent Collection',
-        desc: 'Auto-generated rent invoices with UPI payment links. Track partial and full payments with full transparency.'
+        desc: 'Auto-generated rent invoices with UPI payment link patterns. Track partial and full payments with full transparency.',
       },
       {
         title: 'Vacancy Management',
-        desc: 'Real-time room allocation showing filled, vacant, and notice-period spaces for faster bookings.'
+        desc: 'Room allocation board showing filled, vacant, and notice-period spaces for faster bookings.',
       },
       {
         title: 'WhatsApp Automation',
-        desc: 'Automated rent reminders, payment receipts, and check-in notifications sent directly to tenants.'
+        desc: 'Rent reminders, payment receipts, and check-in notification flows modeled for tenant messaging.',
       },
       {
         title: 'Digital Tenant Onboarding',
-        desc: 'e-KYC verification and digital agreement templates that cut onboarding time from days to minutes.'
-      }
+        desc: 'e-KYC-style verification and digital agreement templates that shrink onboarding from days to minutes.',
+      },
     ],
     benefits: [
-      'Direct UPI Settlements: Payments go straight to the owner\'s account with no holding periods.',
-      'Auto Ledger Reconciliation: Deposits, utilities, maintenance, and advance returns categorized instantly.',
-      'Fast Booking: Confirm tenant stays and complete onboarding in under 5 minutes.'
+      'Direct settlement patterns: Payment flows designed for owner accounts with clear ledger lines.',
+      'Auto ledger reconciliation: Deposits, utilities, maintenance, and advances categorized in the demo.',
+      'Fast booking UX: Confirm stays and complete onboarding steps in minutes, not days.',
     ],
     metrics: [
-      { label: 'Average Payment Collection', value: '<2.4 Hours' },
-      { label: 'WhatsApp Delivery Rate', value: '100%' },
-      { label: 'Overdue Disputes Reduced', value: '85%' },
-      { label: 'Tenant Retention Rate', value: '94%' }
+      { label: 'Rent invoice flow', value: 'Demo' },
+      { label: 'Vacancy board', value: 'Live UI' },
+      { label: 'WhatsApp-style alerts', value: 'Modeled' },
+      { label: 'Stack', value: 'React + TS' },
     ],
-    techStack: ['Next.js Web App', 'UPI Payment Webhooks', 'Cloud Database', 'WhatsApp Business API']
+    techStack: ['React + TypeScript', 'Vite', 'Tailwind CSS', 'Vitest + Playwright'],
   },
   {
     id: 'glucare',
     name: 'GluCare',
     tagline: 'AI-Powered Glucose Monitoring Companion',
-    description: 'An intelligent health app for continuous glucose monitoring and meal logging. Uses on-device computer vision to estimate meal impact, syncs with CGM sensors, and predicts glucose trends — helping users manage diabetes with reliable, real-time insights.',
+    description:
+      'A live health-tech product for meal logging, glucose trends, and vision-assisted capture. Access is invite-only for pilots and evaluation — not a public open demo. Not a medical device; not for clinical diagnosis.',
     icon: 'Activity',
-    accentColor: '#06b6d4',
-    bgGradient: 'from-cyan-950/40 to-indigo-950/40',
+    accentColor: '#2dd4bf',
+    bgGradient: 'from-teal-950/40 to-slate-950/40',
+    access: 'request-access',
+    statusLabel: 'Live Product',
     features: [
       {
         title: 'AI Meal Recognition',
-        desc: 'Point your camera at a meal to estimate carbs, glycemic index, and projected blood sugar impact instantly.'
+        desc: 'Point a camera at a meal to explore carb and glycemic-context estimates powered by a vision model API.',
       },
       {
-        title: 'CGM Sensor Integration',
-        desc: 'Bluetooth sync with popular Continuous Glucose Monitors and traditional glucometers for seamless data flow.'
+        title: 'CGM-Style Data Views',
+        desc: 'Dashboard patterns designed for continuous glucose style charts and traditional glucometer logs.',
       },
       {
-        title: 'Glucose Predictions',
-        desc: 'On-device neural networks predict glycemic spikes up to 2 hours ahead, giving users time to act.'
+        title: 'Trend Insights',
+        desc: 'Exploratory prediction-style insights that show how an AI companion product can surface forward-looking cues.',
       },
       {
-        title: 'Clinical Report Export',
-        desc: 'Generate medical-grade PDF reports to share with doctors during clinical visits.'
-      }
+        title: 'Report Export',
+        desc: 'Generate shareable PDF-style reports for conversations with clinicians (product scope).',
+      },
     ],
     benefits: [
-      'On-Device AI: Meal identification and predictions run locally in under 100 milliseconds.',
-      'Battery Efficient: High-accuracy models optimized to run without draining device resources.',
-      'Works Offline: Core tracking, logging, and visual estimation available anytime, anywhere.'
+      'Secure access: Auth-backed accounts for pilot users and caregivers you invite.',
+      'Vision + logging: Meal and meter capture workflows designed for daily use.',
+      'Not medical advice: Insights support self-management conversations — not clinical diagnoses.',
     ],
     metrics: [
-      { label: 'AI Prediction Accuracy', value: '94.2%' },
-      { label: 'Avg HbA1c Reduction', value: '1.4%' },
-      { label: 'Meal Logging Speed', value: '1.2s' },
-      { label: 'AI Response Time', value: '<100ms' }
+      { label: 'Access model', value: 'Invite-only' },
+      { label: 'Internal sample accuracy*', value: '~94%' },
+      { label: 'Meal logging UX', value: 'Fast' },
+      { label: 'Clinical use', value: 'Not for diagnosis' },
     ],
-    techStack: ['React Native App', 'TensorFlow Lite Models', 'WebBluetooth API', 'SQLite Database']
-  }
+    techStack: ['React + TypeScript', 'Express API', 'Vision Model', 'Auth-backed sync'],
+  },
 ];

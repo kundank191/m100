@@ -3,7 +3,7 @@ pid: 38384
 cwd: "I:\projects\m100"
 command: "cd \"I:\\projects\\m100\"; npm.cmd install; npx.cmd vite build"
 started_at: 2026-07-07T04:57:51.527Z
-running_for_ms: 1910002  
+running_for_ms: 4000006  
 ---
 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
 

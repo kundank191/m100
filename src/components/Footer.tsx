@@ -26,7 +26,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
   return (
     <footer
       id="main-footer"
-      className="bg-slate-950 border-t border-white/5 py-16 text-slate-400 text-sm relative"
+      className="bg-[#070b14] border-t border-white/5 py-16 text-slate-400 text-sm relative"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -39,7 +39,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               Fast, reliable software for businesses — custom websites, data engineering pipelines, and agentic AI automation. Engineered in India, deployed worldwide.
             </p>
             <div className="flex items-center space-x-2.5 text-[11px] font-mono text-slate-600">
-              <Shield className="w-3.5 h-3.5 text-cyan-400" />
+              <Shield className="w-3.5 h-3.5 text-teal-400" />
               <span>Data Engineering</span>
               <span>•</span>
               <Globe className="w-3.5 h-3.5 text-indigo-400" />
@@ -56,7 +56,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               <li>
                 <button 
                   onClick={() => handleNavClick('products-section')}
-                  className="hover:text-cyan-400 transition-colors cursor-pointer"
+                  className="hover:text-teal-400 transition-colors cursor-pointer"
                 >
                   MFleet Engine
                 </button>
@@ -64,7 +64,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               <li>
                 <button 
                   onClick={() => handleNavClick('products-section')}
-                  className="hover:text-cyan-400 transition-colors cursor-pointer"
+                  className="hover:text-teal-400 transition-colors cursor-pointer"
                 >
                   PGPulse Portal
                 </button>
@@ -72,7 +72,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               <li>
                 <button 
                   onClick={() => handleNavClick('products-section')}
-                  className="hover:text-cyan-400 transition-colors cursor-pointer"
+                  className="hover:text-teal-400 transition-colors cursor-pointer"
                 >
                   GluCare Edge App
                 </button>
@@ -89,7 +89,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               <li>
                 <button 
                   onClick={() => handleNavClick('about-section')}
-                  className="hover:text-cyan-400 transition-colors cursor-pointer text-left"
+                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
                   About Mach100
                 </button>
@@ -97,10 +97,18 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               <li>
                 <button 
                   onClick={() => handleNavClick('services-section')}
-                  className="hover:text-cyan-400 transition-colors cursor-pointer text-left"
+                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
                   Our Services
                 </button>
+              </li>
+              <li>
+                <a
+                  href="mailto:contact@mach100.in"
+                  className="hover:text-teal-400 transition-colors"
+                >
+                  contact@mach100.in
+                </a>
               </li>
             </ul>
           </div>
