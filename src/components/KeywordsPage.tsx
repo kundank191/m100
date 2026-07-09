@@ -3,16 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React, { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { ExternalLink, Search } from 'lucide-react';
-import { FREE_SEO_TOOLS, KEYWORD_MAP } from '../data/keywordData';
+import { FREE_SEO_TOOLS, KEYWORD_MAP } from '@/data/keywordData';
 
-interface KeywordsPageProps {
-  onOpenBlog: () => void;
-  onContact: () => void;
-}
-
-export default function KeywordsPage({ onOpenBlog, onContact }: KeywordsPageProps) {
+export default function KeywordsPage() {
   const [query, setQuery] = useState('');
   const [checkText, setCheckText] = useState('');
   const [focusKeyword, setFocusKeyword] = useState('custom software development India');
@@ -34,17 +32,16 @@ export default function KeywordsPage({ onOpenBlog, onContact }: KeywordsPageProp
     if (!text || !kw) return null;
     const words = text.toLowerCase().split(/\s+/).filter(Boolean);
     const wordCount = words.length;
-    const phrase = kw;
     const hay = text.toLowerCase();
     let occurrences = 0;
     let idx = 0;
     while (idx < hay.length) {
-      const found = hay.indexOf(phrase, idx);
+      const found = hay.indexOf(kw, idx);
       if (found === -1) break;
       occurrences += 1;
-      idx = found + phrase.length;
+      idx = found + kw.length;
     }
-    const phraseWords = phrase.split(/\s+/).filter(Boolean).length;
+    const phraseWords = kw.split(/\s+/).filter(Boolean).length;
     const densityPct = wordCount > 0 ? ((occurrences * phraseWords) / wordCount) * 100 : 0;
     return { wordCount, occurrences, densityPct };
   }, [checkText, focusKeyword]);
@@ -61,7 +58,6 @@ export default function KeywordsPage({ onOpenBlog, onContact }: KeywordsPageProp
         Target keywords for Mach100.in mapped to pages, plus free research tools and a simple on-page density checker for drafts.
       </p>
 
-      {/* Search map */}
       <div className="mb-6 relative max-w-md">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
         <input
@@ -110,7 +106,6 @@ export default function KeywordsPage({ onOpenBlog, onContact }: KeywordsPageProp
         </div>
       </div>
 
-      {/* Free tools */}
       <h2 className="text-xl font-bold font-display text-white mb-4">Free SEO &amp; keyword tools</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
         {FREE_SEO_TOOLS.map((tool) => (
@@ -132,10 +127,9 @@ export default function KeywordsPage({ onOpenBlog, onContact }: KeywordsPageProp
         ))}
       </div>
 
-      {/* Density checker */}
       <h2 className="text-xl font-bold font-display text-white mb-2">Draft density checker</h2>
       <p className="text-xs text-slate-500 mb-4">
-        Client-side only — paste a draft and a focus phrase. Aim roughly 0.5–2% for natural language (not a hard rule).
+        Client-side only — paste a draft and a focus phrase. Aim roughly 0.5–2% for natural language.
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <div className="lg:col-span-1">
@@ -180,20 +174,18 @@ export default function KeywordsPage({ onOpenBlog, onContact }: KeywordsPageProp
       )}
 
       <div className="flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={onOpenBlog}
-          className="px-5 py-2.5 rounded-full border border-white/10 text-xs font-semibold text-slate-300 hover:text-teal-400 hover:border-teal-500/30 cursor-pointer"
+        <Link
+          href="/blog"
+          className="px-5 py-2.5 rounded-full border border-white/10 text-xs font-semibold text-slate-300 hover:text-teal-400 hover:border-teal-500/30"
         >
           Write from blog topics
-        </button>
-        <button
-          type="button"
-          onClick={onContact}
-          className="px-5 py-2.5 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 cursor-pointer"
+        </Link>
+        <Link
+          href="/#contact-section"
+          className="px-5 py-2.5 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400"
         >
           Need SEO-ready content shipped?
-        </button>
+        </Link>
       </div>
     </section>
   );

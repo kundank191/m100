@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+// Server Component
 import { Globe, Database, Bot, Smartphone, Cpu, Workflow } from 'lucide-react';
 
 export default function Services() {

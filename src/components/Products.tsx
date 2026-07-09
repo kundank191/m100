@@ -3,17 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React from 'react';
-import { ProductDetail } from '../types';
+import Link from 'next/link';
+import { ProductDetail } from '@/types';
 import { Truck, Home, Activity, ArrowRight, ExternalLink, Zap, Plane, MessageSquare, Cpu, Lock } from 'lucide-react';
+import { scrollToSection } from '@/lib/scroll';
 
 interface ProductsProps {
   products: ProductDetail[];
-  onSelectProduct: (productId: 'mfleet' | 'pgpulse' | 'glucare') => void;
-  onScrollTo: (elementId: string) => void;
 }
 
-export default function Products({ products, onSelectProduct, onScrollTo }: ProductsProps) {
+export default function Products({ products }: ProductsProps) {
   const getIcon = (iconName: string, color: string) => {
     const shadowStyle = { color, filter: `drop-shadow(0 0 10px ${color}60)` };
     switch (iconName) {
@@ -163,22 +165,21 @@ export default function Products({ products, onSelectProduct, onScrollTo }: Prod
                     <button
                       id={`product-access-btn-${product.id}`}
                       type="button"
-                      onClick={() => onScrollTo('contact-section')}
+                      onClick={() => scrollToSection('contact-section')}
                       className="w-full inline-flex items-center justify-between px-4 py-3 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 transition-all duration-200 shadow-md shadow-teal-500/20 cursor-pointer"
                     >
                       <span>Request Demo / Access</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   )}
-                  <button
+                  <Link
                     id={`product-explore-btn-${product.id}`}
-                    type="button"
-                    onClick={() => onSelectProduct(product.id)}
-                    className="w-full flex items-center justify-between px-4 py-3 rounded-full bg-slate-950/60 border border-white/5 text-xs font-semibold text-slate-300 hover:bg-slate-900/60 hover:border-teal-500/20 hover:text-teal-400 transition-all duration-200 cursor-pointer"
+                    href={`/products/${product.id}`}
+                    className="w-full flex items-center justify-between px-4 py-3 rounded-full bg-slate-950/60 border border-white/5 text-xs font-semibold text-slate-300 hover:bg-slate-900/60 hover:border-teal-500/20 hover:text-teal-400 transition-all duration-200"
                   >
                     <span>Technical Specs</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );
@@ -202,7 +203,8 @@ export default function Products({ products, onSelectProduct, onScrollTo }: Prod
           </div>
           <button
             id="products-custom-cta-btn"
-            onClick={() => onScrollTo('contact-section')}
+            type="button"
+            onClick={() => scrollToSection('contact-section')}
             className="w-full md:w-auto shrink-0 px-6 py-3.5 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wider uppercase hover:bg-teal-50 hover:scale-[1.02] transition-all cursor-pointer shadow-md shadow-white/5"
           >
             Discuss Your Project

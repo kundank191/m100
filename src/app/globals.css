@@ -1,0 +1,390 @@
+/* Fonts loaded via <link> in index.html (non-blocking) for better LCP */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-950: #042f2e;
+
+  --color-surface: #0f1629;
+  --color-page: #070b14;
+}
+
+/* ---------- Dark (default) ---------- */
+:root,
+html[data-theme="dark"] {
+  --page-bg: #070b14;
+  --page-fg: #e8eef7;
+  --surface: rgba(15, 22, 41, 0.62);
+  --surface-hover: rgba(15, 22, 41, 0.82);
+  --border-soft: rgba(255, 255, 255, 0.07);
+  --glow-teal: rgba(45, 212, 191, 0.16);
+  --glow-indigo: rgba(99, 102, 241, 0.12);
+  --grid-line: rgba(255, 255, 255, 0.02);
+  --scroll-track: #070b14;
+  --scroll-thumb: #1e293b;
+  color-scheme: dark;
+}
+
+/* ---------- Light ---------- */
+html[data-theme="light"] {
+  --page-bg: #f4f7fb;
+  --page-fg: #0f172a;
+  --surface: rgba(255, 255, 255, 0.88);
+  --surface-hover: rgba(255, 255, 255, 0.98);
+  --border-soft: rgba(15, 23, 42, 0.08);
+  --glow-teal: rgba(13, 148, 136, 0.12);
+  --glow-indigo: rgba(99, 102, 241, 0.1);
+  --grid-line: rgba(15, 23, 42, 0.05);
+  --scroll-track: #e2e8f0;
+  --scroll-thumb: #94a3b8;
+  color-scheme: light;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 9999px;
+  border: 2px solid var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #14b8a6;
+}
+
+.ambient-glow-cyan,
+.ambient-glow-teal {
+  filter: blur(140px);
+  background: radial-gradient(circle, var(--glow-teal) 0%, rgba(0, 0, 0, 0) 75%);
+}
+
+.ambient-glow-blue {
+  filter: blur(140px);
+  background: radial-gradient(circle, var(--glow-indigo) 0%, rgba(0, 0, 0, 0) 75%);
+}
+
+.cyber-grid {
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] .glass-panel {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(45, 212, 191, 0.35);
+  background: var(--surface-hover);
+  box-shadow: 0 10px 40px rgba(20, 184, 166, 0.06), 0 0 20px rgba(45, 212, 191, 0.04);
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+}
+
+/* WCAG: slate-500/600 on dark page fails for small text (~3.9:1). Bump to slate-400. */
+html[data-theme="dark"] .text-slate-500,
+html[data-theme="dark"] .text-slate-600 {
+  color: #94a3b8; /* slate-400 ≈ 4.6:1 on #070b14 */
+}
+
+/* Prefer slightly larger micro-labels for readability */
+html[data-theme="dark"] .text-\[10px\].text-slate-500,
+html[data-theme="dark"] .text-\[10px\].font-mono.text-slate-500 {
+  color: #94a3b8;
+}
+
+/* Skip link: visible only on keyboard focus */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Theme-aware page shell */
+#app-wrapper {
+  background-color: var(--page-bg);
+  color: var(--page-fg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Section label chips (Our Products, Why Mach100, hero badge) */
+.section-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  background: rgba(4, 47, 46, 0.45);
+  color: #2dd4bf;
+}
+
+.section-chip-muted {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.35);
+  color: #94a3b8;
+}
+
+.section-chip-muted svg {
+  color: #2dd4bf;
+}
+
+html[data-theme="light"] .section-chip {
+  background: #ecfdf5;
+  border-color: rgba(13, 148, 136, 0.28);
+  color: #0f766e;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+html[data-theme="light"] .section-chip svg {
+  color: #0d9488;
+}
+
+html[data-theme="light"] .section-chip-muted {
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #475569;
+}
+
+html[data-theme="light"] .section-chip-muted svg {
+  color: #0d9488;
+}
+
+/* Teal icon wells — readable in light mode */
+html[data-theme="light"] .bg-teal-950\/40,
+html[data-theme="light"] .bg-teal-950\/30 {
+  background-color: #ecfdf5 !important;
+}
+
+html[data-theme="light"] .bg-blue-950\/40 {
+  background-color: #eff6ff !important;
+}
+
+html[data-theme="light"] .border-teal-500\/20,
+html[data-theme="light"] .border-teal-500\/10 {
+  border-color: rgba(13, 148, 136, 0.25) !important;
+}
+
+/* ---------- Light mode utility remaps ---------- */
+html[data-theme="light"] .bg-\[\#070b14\],
+html[data-theme="light"] .bg-slate-950,
+html[data-theme="light"] .bg-slate-950\/40,
+html[data-theme="light"] .bg-slate-950\/60,
+html[data-theme="light"] .bg-slate-950\/65,
+html[data-theme="light"] .bg-slate-950\/98 {
+  background-color: #f4f7fb !important;
+}
+
+html[data-theme="light"] .bg-slate-900,
+html[data-theme="light"] .bg-slate-900\/40,
+html[data-theme="light"] .bg-slate-900\/60,
+html[data-theme="light"] .bg-slate-900\/80 {
+  background-color: #e8eef6 !important;
+}
+
+html[data-theme="light"] .bg-slate-900\/40.backdrop-blur-md,
+html[data-theme="light"] .bg-slate-950\/65 {
+  background-color: rgba(244, 247, 251, 0.85) !important;
+}
+
+html[data-theme="light"] #main-navbar.bg-slate-950\/65,
+html[data-theme="light"] #main-navbar[class*="backdrop"] {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="light"] #mobile-menu {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .text-slate-100,
+html[data-theme="light"] .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .text-slate-300 {
+  color: #334155 !important;
+}
+
+html[data-theme="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .text-slate-500,
+html[data-theme="light"] .text-slate-600 {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .border-white\/5,
+html[data-theme="light"] .border-white\/10,
+html[data-theme="light"] .border-slate-900,
+html[data-theme="light"] .border-slate-800,
+html[data-theme="light"] .border-slate-800\/80 {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+html[data-theme="light"] .text-teal-400,
+html[data-theme="light"] .hover\:text-teal-400:hover,
+html[data-theme="light"] .group-hover\:text-teal-400,
+html[data-theme="light"] .group-hover\:text-teal-300 {
+  color: #0d9488 !important;
+}
+
+html[data-theme="light"] .text-teal-300 {
+  color: #0f766e !important;
+}
+
+/* Primary solid CTAs: invert white pills to dark slate in light mode */
+html[data-theme="light"] button.bg-white,
+html[data-theme="light"] a.bg-white {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="light"] button.bg-white:hover,
+html[data-theme="light"] a.bg-white:hover,
+html[data-theme="light"] button.hover\:bg-teal-50:hover {
+  background-color: #134e4a !important;
+  color: #f0fdfa !important;
+}
+
+html[data-theme="light"] .bg-teal-500 {
+  background-color: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] .hover\:bg-teal-400:hover {
+  background-color: #0f766e !important;
+}
+
+html[data-theme="light"] button .text-slate-950,
+html[data-theme="light"] a .text-slate-950 {
+  color: #f8fafc !important;
+}
+
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="light"] .shadow-white\/5 {
+  --tw-shadow-color: rgba(15, 23, 42, 0.08);
+}
+
+/* Theme toggle button surfaces */
+#theme-toggle {
+  border-color: rgba(148, 163, 184, 0.25);
+  color: #94a3b8;
+  background: transparent;
+}
+
+#theme-toggle:hover {
+  color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.4);
+  background: rgba(45, 212, 191, 0.08);
+}
+
+html[data-theme="light"] #theme-toggle {
+  color: #475569;
+  border-color: rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+}
+
+html[data-theme="light"] #theme-toggle:hover {
+  color: #0d9488;
+  border-color: rgba(13, 148, 136, 0.35);
+  background: #f0fdfa;
+}
+
+/* Soften dark ambient blobs in light mode */
+html[data-theme="light"] #app-wrapper > .fixed.rounded-full {
+  opacity: 0.45;
+}

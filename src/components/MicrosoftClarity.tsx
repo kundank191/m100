@@ -3,13 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import { useEffect } from 'react';
 
-/** Project ID from Clarity (public in page source). Override with VITE_CLARITY_PROJECT_ID if needed. */
-const CLARITY_ID =
-  (import.meta.env.VITE_CLARITY_PROJECT_ID as string | undefined)?.trim() || 'xjvfg8abh3';
+const CLARITY_ID = (
+  process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ||
+  process.env.NEXT_PUBLIC_VITE_CLARITY_PROJECT_ID ||
+  'xjvfg8abh3'
+).trim();
 
-/** Loads Microsoft Clarity when VITE_CLARITY_PROJECT_ID is set. */
 export default function MicrosoftClarity() {
   useEffect(() => {
     if (!CLARITY_ID || typeof window === 'undefined') return;

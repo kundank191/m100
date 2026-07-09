@@ -3,9 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface ThemeToggleProps {
   className?: string;

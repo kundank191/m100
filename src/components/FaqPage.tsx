@@ -3,31 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
-import { FAQ_ITEMS, faqJsonLd } from '../data/faqData';
+import { FAQ_ITEMS } from '@/data/faqData';
 
-interface FaqPageProps {
-  onContact: () => void;
-}
-
-export default function FaqPage({ onContact }: FaqPageProps) {
+export default function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  useEffect(() => {
-    const scriptId = 'faq-jsonld';
-    let el = document.getElementById(scriptId) as HTMLScriptElement | null;
-    if (!el) {
-      el = document.createElement('script');
-      el.id = scriptId;
-      el.type = 'application/ld+json';
-      document.head.appendChild(el);
-    }
-    el.textContent = JSON.stringify(faqJsonLd());
-    return () => {
-      el?.remove();
-    };
-  }, []);
 
   return (
     <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
@@ -72,13 +56,12 @@ export default function FaqPage({ onContact }: FaqPageProps) {
       </div>
 
       <div className="mt-12 text-center">
-        <button
-          type="button"
-          onClick={onContact}
-          className="px-6 py-3 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 cursor-pointer"
+        <Link
+          href="/#contact-section"
+          className="inline-flex px-6 py-3 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50"
         >
           Still have questions? Contact us
-        </button>
+        </Link>
       </div>
     </section>
   );

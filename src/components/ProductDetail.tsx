@@ -3,41 +3,38 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect } from 'react';
-import { ProductDetail } from '../types';
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ProductDetail } from '@/types';
 import { ArrowLeft, CheckCircle, ExternalLink, ArrowRight } from 'lucide-react';
 
 interface ProductDetailProps {
   product: ProductDetail;
-  onBack: () => void;
-  onRequestAccess: () => void;
 }
 
-export default function ProductDetailComponent({ product, onBack, onRequestAccess }: ProductDetailProps) {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [product.id]);
-
+export default function ProductDetailComponent({ product }: ProductDetailProps) {
+  const router = useRouter();
   const isHealth = product.id === 'glucare';
   const isPublicDemo = product.access === 'public-demo';
 
   return (
     <section className="py-24 relative overflow-hidden bg-[#070b14] min-h-screen">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] ambient-glow-cyan opacity-25 -z-10 pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] ambient-glow-cyan opacity-25 -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        
-        <button
+        <Link
           id="product-back-btn"
-          onClick={onBack}
-          className="inline-flex items-center space-x-2 text-xs font-mono font-semibold text-teal-400 hover:text-teal-300 mb-10 group cursor-pointer"
+          href="/#products-section"
+          className="inline-flex items-center space-x-2 text-xs font-mono font-semibold text-teal-400 hover:text-teal-300 mb-10 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Products</span>
-        </button>
+        </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
-          
           <div>
             <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-3">
               {isPublicDemo ? 'Interactive Product Demo' : 'Live Product'}
@@ -45,12 +42,8 @@ export default function ProductDetailComponent({ product, onBack, onRequestAcces
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-display text-white mb-4 leading-tight">
               {product.name}
             </h1>
-            <p className="text-lg font-mono text-slate-300 font-semibold mb-6">
-              {product.tagline}
-            </p>
-            <p className="text-slate-400 leading-relaxed mb-8">
-              {product.description}
-            </p>
+            <p className="text-lg font-mono text-slate-300 font-semibold mb-6">{product.tagline}</p>
+            <p className="text-slate-400 leading-relaxed mb-8">{product.description}</p>
 
             {isHealth && (
               <div className="mb-8 space-y-3">
@@ -68,7 +61,7 @@ export default function ProductDetailComponent({ product, onBack, onRequestAcces
                 Engineered Core Stack
               </h4>
               <div className="flex flex-wrap gap-2">
-                {product.techStack.map(tech => (
+                {product.techStack.map((tech) => (
                   <span
                     key={tech}
                     className="px-3 py-1.5 rounded bg-slate-900/60 border border-white/5 text-xs text-teal-300 font-mono"
@@ -147,7 +140,7 @@ export default function ProductDetailComponent({ product, onBack, onRequestAcces
                 <button
                   id="product-request-access-btn"
                   type="button"
-                  onClick={onRequestAccess}
+                  onClick={() => router.push('/#contact-section')}
                   className="w-full py-4 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-white/5 hover:bg-teal-50 hover:scale-[1.01] transition-all duration-200 cursor-pointer inline-flex items-center justify-center gap-2"
                 >
                   <span>Request Demo / Access</span>
@@ -159,7 +152,6 @@ export default function ProductDetailComponent({ product, onBack, onRequestAcces
               </>
             )}
           </div>
-
         </div>
 
         <div className="border-t border-white/5 pt-12">
@@ -168,21 +160,13 @@ export default function ProductDetailComponent({ product, onBack, onRequestAcces
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {product.features.map((feature) => (
-              <div
-                key={feature.title}
-                className="rounded-xl glass-panel p-6"
-              >
-                <h4 className="text-base font-bold font-display text-white mb-2">
-                  {feature.title}
-                </h4>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  {feature.desc}
-                </p>
+              <div key={feature.title} className="rounded-xl glass-panel p-6">
+                <h4 className="text-base font-bold font-display text-white mb-2">{feature.title}</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

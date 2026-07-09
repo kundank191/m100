@@ -3,14 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React, { useState } from 'react';
 import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
-import { trackEvent } from './GoogleAnalytics';
+import { trackEvent } from '@/components/GoogleAnalytics';
 
 const CONTACT_EMAIL = 'contact@mach100.in';
 
-/** Set VITE_FORMSPREE_ENDPOINT in .env (e.g. https://formspree.io/f/xpwqapjn) */
-const FORMSPREE_ENDPOINT = (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined)?.trim() || '';
+/** Set NEXT_PUBLIC_FORMSPREE_ENDPOINT (or legacy VITE_FORMSPREE_ENDPOINT) */
+const FORMSPREE_ENDPOINT =
+  (process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || process.env.NEXT_PUBLIC_VITE_FORMSPREE_ENDPOINT || '').trim();
 
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 

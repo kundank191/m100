@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+// Server Component (no hooks)
 import { Zap, Bot, Database, CheckCircle2, Plane } from 'lucide-react';
 
 export default function About() {

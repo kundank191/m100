@@ -3,32 +3,25 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { ViewState } from '../types';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import Logo from './Logo';
-import ThemeToggle from './ThemeToggle';
+import Logo from '@/components/Logo';
+import ThemeToggle from '@/components/ThemeToggle';
+import { scrollToSection } from '@/lib/scroll';
 
-interface NavbarProps {
-  currentView: ViewState;
-  onViewChange: (view: ViewState) => void;
-  onScrollTo: (elementId: string) => void;
-  onGoHomeSection: (sectionId?: string) => void;
-}
-
-export default function Navbar({
-  currentView,
-  onViewChange,
-  onScrollTo,
-  onGoHomeSection,
-}: NavbarProps) {
+export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const isHome = pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -39,23 +32,18 @@ export default function Navbar({
     { label: 'About', id: 'about-section' },
   ];
 
-  const pageItems: { label: string; view: ViewState }[] = [
-    { label: 'Blog', view: 'blog' },
-    { label: 'FAQ', view: 'faq' },
+  const pageItems = [
+    { label: 'Blog', href: '/blog' },
+    { label: 'FAQ', href: '/faq' },
   ];
 
   const handleSectionClick = (sectionId: string) => {
     setIsOpen(false);
-    if (currentView === 'home') {
-      onScrollTo(sectionId);
+    if (isHome) {
+      scrollToSection(sectionId);
     } else {
-      onGoHomeSection(sectionId);
+      router.push(`/#${sectionId}`);
     }
-  };
-
-  const handlePageClick = (view: ViewState) => {
-    setIsOpen(false);
-    onViewChange(view);
   };
 
   return (
@@ -69,50 +57,49 @@ export default function Navbar({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <button
-            type="button"
+          <Link
+            href="/"
             id="nav-logo"
-            onClick={() => {
-              setIsOpen(false);
-              onGoHomeSection();
-            }}
-            className="flex items-center cursor-pointer group bg-transparent border-0 p-0 text-left"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center cursor-pointer group"
             aria-label="Mach100 Tech Solutions home"
           >
             <Logo className="group-hover:opacity-90 transition-opacity duration-300" />
-          </button>
+          </Link>
 
           <div id="desktop-menu" className="hidden lg:flex items-center space-x-6">
             <div className="flex items-center space-x-5">
               {sectionItems.map((item) => (
                 <button
                   key={item.label}
-                  id={`nav-link-${item.label.toLowerCase()}`}
+                  type="button"
                   onClick={() => handleSectionClick(item.id)}
                   className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer relative py-1 group"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full" />
                 </button>
               ))}
               {pageItems.map((item) => (
-                <button
+                <Link
                   key={item.label}
-                  id={`nav-link-${item.label.toLowerCase()}`}
-                  onClick={() => handlePageClick(item.view)}
-                  className={`text-sm font-medium transition-colors duration-200 cursor-pointer relative py-1 group ${
-                    currentView === item.view ? 'text-teal-400' : 'text-slate-300 hover:text-teal-400'
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors duration-200 relative py-1 group ${
+                    pathname.startsWith(item.href)
+                      ? 'text-teal-400'
+                      : 'text-slate-300 hover:text-teal-400'
                   }`}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                </button>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full" />
+                </Link>
               ))}
             </div>
 
             <div className="flex items-center space-x-3 border-l border-slate-800/80 pl-5">
               <ThemeToggle />
               <button
+                type="button"
                 id="nav-cta-button"
                 onClick={() => handleSectionClick('contact-section')}
                 className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 hover:scale-[1.02] transition-all duration-300 shadow-md shadow-white/5 cursor-pointer"
@@ -126,6 +113,7 @@ export default function Navbar({
             <ThemeToggle />
             <button
               id="mobile-menu-toggle"
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 transition-colors"
               aria-label="Toggle menu"
@@ -147,6 +135,7 @@ export default function Navbar({
             {sectionItems.map((item) => (
               <button
                 key={item.label}
+                type="button"
                 onClick={() => handleSectionClick(item.id)}
                 className="text-left py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
               >
@@ -154,17 +143,19 @@ export default function Navbar({
               </button>
             ))}
             {pageItems.map((item) => (
-              <button
+              <Link
                 key={item.label}
-                onClick={() => handlePageClick(item.view)}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
                 className="text-left py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </div>
-          <div className="pt-4 border-t border-slate-900 flex flex-col space-y-3">
+          <div className="pt-4 border-t border-slate-900">
             <button
+              type="button"
               id="mobile-nav-cta-button"
               onClick={() => handleSectionClick('contact-section')}
               className="w-full py-3 rounded-lg bg-gradient-to-r from-teal-500 to-teal-700 text-slate-950 text-sm font-semibold text-center hover:from-teal-400 hover:to-teal-600 transition-colors"

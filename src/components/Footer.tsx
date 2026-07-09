@@ -3,19 +3,27 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Shield, Globe } from 'lucide-react';
-import Logo from './Logo';
-import { ViewState } from '../types';
+import Logo from '@/components/Logo';
+import { scrollToSection } from '@/lib/scroll';
 
-interface FooterProps {
-  onViewChange: (view: ViewState) => void;
-  onScrollTo: (elementId: string) => void;
-  onGoHomeSection: (sectionId?: string) => void;
-}
-
-export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const goSection = (sectionId: string) => {
+    if (pathname === '/') {
+      scrollToSection(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
 
   return (
     <footer
@@ -85,36 +93,24 @@ export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  type="button"
-                  onClick={() => onViewChange('blog')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
-                >
+                <Link href="/blog" className="hover:text-teal-400 transition-colors">
                   Blog
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onViewChange('faq')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
-                >
+                <Link href="/faq" className="hover:text-teal-400 transition-colors">
                   FAQ
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onViewChange('keywords')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
-                >
+                <Link href="/keywords" className="hover:text-teal-400 transition-colors">
                   Keyword tools
-                </button>
+                </Link>
               </li>
               <li>
                 <button
                   type="button"
-                  onClick={() => onGoHomeSection('about-section')}
+                  onClick={() => goSection('about-section')}
                   className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
                   About Mach100
@@ -123,17 +119,14 @@ export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
               <li>
                 <button
                   type="button"
-                  onClick={() => onGoHomeSection('contact-section')}
+                  onClick={() => goSection('contact-section')}
                   className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
                   Contact
                 </button>
               </li>
               <li>
-                <a
-                  href="mailto:contact@mach100.in"
-                  className="hover:text-teal-400 transition-colors"
-                >
+                <a href="mailto:contact@mach100.in" className="hover:text-teal-400 transition-colors">
                   contact@mach100.in
                 </a>
               </li>

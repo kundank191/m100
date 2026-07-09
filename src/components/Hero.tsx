@@ -3,15 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ChevronRight, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '@/contexts/ThemeContext';
+import { scrollToSection } from '@/lib/scroll';
 
-interface HeroProps {
-  onScrollTo: (elementId: string) => void;
-}
-
-export default function Hero({ onScrollTo }: HeroProps) {
+export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { isDark } = useTheme();
 
@@ -203,7 +202,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
         >
           <button
             id="hero-cta-explore"
-            onClick={() => onScrollTo('products-section')}
+            onClick={() => scrollToSection('products-section')}
             className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-white/5 hover:bg-teal-50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center space-x-2"
           >
             <span>See Our Products</span>
@@ -212,7 +211,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           
           <button
             id="hero-cta-build"
-            onClick={() => onScrollTo('contact-section')}
+            onClick={() => scrollToSection('contact-section')}
             className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900/40 backdrop-blur-md border border-white/5 text-slate-200 hover:text-white hover:bg-slate-800/80 transition-all duration-200 font-semibold text-sm cursor-pointer flex items-center justify-center space-x-2"
           >
             <span>Start Your Project</span>
