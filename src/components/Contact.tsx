@@ -88,13 +88,13 @@ export default function Contact() {
   return (
     <section
       id="contact-section"
-      className="py-24 relative overflow-hidden bg-[#070b14] border-t border-slate-900"
+      className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14] border-t border-slate-900"
     >
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] ambient-glow-blue opacity-25 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div id="contact-header" className="max-w-3xl mx-auto text-center mb-16">
+        <div id="contact-header" className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
           <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
             Get in Touch
           </span>
@@ -102,13 +102,13 @@ export default function Contact() {
             Let's Build Your Next Product
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            Tell us about your project — whether you need a business website, a data engineering pipeline, or an agentic AI automation system. Send us an inquiry and we'll get back to you with a clear timeline.
+            Tell us about your project, whether you need a business website, a data engineering pipeline, or an agentic AI automation system. Send an inquiry and we will get back to you with a clear timeline.
           </p>
         </div>
 
         <div 
           id="contact-grid"
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
         >
           
           <div className="lg:col-span-5">
@@ -138,7 +138,7 @@ export default function Contact() {
                 <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto" />
                 <p className="text-lg font-semibold text-white">Message sent</p>
                 <p className="text-sm text-slate-400 max-w-sm mx-auto">
-                  Thanks for reaching out. We'll reply to your email shortly — usually within 24 hours.
+                  Thanks for reaching out. We will reply to your email shortly, usually within 24 hours.
                 </p>
                 <button
                   type="button"
@@ -201,8 +201,8 @@ export default function Contact() {
                     disabled={submitState === 'loading'}
                   >
                     <option value="Business Website Development">Business Website Development</option>
-                    <option value="MFleet Demo / Access">MFleet — Request Demo / Access</option>
-                    <option value="GluCare Demo / Access">GluCare — Request Demo / Access</option>
+                    <option value="MFleet Demo / Access">MFleet: Request Demo / Access</option>
+                    <option value="GluCare Demo / Access">GluCare: Request Demo / Access</option>
                     <option value="Data Engineering">Data Engineering & Analytics</option>
                     <option value="Agentic AI Automation">Agentic AI & Automation</option>
                     <option value="Custom Web/Mobile Platform">Custom Web / Mobile App</option>

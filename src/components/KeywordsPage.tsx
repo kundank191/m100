@@ -47,7 +47,7 @@ export default function KeywordsPage() {
   }, [checkText, focusKeyword]);
 
   return (
-    <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <div className="section-chip mb-4">
         <span>SEO</span>
       </div>
@@ -129,7 +129,7 @@ export default function KeywordsPage() {
 
       <h2 className="text-xl font-bold font-display text-white mb-2">Draft density checker</h2>
       <p className="text-xs text-slate-500 mb-4">
-        Client-side only — paste a draft and a focus phrase. Aim roughly 0.5–2% for natural language.
+        Client-side only, paste a draft and a focus phrase. Aim roughly 0.5-2% for natural language.
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <div className="lg:col-span-1">

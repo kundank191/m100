@@ -12,13 +12,13 @@ export default function About() {
     <section
       id="about-section"
       data-section="why-mach100"
-      className="py-24 relative overflow-hidden bg-[#070b14] border-t border-white/5"
+      className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14] border-t border-white/5"
     >
       <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] ambient-glow-cyan opacity-20 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div id="about-headline" className="max-w-3xl mx-auto text-center mb-16">
+        <div id="about-headline" className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
           <div className="section-chip mb-4">
             <Plane className="w-3.5 h-3.5 rotate-45 transform shrink-0" />
             <span>Why Mach100</span>
@@ -27,13 +27,13 @@ export default function About() {
             Fast Delivery. Reliable Products. No Compromises.
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            We are a Bengaluru-based custom software development company in India. Businesses deserve software that ships on time, runs reliably, and solves the real problem — websites, data engineering, fleet/PG products, or agentic AI automation.
+            We are a Bengaluru-based custom software development company in India. Businesses deserve software that ships on time, runs reliably, and solves the real problem: websites, data engineering, fleet/PG products, or agentic AI automation.
           </p>
         </div>
 
         <div 
           id="about-bento-grid"
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12"
         >
           <div className="md:col-span-2 rounded-2xl glass-panel glass-panel-hover p-8 flex flex-col justify-between">
             <div>
@@ -49,7 +49,7 @@ export default function About() {
             </div>
             <div className="flex items-center space-x-2 border-t border-white/5 pt-4">
               <span className="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
-              <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold">Average MVP delivery: 4–6 weeks</span>
+              <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold">Average MVP delivery: 4-6 weeks</span>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ export default function About() {
                 Agentic AI That Works
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Practical agentic systems with human oversight — tested in real workflows. AI agents that handle customer support, process documents, trigger actions, and stay inside the guardrails you define.
+                Practical agentic systems with human oversight, tested in real workflows. AI agents handle customer support, process documents, trigger actions, and stay inside the guardrails you define.
               </p>
             </div>
             <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold border-t border-white/5 pt-4">
@@ -79,7 +79,7 @@ export default function About() {
                 Production-Grade Reliability
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Every system we build is engineered for uptime. High-volume APIs, real-time data sync, payment processing, and automated workflows — all tested under real-world load before they reach your users.
+                Every system we build is engineered for uptime. High-volume APIs, real-time data sync, payment processing, and automated workflows are all tested under real-world load before they reach your users.
               </p>
             </div>
             <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold border-t border-white/5 pt-4">
@@ -96,7 +96,7 @@ export default function About() {
                 Data Engineering You Can Trust
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                From ingestion pipelines and data warehouses to real-time analytics dashboards — we build data infrastructure that is accurate, observable, and maintainable. Your business decisions are only as good as your data, and we make sure that data is right.
+                From ingestion pipelines and data warehouses to real-time analytics dashboards, we build data infrastructure that is accurate, observable, and maintainable. Your business decisions are only as good as your data, and we make sure that data is right.
               </p>
             </div>
             <div className="flex items-center space-x-2 border-t border-white/5 pt-4">

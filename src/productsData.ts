@@ -11,7 +11,7 @@ export const PRODUCTS: ProductDetail[] = [
     name: 'MFleet',
     tagline: 'Fleet Management & Driver Operations Platform',
     description:
-      'A live fleet operations product for cab operators and logistics teams — rental ledgers, fuel costs, driver payouts, rides, invoices, and role-based access. Request a demo or pilot access for your organisation.',
+      'A live fleet operations product for cab operators and logistics teams, rental ledgers, fuel costs, driver payouts, rides, invoices, and role-based access. Request a demo or pilot access for your organisation.',
     icon: 'Truck',
     accentColor: '#818cf8',
     bgGradient: 'from-indigo-950/40 to-slate-950/40',
@@ -34,7 +34,7 @@ export const PRODUCTS: ProductDetail[] = [
     benefits: [
       'Multi-user access: Owner, manager, and employee roles for real team workflows.',
       'Production ops: Vehicles, drivers, rides, invoices, and payments in one system.',
-      'Pilot-ready: We onboard your org with secure access — no public open signup.',
+      'Pilot-ready: We onboard your org with secure access, no public open signup.',
     ],
     metrics: [
       { label: 'Access model', value: 'Invite-only' },
@@ -49,7 +49,7 @@ export const PRODUCTS: ProductDetail[] = [
     name: 'PGPulse',
     tagline: 'PG & Co-living Property Management',
     description:
-      'An interactive product demo for PG and hostel operators. Walk through rent collection, vacancy tracking, tenant onboarding, and WhatsApp-style communication — try the live demo freely in your browser.',
+      'An interactive product demo for PG and hostel operators. Walk through rent collection, vacancy tracking, tenant onboarding, and WhatsApp-style communication, try the live demo freely in your browser.',
     icon: 'Home',
     accentColor: '#60a5fa',
     bgGradient: 'from-blue-950/40 to-slate-950/40',
@@ -92,7 +92,7 @@ export const PRODUCTS: ProductDetail[] = [
     name: 'GluCare',
     tagline: 'AI-Powered Glucose Monitoring Companion',
     description:
-      'A live health-tech product for meal logging, glucose trends, and vision-assisted capture. Access is invite-only for pilots and evaluation — not a public open demo. Not a medical device; not for clinical diagnosis.',
+      'A live health-tech product for meal logging, glucose trends, and vision-assisted capture. Access is invite-only for pilots and evaluation, not a public open demo. Not a medical device; not for clinical diagnosis.',
     icon: 'Activity',
     accentColor: '#2dd4bf',
     bgGradient: 'from-teal-950/40 to-slate-950/40',
@@ -119,7 +119,7 @@ export const PRODUCTS: ProductDetail[] = [
     benefits: [
       'Secure access: Auth-backed accounts for pilot users and caregivers you invite.',
       'Vision + logging: Meal and meter capture workflows designed for daily use.',
-      'Not medical advice: Insights support self-management conversations — not clinical diagnoses.',
+      'Not medical advice: Insights support self-management conversations, not clinical diagnoses.',
     ],
     metrics: [
       { label: 'Access model', value: 'Invite-only' },

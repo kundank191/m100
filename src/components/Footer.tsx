@@ -28,14 +28,14 @@ export default function Footer() {
   return (
     <footer
       id="main-footer"
-      className="bg-[#070b14] border-t border-white/5 py-16 text-slate-400 text-sm relative"
+      className="bg-[#070b14] border-t border-white/5 py-12 sm:py-14 text-slate-400 text-sm relative"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2 space-y-4">
             <Logo />
             <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
-              Fast, reliable software for businesses — custom websites, data engineering pipelines, and agentic AI automation. Engineered in India, deployed worldwide.
+              Fast, reliable software for businesses, custom websites, data engineering pipelines, and agentic AI automation. Engineered in India, deployed worldwide.
             </p>
             <div className="flex items-center space-x-2.5 text-[11px] font-mono text-slate-400">
               <Shield className="w-3.5 h-3.5 text-teal-400" />

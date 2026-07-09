@@ -225,7 +225,7 @@ html[data-theme="light"] .section-chip-muted svg {
   color: #0d9488;
 }
 
-/* Teal icon wells — readable in light mode */
+/* Teal icon wells: readable in light mode */
 html[data-theme="light"] .bg-teal-950\/40,
 html[data-theme="light"] .bg-teal-950\/30 {
   background-color: #ecfdf5 !important;

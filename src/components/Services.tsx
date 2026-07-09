@@ -17,7 +17,7 @@ export default function Services() {
     {
       icon: Database,
       title: 'Data Engineering',
-      desc: 'End-to-end data pipelines, ETL workflows, and analytics infrastructure. We design reliable data systems that collect, transform, and deliver insights your team can act on — at any scale.'
+      desc: 'End-to-end data pipelines, ETL workflows, and analytics infrastructure. We design reliable data systems that collect, transform, and deliver insights your team can act on, at any scale.'
     },
     {
       icon: Bot,
@@ -27,7 +27,7 @@ export default function Services() {
     {
       icon: Cpu,
       title: 'Custom AI Solutions',
-      desc: 'Computer vision, predictive models, and NLP systems tailored to your domain. We integrate AI directly into your products — not as a gimmick, but as a tool that saves time and reduces errors.'
+      desc: 'Computer vision, predictive models, and NLP systems tailored to your domain. We integrate AI directly into your products, not as a gimmick, but as a tool that saves time and reduces errors.'
     },
     {
       icon: Smartphone,
@@ -44,14 +44,14 @@ export default function Services() {
   return (
     <section
       id="services-section"
-      className="py-24 relative overflow-hidden bg-[#070b14] border-t border-slate-900"
+      className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14] border-t border-slate-900"
     >
       <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] ambient-glow-blue opacity-35 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Pitch Column */}
-        <div id="services-header" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+        <div id="services-header" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10 sm:mb-12">
           <div className="lg:col-span-5">
             <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
               What We Build
@@ -63,7 +63,7 @@ export default function Services() {
           </div>
           <div className="lg:col-span-7">
             <p className="text-slate-400 text-base leading-relaxed">
-              At <strong className="text-slate-300">Mach100 Tech Solutions</strong>, we build custom software that solves real business problems — fast. From business websites and data engineering pipelines to agentic AI automation frameworks, we deliver reliable products on predictable timelines. Whether you are a startup, logistics operator, healthcare platform, or SME, we build systems that work from day one.
+              At <strong className="text-slate-300">Mach100 Tech Solutions</strong>, we build custom software that solves real business problems, fast. From business websites and data engineering pipelines to agentic AI automation frameworks, we deliver reliable products on predictable timelines. Whether you are a startup, logistics operator, healthcare platform, or SME, we build systems that work from day one.
             </p>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function Services() {
         {/* Target Audience Bar */}
         <div 
           id="services-audience"
-          className="mt-20 border-t border-slate-900 pt-12 text-center"
+          className="mt-12 sm:mt-14 border-t border-slate-900 pt-8 sm:pt-10 text-center"
         >
           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold block mb-6">
             Industries We Serve

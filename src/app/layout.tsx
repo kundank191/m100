@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Custom Software Development India`,
     description:
-      'Custom software, fleet management, PG operations, and agentic AI — engineered in India. Open PGPulse demo; request access to MFleet & GluCare.',
+      'Custom software, fleet management, PG operations, and agentic AI, engineered in India. Open PGPulse demo; request access to MFleet & GluCare.',
     images: [{ url: '/logo.jpeg', alt: `${SITE_NAME} logo` }],
     locale: 'en_IN',
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${SITE_NAME} | Custom Software Development India`,
     description:
-      'Fast, reliable software for businesses. Custom websites, data pipelines, fleet & PG products — engineered in India.',
+      'Fast, reliable software for businesses. Custom websites, data pipelines, fleet & PG products, engineered in India.',
     images: ['/logo.jpeg'],
   },
   alternates: {

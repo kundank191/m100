@@ -7,7 +7,7 @@
 
 import { useEffect } from 'react';
 
-/** GA4 Measurement ID — set NEXT_PUBLIC_GA4_MEASUREMENT_ID */
+/** GA4 Measurement ID, set NEXT_PUBLIC_GA4_MEASUREMENT_ID */
 const GA_ID = (
   process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID ||
   process.env.NEXT_PUBLIC_VITE_GA4_MEASUREMENT_ID ||

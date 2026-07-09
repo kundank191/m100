@@ -21,7 +21,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
   const isPublicDemo = product.access === 'public-demo';
 
   return (
-    <section className="py-24 relative overflow-hidden bg-[#070b14] min-h-screen">
+    <section className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14] min-h-screen">
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] ambient-glow-cyan opacity-25 -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -34,7 +34,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
           <span>Back to Products</span>
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start mb-10 sm:mb-12">
           <div>
             <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-3">
               {isPublicDemo ? 'Interactive Product Demo' : 'Live Product'}
@@ -51,7 +51,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
                   <strong className="text-amber-300">Disclaimer:</strong> GluCare is a health-tech product for evaluation and self-management support. It is not a medical device, does not provide clinical diagnoses, and should not be used as a substitute for professional medical advice.
                 </div>
                 <p className="text-[11px] text-slate-500 leading-relaxed">
-                  *~94% accuracy refers to internal testing on sample meals/meter photos with a vision model — not a published clinical study or guaranteed real-world performance.
+                  *~94% accuracy refers to internal testing on sample meals/meter photos with a vision model, not a published clinical study or guaranteed real-world performance.
                 </p>
               </div>
             )}
@@ -147,14 +147,14 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-[10px] text-slate-500 text-center mt-3">
-                  Tell us about your team — we&apos;ll share a walkthrough and invite access.
+                  Tell us about your team, we&apos;ll share a walkthrough and invite access.
                 </p>
               </>
             )}
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-12">
+        <div className="border-t border-white/5 pt-8 sm:pt-10">
           <h3 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-8">
             Core Capabilities
           </h3>

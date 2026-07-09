@@ -11,20 +11,20 @@ import { BLOG_POSTS } from '@/data/blogData';
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Practical notes on fleet software, PG operations, AI health tools, and shipping MVPs in India — from Mach100 Tech Solutions.',
+    'Practical notes on fleet software, PG operations, AI health tools, and shipping MVPs in India, from Mach100 Tech Solutions.',
   alternates: { canonical: '/blog' },
 };
 
 export default function BlogIndexPage() {
   return (
-    <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <div className="section-chip mb-4">
         <span>Resources</span>
       </div>
       <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight mb-3">
         Blog
       </h1>
-      <p className="text-slate-400 text-base max-w-2xl mb-12 leading-relaxed">
+      <p className="text-slate-400 text-base max-w-2xl mb-8 sm:mb-10 leading-relaxed">
         Practical notes on fleet software, PG operations, AI health tools, and shipping MVPs in India.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

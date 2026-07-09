@@ -32,7 +32,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <article className="py-28 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+    <article className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-teal-400 hover:text-teal-300 mb-8"
@@ -64,9 +64,36 @@ export default async function BlogPostPage({ params }: Props) {
         </span>
       </div>
       <div className="space-y-5 text-slate-300 leading-relaxed text-base">
-        {post.body.map((para, i) => (
-          <p key={i}>{para}</p>
-        ))}
+        {post.body.map((para, i) => {
+          if (para.startsWith('### ')) {
+            return (
+              <h3
+                key={i}
+                className="text-lg font-bold font-display text-white tracking-tight pt-4 !mb-0"
+              >
+                {para.slice(4)}
+              </h3>
+            );
+          }
+          if (para.startsWith('## ')) {
+            return (
+              <h2
+                key={i}
+                className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight pt-6 border-t border-white/5 !mt-8 first:border-0 first:pt-0 first:!mt-0"
+              >
+                {para.slice(3)}
+              </h2>
+            );
+          }
+          if (/^\d+\.\s/.test(para)) {
+            return (
+              <p key={i} className="pl-1 text-slate-300">
+                {para}
+              </p>
+            );
+          }
+          return <p key={i}>{para}</p>;
+        })}
       </div>
       <div className="mt-12 p-6 rounded-2xl glass-panel">
         <p className="text-sm text-slate-400 mb-4">Want this built for your team?</p>

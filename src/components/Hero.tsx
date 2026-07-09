@@ -144,7 +144,7 @@ export default function Hero() {
   return (
     <header
       id="hero-header"
-      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-24 pb-16"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20 pb-10"
     >
       {/* Background Interactive Canvas */}
       <canvas
@@ -190,15 +190,15 @@ export default function Hero() {
         {/* Subheadline */}
         <p 
           id="hero-subheadline"
-          className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-sans"
+          className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed font-sans"
         >
-          Mach100 Tech Solutions is a custom software development company in India — business websites, data engineering, fleet &amp; PG products, and agentic AI automation. Ship MVPs in 4–6 weeks. Explore PGPulse freely; request access to MFleet &amp; GluCare.
+          Mach100 Tech Solutions is a custom software development company in India. We build business websites, data engineering, fleet and PG products, and agentic AI automation. Ship MVPs in 4-6 weeks. Explore PGPulse freely; request access to MFleet and GluCare.
         </p>
 
         {/* Call to Actions */}
         <div 
           id="hero-cta-group"
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
         >
           <button
             id="hero-cta-explore"
@@ -222,7 +222,7 @@ export default function Hero() {
         {/* Value Highlights Grid */}
         <div 
           id="hero-highlights"
-          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 border-t border-white/5 pt-10 text-left max-w-4xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 border-t border-white/5 pt-8 text-left max-w-4xl mx-auto"
         >
           <div className="flex items-start space-x-2.5">
             <div className="p-1 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 mt-0.5">

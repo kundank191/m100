@@ -12,12 +12,12 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How long does an MVP typically take?',
     answer:
-      'Most focused MVPs ship in 4–6 weeks after scope is locked. Timeline depends on integrations (payments, WhatsApp, auth) and how quickly stakeholders give feedback.',
+      'Most focused MVPs ship in 4-6 weeks after scope is locked. Timeline depends on integrations (payments, WhatsApp, auth) and how quickly stakeholders give feedback.',
   },
   {
     question: 'What is the difference between PGPulse, MFleet, and GluCare access?',
     answer:
-      'PGPulse has a public interactive demo at pg.mach100.in (no login; data stays in your browser). MFleet and GluCare are live invite-only products — use the contact form to request a demo or pilot access.',
+      'PGPulse has a public interactive demo at pg.mach100.in (no login; data stays in your browser). MFleet and GluCare are live invite-only products, use the contact form to request a demo or pilot access.',
   },
   {
     question: 'Do you only build products, or also custom client software?',
@@ -37,7 +37,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What is your pricing model?',
     answer:
-      'Custom work is scoped per project (fixed phases or weekly delivery). Product pilots are discussed case by case. We share a clear estimate after a short discovery call — no surprise scope creep by default.',
+      'Custom work is scoped per project (fixed phases or weekly delivery). Product pilots are discussed case by case. We share a clear estimate after a short discovery call, no surprise scope creep by default.',
   },
   {
     question: 'Is GluCare a medical device?',

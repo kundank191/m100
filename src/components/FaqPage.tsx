@@ -14,14 +14,14 @@ export default function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+    <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
       <div className="section-chip mb-4">
         <span>FAQ</span>
       </div>
       <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight mb-3">
         Frequently asked questions
       </h1>
-      <p className="text-slate-400 text-base mb-12 leading-relaxed">
+      <p className="text-slate-400 text-base mb-8 sm:mb-10 leading-relaxed">
         Timelines, products, pricing model, and how to get access. Still stuck? Email{' '}
         <a href="mailto:contact@mach100.in" className="text-teal-400 hover:underline">
           contact@mach100.in

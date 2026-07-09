@@ -46,13 +46,13 @@ export default function Products({ products }: ProductsProps) {
   return (
     <section
       id="products-section"
-      className="py-24 relative overflow-hidden bg-[#070b14]"
+      className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14]"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] ambient-glow-cyan opacity-40 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div id="products-header" className="text-center max-w-3xl mx-auto mb-20">
+        <div id="products-header" className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="section-chip mb-4">
             <Plane className="w-3.5 h-3.5 rotate-45 transform shrink-0" />
             <span>Our Products</span>
@@ -67,7 +67,7 @@ export default function Products({ products }: ProductsProps) {
 
         <div 
           id="products-grid"
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch"
         >
           {products.map((product) => {
             const isPublicDemo = product.access === 'public-demo';
@@ -158,7 +158,7 @@ export default function Products({ products }: ProductsProps) {
                         <ExternalLink className="w-4 h-4" />
                       </a>
                       <p className="text-[10px] text-slate-400 text-center leading-relaxed">
-                        No login required — data stays in your browser for this demo.
+                        No login required, data stays in your browser for this demo.
                       </p>
                     </>
                   ) : (
@@ -188,7 +188,7 @@ export default function Products({ products }: ProductsProps) {
 
         <div 
           id="products-custom-cta"
-          className="mt-16 rounded-2xl glass-panel p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-10 sm:mt-12 rounded-2xl glass-panel p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center space-x-4">
             <div className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-teal-950/30 text-teal-400 border border-teal-500/10">
@@ -197,7 +197,7 @@ export default function Products({ products }: ProductsProps) {
             <div>
               <h3 className="text-lg font-bold font-display text-white">Need a Custom Build?</h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-                We build business websites, data engineering platforms, and agentic AI automation systems tailored to your workflows. Tell us what you need — we will scope it and ship it fast.
+                We build business websites, data engineering platforms, and agentic AI automation systems tailored to your workflows. Tell us what you need, we will scope it and ship it fast.
               </p>
             </div>
           </div>
