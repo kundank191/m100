@@ -7,14 +7,22 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Providers from '@/components/Providers';
 import SiteShell from '@/components/SiteShell';
-import { ORGANIZATION_JSON_LD, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+import {
+  ORGANIZATION_JSON_LD,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  WEBSITE_JSON_LD,
+} from '@/lib/site';
+import { fontDisplay, fontMono, fontSans } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: 'Mach100 Tech',
   title: {
-    default: `${SITE_NAME} | Custom Software Development India`,
-    template: `%s | ${SITE_NAME}`,
+    default: 'Mach100 Tech Solutions | Mach 100 Tech | Custom Software India',
+    template: `%s | Mach100 Tech`,
   },
   description: SITE_DESCRIPTION,
   icons: {
@@ -23,16 +31,23 @@ export const metadata: Metadata = {
     apple: '/logo-icon.png',
   },
   keywords: [
+    'Mach100',
+    'Mach 100',
+    'Mach100 Tech',
+    'Mach 100 Tech',
     'Mach100 Tech Solutions',
+    'Mach 100 Tech Solutions',
+    'mach100.in',
     'custom software development India',
     'fleet management software India',
     'PG management software',
     'agentic AI automation',
     'data engineering services India',
-    'business website development',
-    'MVP development Bengaluru',
+    'business website development Bengaluru',
   ],
-  authors: [{ name: 'Mach100 Tech Solutions Private Limited' }],
+  authors: [{ name: 'Mach100 Tech Solutions Private Limited', url: SITE_URL }],
+  creator: 'Mach100 Tech Solutions',
+  publisher: 'Mach100 Tech Solutions Private Limited',
   robots: {
     index: true,
     follow: true,
@@ -44,17 +59,17 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Custom Software Development India`,
+    title: 'Mach100 Tech Solutions | Mach 100 Tech',
     description:
-      'Custom software, fleet management, PG operations, and agentic AI, engineered in India. Open PGPulse demo; request access to MFleet & GluCare.',
-    images: [{ url: '/logo.jpeg', alt: `${SITE_NAME} logo` }],
+      'Official site of Mach100 Tech Solutions (Mach 100 Tech). Custom software, MFleet, PGPulse, and GluCare. Engineered in India.',
+    images: [{ url: '/logo.jpeg', alt: 'Mach100 Tech Solutions logo' }],
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} | Custom Software Development India`,
+    title: 'Mach100 Tech Solutions | Mach 100 Tech',
     description:
-      'Fast, reliable software for businesses. Custom websites, data pipelines, fleet & PG products, engineered in India.',
+      'Official Mach100 / Mach 100 Tech website. Custom software and products for fleet, PG, and health tech in India.',
     images: ['/logo.jpeg'],
   },
   alternates: {
@@ -68,25 +83,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('mach100-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
           }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
+        />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         <Providers>
           <Suspense fallback={null}>
             <SiteShell>{children}</SiteShell>

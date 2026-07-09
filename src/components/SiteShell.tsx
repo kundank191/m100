@@ -13,7 +13,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div
       id="app-wrapper"
-      className="min-h-screen font-sans selection:bg-teal-500/25 selection:text-teal-700 relative overflow-hidden"
+      className="min-h-screen font-sans selection:bg-teal-500/25 selection:text-teal-700 relative overflow-x-hidden"
     >
       <a
         href="#main-content-flow"
@@ -22,16 +22,9 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
 
+      {/* One soft ambient blob only — cheaper than three animated blurs */}
       <div
-        className="fixed top-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-500/12 to-indigo-500/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-slow"
-        aria-hidden="true"
-      />
-      <div
-        className="fixed bottom-[-10%] right-[10%] w-[700px] h-[700px] bg-gradient-to-tr from-indigo-500/8 to-teal-500/10 rounded-full blur-[130px] pointer-events-none -z-10"
-        aria-hidden="true"
-      />
-      <div
-        className="fixed top-[40%] right-[-5%] w-[450px] h-[450px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow"
+        className="fixed top-[-15%] left-[20%] w-[500px] h-[500px] bg-teal-500/8 rounded-full blur-[100px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 

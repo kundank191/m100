@@ -44,4 +44,27 @@ export const ORGANIZATION_JSON_LD = {
     areaServed: 'IN',
     availableLanguage: ['English', 'Hindi'],
   },
+  alternateName: [
+    'Mach100',
+    'Mach 100',
+    'Mach100 Tech',
+    'Mach 100 Tech',
+    'Mach100 Tech Solutions',
+    'Mach 100 Tech Solutions',
+  ],
+};
+
+export const WEBSITE_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  alternateName: ['Mach100', 'Mach 100', 'Mach 100 Tech', 'mach100.in'],
+  url: `${SITE_URL}/`,
+  description: SITE_DESCRIPTION,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    logo: `${SITE_URL}/logo.jpeg`,
+  },
+  inLanguage: 'en-IN',
 };
