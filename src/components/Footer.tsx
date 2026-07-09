@@ -29,7 +29,7 @@ export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
             <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
               Fast, reliable software for businesses — custom websites, data engineering pipelines, and agentic AI automation. Engineered in India, deployed worldwide.
             </p>
-            <div className="flex items-center space-x-2.5 text-[11px] font-mono text-slate-600">
+            <div className="flex items-center space-x-2.5 text-[11px] font-mono text-slate-400">
               <Shield className="w-3.5 h-3.5 text-teal-400" />
               <span>Data Engineering</span>
               <span>•</span>
@@ -51,7 +51,7 @@ export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
                   className="hover:text-teal-400 transition-colors"
                 >
                   MFleet Engine
-                  <span className="text-slate-600"> (Request access)</span>
+                  <span className="text-slate-400"> (Request access)</span>
                 </a>
               </li>
               <li>
@@ -62,7 +62,7 @@ export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
                   className="hover:text-teal-400 transition-colors"
                 >
                   PGPulse Portal
-                  <span className="text-slate-600"> (Open demo)</span>
+                  <span className="text-slate-400"> (Open demo)</span>
                 </a>
               </li>
               <li>
@@ -73,7 +73,7 @@ export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
                   className="hover:text-teal-400 transition-colors"
                 >
                   GluCare Edge App
-                  <span className="text-slate-600"> (Request access)</span>
+                  <span className="text-slate-400"> (Request access)</span>
                 </a>
               </li>
             </ul>

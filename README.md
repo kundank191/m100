@@ -119,6 +119,18 @@ VITE_CLARITY_PROJECT_ID=your_project_id
 
 Create a project at [clarity.microsoft.com](https://clarity.microsoft.com), copy the project ID, set the env var on Vercel, and redeploy.
 
+### Google Analytics 4
+
+1. [analytics.google.com](https://analytics.google.com) → Admin → **Create property** → Web stream for `https://mach100.in`
+2. Copy **Measurement ID** (`G-XXXXXXXXXX`)
+3. Vercel env (Production):
+   ```bash
+   VITE_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+   ```
+4. Redeploy. SPA navigations send `page_view`; contact form success sends `generate_lead`.
+
+Without this env var, GA does not load.
+
 ### Content routes (SPA)
 
 | Path | Page |

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Fonts loaded via <link> in index.html (non-blocking) for better LCP */
 @import "tailwindcss";
 
 @theme {
@@ -130,6 +130,42 @@ html {
 body {
   background-color: var(--page-bg);
   color: var(--page-fg);
+}
+
+/* WCAG: slate-500/600 on dark page fails for small text (~3.9:1). Bump to slate-400. */
+html[data-theme="dark"] .text-slate-500,
+html[data-theme="dark"] .text-slate-600 {
+  color: #94a3b8; /* slate-400 ≈ 4.6:1 on #070b14 */
+}
+
+/* Prefer slightly larger micro-labels for readability */
+html[data-theme="dark"] .text-\[10px\].text-slate-500,
+html[data-theme="dark"] .text-\[10px\].font-mono.text-slate-500 {
+  color: #94a3b8;
+}
+
+/* Skip link: visible only on keyboard focus */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: absolute;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
 /* Theme-aware page shell */

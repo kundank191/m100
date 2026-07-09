@@ -39,7 +39,11 @@ export default function Hero({ onScrollTo }: HeroProps) {
       radius: number;
     }[] = [];
 
-    const particleCount = Math.min(60, Math.floor((width * height) / 15000));
+    // Fewer particles on small screens / for lower main-thread cost (Lighthouse)
+    const particleCount = Math.min(
+      width < 640 ? 28 : 48,
+      Math.floor((width * height) / 18000),
+    );
     
     for (let i = 0; i < particleCount; i++) {
       particles.push({

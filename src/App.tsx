@@ -3,22 +3,32 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Products from './components/Products';
-import ProductDetailComponent from './components/ProductDetail';
 import Services from './components/Services';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import BlogPage from './components/BlogPage';
-import FaqPage from './components/FaqPage';
-import KeywordsPage from './components/KeywordsPage';
 import MicrosoftClarity from './components/MicrosoftClarity';
+import GoogleAnalytics, { trackPageView } from './components/GoogleAnalytics';
 import { PRODUCTS } from './productsData';
 import { ViewState, ProductDetail } from './types';
 import { navigatePath, parsePath, pathForRoute } from './lib/routing';
+
+const ProductDetailComponent = lazy(() => import('./components/ProductDetail'));
+const BlogPage = lazy(() => import('./components/BlogPage'));
+const FaqPage = lazy(() => import('./components/FaqPage'));
+const KeywordsPage = lazy(() => import('./components/KeywordsPage'));
+
+function PageLoader() {
+  return (
+    <div className="py-32 flex items-center justify-center text-slate-500 text-sm font-mono">
+      Loading…
+    </div>
+  );
+}
 
 export default function App() {
   const initial = parsePath(window.location.pathname);
@@ -48,6 +58,7 @@ export default function App() {
     } else {
       navigatePath(path, true);
     }
+    trackPageView(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -61,9 +72,9 @@ export default function App() {
       } else {
         setSelectedProduct(null);
       }
+      trackPageView(pathForRoute(route));
     };
     window.addEventListener('popstate', onPop);
-    // Normalize URL on first load
     navigatePath(pathForRoute({ view: initial.view, blogSlug: initial.blogSlug }), true);
     return () => window.removeEventListener('popstate', onPop);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,11 +116,19 @@ export default function App() {
 
   return (
     <div id="app-wrapper" className="min-h-screen font-sans selection:bg-teal-500/25 selection:text-teal-700 relative overflow-hidden">
+      <GoogleAnalytics />
       <MicrosoftClarity />
 
-      <div className="fixed top-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-500/12 to-indigo-500/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-slow"></div>
-      <div className="fixed bottom-[-10%] right-[10%] w-[700px] h-[700px] bg-gradient-to-tr from-indigo-500/8 to-teal-500/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
-      <div className="fixed top-[40%] right-[-5%] w-[450px] h-[450px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow"></div>
+      <a
+        href="#main-content-flow"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-teal-500 focus:text-slate-950 focus:text-sm focus:font-bold"
+      >
+        Skip to content
+      </a>
+
+      <div className="fixed top-[-10%] left-[10%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-500/12 to-indigo-500/8 rounded-full blur-[130px] pointer-events-none -z-10 animate-pulse-slow" aria-hidden="true"></div>
+      <div className="fixed bottom-[-10%] right-[10%] w-[700px] h-[700px] bg-gradient-to-tr from-indigo-500/8 to-teal-500/10 rounded-full blur-[130px] pointer-events-none -z-10" aria-hidden="true"></div>
+      <div className="fixed top-[40%] right-[-5%] w-[450px] h-[450px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow" aria-hidden="true"></div>
 
       <Navbar
         currentView={currentView}
@@ -133,33 +152,35 @@ export default function App() {
           </div>
         )}
 
-        {isProduct && selectedProduct && (
-          <ProductDetailComponent
-            product={selectedProduct}
-            onBack={() => applyRoute('home')}
-            onRequestAccess={handleRequestAccess}
-          />
-        )}
+        <Suspense fallback={<PageLoader />}>
+          {isProduct && selectedProduct && (
+            <ProductDetailComponent
+              product={selectedProduct}
+              onBack={() => applyRoute('home')}
+              onRequestAccess={handleRequestAccess}
+            />
+          )}
 
-        {currentView === 'blog' && (
-          <BlogPage
-            slug={blogSlug}
-            onOpenPost={(slug) => applyRoute('blog', slug)}
-            onBackToList={() => applyRoute('blog')}
-            onContact={() => goHomeAndScroll('contact-section')}
-          />
-        )}
+          {currentView === 'blog' && (
+            <BlogPage
+              slug={blogSlug}
+              onOpenPost={(slug) => applyRoute('blog', slug)}
+              onBackToList={() => applyRoute('blog')}
+              onContact={() => goHomeAndScroll('contact-section')}
+            />
+          )}
 
-        {currentView === 'faq' && (
-          <FaqPage onContact={() => goHomeAndScroll('contact-section')} />
-        )}
+          {currentView === 'faq' && (
+            <FaqPage onContact={() => goHomeAndScroll('contact-section')} />
+          )}
 
-        {currentView === 'keywords' && (
-          <KeywordsPage
-            onOpenBlog={() => applyRoute('blog')}
-            onContact={() => goHomeAndScroll('contact-section')}
-          />
-        )}
+          {currentView === 'keywords' && (
+            <KeywordsPage
+              onOpenBlog={() => applyRoute('blog')}
+              onContact={() => goHomeAndScroll('contact-section')}
+            />
+          )}
+        </Suspense>
       </main>
 
       <Footer

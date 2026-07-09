@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import { trackEvent } from './GoogleAnalytics';
 
 const CONTACT_EMAIL = 'contact@mach100.in';
 
@@ -65,6 +66,10 @@ export default function Contact() {
       }
 
       setSubmitState('success');
+      trackEvent('generate_lead', {
+        method: 'contact_form',
+        topic: formData.subject,
+      });
       setFormData({
         name: '',
         email: '',
@@ -151,8 +156,9 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Your Name *</label>
+                    <label htmlFor="contact-name" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Your Name *</label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       required
@@ -161,11 +167,13 @@ export default function Contact() {
                       className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
                       placeholder="Your name"
                       disabled={submitState === 'loading'}
+                      autoComplete="name"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Email Address *</label>
+                    <label htmlFor="contact-email" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Email Address *</label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       required
@@ -174,13 +182,15 @@ export default function Contact() {
                       className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
                       placeholder="you@company.com"
                       disabled={submitState === 'loading'}
+                      autoComplete="email"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Topic of Consultation</label>
+                  <label htmlFor="contact-topic" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Topic of Consultation</label>
                   <select
+                    id="contact-topic"
                     name="topic"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -198,8 +208,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Message Details *</label>
+                  <label htmlFor="contact-message" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Message Details *</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows={4}

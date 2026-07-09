@@ -129,7 +129,7 @@ export default function Products({ products, onSelectProduct, onScrollTo }: Prod
                   </p>
 
                   <div className="border-t border-white/5 pt-4 mb-6">
-                    <span className="text-[10px] font-mono text-slate-500 uppercase block mb-2 font-semibold">Highlight</span>
+                    <span className="text-[10px] font-mono text-slate-400 uppercase block mb-2 font-semibold">Highlight</span>
                     <div className="flex items-baseline space-x-2">
                       <span className="text-2xl font-bold font-display text-white group-hover:text-teal-300 transition-colors duration-200">
                         {product.metrics[0].value}
@@ -155,7 +155,7 @@ export default function Products({ products, onSelectProduct, onScrollTo }: Prod
                         <span>Try Live Demo</span>
                         <ExternalLink className="w-4 h-4" />
                       </a>
-                      <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+                      <p className="text-[10px] text-slate-400 text-center leading-relaxed">
                         No login required — data stays in your browser for this demo.
                       </p>
                     </>

@@ -42,7 +42,6 @@ export default function Navbar({
   const pageItems: { label: string; view: ViewState }[] = [
     { label: 'Blog', view: 'blog' },
     { label: 'FAQ', view: 'faq' },
-    { label: 'Keywords', view: 'keywords' },
   ];
 
   const handleSectionClick = (sectionId: string) => {
@@ -70,16 +69,18 @@ export default function Navbar({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div
+          <button
+            type="button"
             id="nav-logo"
             onClick={() => {
               setIsOpen(false);
               onGoHomeSection();
             }}
-            className="flex items-center cursor-pointer group"
+            className="flex items-center cursor-pointer group bg-transparent border-0 p-0 text-left"
+            aria-label="Mach100 Tech Solutions home"
           >
             <Logo className="group-hover:opacity-90 transition-opacity duration-300" />
-          </div>
+          </button>
 
           <div id="desktop-menu" className="hidden lg:flex items-center space-x-6">
             <div className="flex items-center space-x-5">
