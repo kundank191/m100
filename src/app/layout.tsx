@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+    apple: '/logo-icon.png',
+  },
   keywords: [
     'Mach100 Tech Solutions',
     'custom software development India',
