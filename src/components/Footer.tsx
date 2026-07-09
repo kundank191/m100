@@ -11,17 +11,11 @@ import { ViewState } from '../types';
 interface FooterProps {
   onViewChange: (view: ViewState) => void;
   onScrollTo: (elementId: string) => void;
+  onGoHomeSection: (sectionId?: string) => void;
 }
 
-export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
+export default function Footer({ onViewChange, onGoHomeSection }: FooterProps) {
   const currentYear = new Date().getFullYear();
-
-  const handleNavClick = (sectionId: string) => {
-    onViewChange('home');
-    setTimeout(() => {
-      onScrollTo(sectionId);
-    }, 100);
-  };
 
   return (
     <footer
@@ -29,10 +23,7 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
       className="bg-[#070b14] border-t border-white/5 py-16 text-slate-400 text-sm relative"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          
-          {/* Column 1: Brand details */}
           <div className="md:col-span-2 space-y-4">
             <Logo />
             <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
@@ -47,59 +38,95 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
             </div>
           </div>
 
-          {/* Column 2: Navigation links */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
               Core Modules
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button 
-                  onClick={() => handleNavClick('products-section')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer"
+                <a
+                  href="https://fleet.mach100.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-400 transition-colors"
                 >
                   MFleet Engine
-                </button>
+                  <span className="text-slate-600"> (Request access)</span>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('products-section')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer"
+                <a
+                  href="https://pg.mach100.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-400 transition-colors"
                 >
                   PGPulse Portal
-                </button>
+                  <span className="text-slate-600"> (Open demo)</span>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('products-section')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer"
+                <a
+                  href="https://glucare.mach100.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-400 transition-colors"
                 >
                   GluCare Edge App
-                </button>
+                  <span className="text-slate-600"> (Request access)</span>
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Corporate links */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Corporate
+              Resources
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button 
-                  onClick={() => handleNavClick('about-section')}
+                <button
+                  type="button"
+                  onClick={() => onViewChange('blog')}
+                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
+                >
+                  Blog
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onViewChange('faq')}
+                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
+                >
+                  FAQ
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onViewChange('keywords')}
+                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
+                >
+                  Keyword tools
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onGoHomeSection('about-section')}
                   className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
                   About Mach100
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => handleNavClick('services-section')}
+                <button
+                  type="button"
+                  onClick={() => onGoHomeSection('contact-section')}
                   className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
-                  Our Services
+                  Contact
                 </button>
               </li>
               <li>
@@ -112,19 +139,16 @@ export default function Footer({ onViewChange, onScrollTo }: FooterProps) {
               </li>
             </ul>
           </div>
-
         </div>
 
-        {/* Footer Base Row */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
             <span>© {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved.</span>
           </div>
           <div className="text-xs text-slate-500">
-            <span>India</span>
+            <span>Bengaluru, India</span>
           </div>
         </div>
-
       </div>
     </footer>
   );

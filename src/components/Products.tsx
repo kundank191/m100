@@ -59,7 +59,7 @@ export default function Products({ products, onSelectProduct, onScrollTo }: Prod
             Products We Build &amp; Run
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            Live products for fleet and health ops — request a demo or access — plus an open interactive demo for PG operations. Same engineering standards we deliver to clients.
+            One open interactive demo (PGPulse) + two invite-only live products (MFleet &amp; GluCare). All built to the same engineering standards we deliver to clients.
           </p>
         </div>
 
@@ -143,17 +143,22 @@ export default function Products({ products, onSelectProduct, onScrollTo }: Prod
 
                 <div className="pt-2 space-y-2">
                   {isPublicDemo && product.demoUrl ? (
-                    <a
-                      id={`product-demo-btn-${product.id}`}
-                      href={product.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-between px-4 py-3 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 transition-all duration-200 shadow-md shadow-teal-500/20"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <span>Try Live Demo</span>
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
+                    <>
+                      <a
+                        id={`product-demo-btn-${product.id}`}
+                        href={product.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full inline-flex items-center justify-between px-4 py-3 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 transition-all duration-200 shadow-md shadow-teal-500/20"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Try Live Demo</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                      <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+                        No login required — data stays in your browser for this demo.
+                      </p>
+                    </>
                   ) : (
                     <button
                       id={`product-access-btn-${product.id}`}

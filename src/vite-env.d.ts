@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_FORMSPREE_ENDPOINT?: string;
+  /** Microsoft Clarity project ID from clarity.microsoft.com */
+  readonly VITE_CLARITY_PROJECT_ID?: string;
 }
 
 interface ImportMeta {

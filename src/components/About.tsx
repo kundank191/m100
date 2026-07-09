@@ -10,6 +10,7 @@ export default function About() {
   return (
     <section
       id="about-section"
+      data-section="why-mach100"
       className="py-24 relative overflow-hidden bg-[#070b14] border-t border-white/5"
     >
       <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] ambient-glow-cyan opacity-20 -z-10 pointer-events-none"></div>
@@ -25,7 +26,7 @@ export default function About() {
             Fast Delivery. Reliable Products. No Compromises.
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            We are a product engineering company based in India. We believe businesses deserve software that ships on time, runs reliably in production, and actually solves the problem it was built for — whether that is a business website, a data engineering platform, or an agentic AI automation system.
+            We are a Bengaluru-based custom software development company in India. Businesses deserve software that ships on time, runs reliably, and solves the real problem — websites, data engineering, fleet/PG products, or agentic AI automation.
           </p>
         </div>
 

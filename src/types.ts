@@ -49,4 +49,12 @@ export interface ContactMessage {
   timestamp: string;
 }
 
-export type ViewState = 'home' | 'mfleet' | 'pgpulse' | 'glucare' | 'dashboard';
+export type ViewState =
+  | 'home'
+  | 'mfleet'
+  | 'pgpulse'
+  | 'glucare'
+  | 'blog'
+  | 'faq'
+  | 'keywords'
+  | 'dashboard';

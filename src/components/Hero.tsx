@@ -189,7 +189,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           id="hero-subheadline"
           className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-sans"
         >
-          Mach100 Tech Solutions builds business websites, data engineering pipelines, and agentic AI automation — shipped on clear timelines with production-minded engineering. Explore our live product demos, then talk to us about a full build.
+          Mach100 Tech Solutions is a custom software development company in India — business websites, data engineering, fleet &amp; PG products, and agentic AI automation. Ship MVPs in 4–6 weeks. Explore PGPulse freely; request access to MFleet &amp; GluCare.
         </p>
 
         {/* Call to Actions */}

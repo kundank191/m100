@@ -1,122 +1,92 @@
-# Mach100.in Trust & Marketing Fix Plan
+# Mach100.in Task List — Status
 
-Brutal roast action items — work **one by one**, check off when done.
-
----
-
-## Phase 1: Immediate Trust & Branding Fixes (main site)
-
-### 1. Fix Branding Everywhere
-- [x] Global search: `Mach100Tech` → `Mach100 Tech` — already clean
-- [x] Consistent “Mach100 Tech Solutions”
-
-### 2. Replace All Emails (Critical)
-- [x] `kundank191@gmail.com` → `contact@mach100.in` (Contact, footer, JSON-LD, README)
-- [x] **Ops:** `contact@mach100.in` receiving mail
-
-### 3. Add Prominent Live Demo Links
-- [x] MFleet → https://fleet.mach100.in/
-- [x] PGPulse → https://pg.mach100.in/
-- [x] GluCare → https://glucare.mach100.in/
-- [x] Primary **Try Live Demo** + secondary Technical Specs
-
-### 4. Kill Mailto Form — Use Formspree
-- [x] Formspree via `VITE_FORMSPREE_ENDPOINT`
-- [x] **Ops:** Formspree form + `VITE_FORMSPREE_ENDPOINT` on Vercel + m100 redeploy
-
-### 5. Hero / Nav CTA spacing QA
-- [x] Hero uses `gap-4`; nav spacing OK
+**Site:** https://mach100.in/  
+**Stack:** Vite + React SPA (not Next.js)  
+**Updated:** 2026-07-09
 
 ---
 
-## Phase 2: Messaging & Honesty Overhaul (main site)
+## Done in code (this pass + prior)
 
-### 6. Product positioning
-- [x] “Interactive Demo” / “Flagship Product Demos”
-- [x] Copy: “same stack and engineering standards we deliver to clients”
-- [x] Softened metrics; GluCare ~94% with internal-testing disclaimer
-- [x] Medical disclaimer on GluCare detail page
-- [x] Open Live Demo (no fake localStorage sandbox)
+### Branding, trust, products
+- [x] Branding: Mach100 Tech Solutions (no Mach100Tech)
+- [x] Email: contact@mach100.in (ops: inbox + Formspree already done by you)
+- [x] Formspree contact form + env
+- [x] Products: MFleet/GluCare invite-only; PGPulse open demo
+- [x] Removed GPS claim from MFleet
+- [x] Demo banners / footers on sibling demo apps (when redeployed)
+- [x] Theme: dark default + sun/moon light toggle
+- [x] Section chips fixed for light mode
+- [x] Footer Core Modules → real product URLs (+ Request access / Open demo labels)
+- [x] Products intro copy tightened
+- [x] PGPulse note: “No login required — data stays in your browser”
 
-### 7. Services / About copy
-- [x] “Practical agentic systems with human oversight — tested in real workflows.”
-- [x] Softened unproven 99.9% SLA claim
-
-### 8. Contact polish
-- [x] `contact@mach100.in` only; Formspree success UI
-
----
-
-## Phase 3: Product Demo Polish (sibling apps)
-
-### Demo environment banners
-- [x] **PGPulse** (`I:\projects\pgpulse`) — amber DemoBanner + Mach100 link
-- [x] **MFleet** (`I:\projects\mfleet`) — banner on app shell + login
-- [x] **GluCare** (`I:\projects\GluCare`) — banner on AppShell + AuthScreen
-
-### Reset / owner controls
-- [x] **PGPulse:** prominent amber **Reset Demo Data (Owner)** button
-- [x] **MFleet:** Owner settings panel — **Refresh Demo Data (Owner)** + production CTA  
-  (Supabase-backed; no local wipe — server org snapshot reload)
-
-### GluCare API / empty states
-- [x] Demo tips on Food + Glucose screens (API key / simulated analysis)
-- [x] Surface simulated OCR notice when `simulated: true`
-- [x] Improved empty timeline copy + chips
-
-### Footers (all three)
-- [x] **Back to Mach100.in**
-- [x] **Contact us for production deployment**
+### SEO / technical (implemented, no A/B)
+- [x] Title + meta description (India / custom software focused)
+- [x] Canonical `https://mach100.in/`
+- [x] OG + Twitter with absolute image URL (`logo.jpeg`)
+- [x] robots.txt + Sitemap URL
+- [x] sitemap.xml with mach100.in + product subdomains
+- [x] JSON-LD: Organization, ProfessionalService, Services list, SoftwareApplication (3 products), WebSite
+- [x] Bengaluru / India in geo + schema
+- [x] Hero + Why Mach100 keyword-aware copy
+- [x] Logo alt + width/height
+- [x] Font display=swap (Google fonts URL) + preconnect
+- [x] Security headers: HSTS + Permissions-Policy (vercel.json)
+- [x] Skipped: A/B meta tests, Next.js migration, blog, Clarity, keyword tools
 
 ---
 
-## Phase 4: Longer-Term Credibility (Next 2–4 weeks)
+## Your tasks (ops / marketing — not code)
 
-- [ ] 2–3 real or pilot testimonials
-- [ ] Case studies / “Recent Work” section (even anonymized)
-- [ ] Optional: harden one demo with real multi-user backend story
-- [ ] Product card screenshots / mockups
-- [ ] OG images + Lighthouse pass (perf + a11y)
+### This week (do these)
+1. **Redeploy m100** on Vercel (so SEO + footer + copy go live).
+2. **Google Search Console**
+   - Add property `https://mach100.in/`
+   - Submit sitemap: `https://mach100.in/sitemap.xml`
+   - Request indexing for homepage
+3. **Microsoft Clarity**
+   - https://clarity.microsoft.com → new project for mach100.in  
+   - Copy Project ID → Vercel: `VITE_CLARITY_PROJECT_ID=...` → redeploy  
+4. **Google Analytics 4** (optional) — share Measurement ID to wire `gtag`  
+5. **Rich Results test** on `/` and `/faq`  
+6. **Optional OG image** 1200×630 → `public/og.png`  
+7. **Lighthouse** after deploy  
 
----
+### Next 1–2 weeks (you)
+8. **Google Business Profile** (Bengaluru)  
+9. **Phone number** on site if you have one  
+10. More **blog posts** / testimonials when ready  
+11. Redeploy demo apps if banners not live
 
-## Progress Log
+### Added (Blog / FAQ / Clarity / Keywords)
+- [x] Blog at `/blog` (+ 3 starter posts)
+- [x] FAQ at `/faq` (+ FAQPage JSON-LD)
+- [x] Keyword map + free tools + density checker at `/keywords`
+- [x] Microsoft Clarity via `VITE_CLARITY_PROJECT_ID`
+- [x] Nav + footer links; sitemap updated
 
-| # | Task | Status |
-|---|------|--------|
-| 1 | Branding | **done** |
-| 2 | Emails | **done** (ops pending) |
-| 3 | Live demo links | **done** |
-| 4 | Formspree | **done** (env pending) |
-| 5 | CTA spacing | **done** |
-| 6 | Honest product messaging | **done** |
-| 7 | About / agentic honesty | **done** |
-| 8 | Contact polish | **done** |
-| 9 | Demo banners (3 apps) | **done** |
-| 10 | Reset/owner controls | **done** |
-| 11 | GluCare API empty states | **done** |
-| 12 | Demo footers | **done** |
-| 13 | Testimonials / case studies | pending |
-| 14 | Visuals / OG / Lighthouse | pending |
-
----
-
-## Your remaining manual steps
-
-1. ~~Email~~ **done**
-2. ~~Formspree + m100 env/redeploy~~ **done**
-3. **Redeploy** demo apps: pgpulse, mfleet, GluCare (if not already)
-4. **Smoke-test** main site form + all 3 demos (banners/footers)
-
-### Repos touched
-
-| Repo | Path |
-|------|------|
-| Main site | `I:\projects\m100` |
-| PGPulse | `I:\projects\pgpulse` |
-| MFleet | `I:\projects\mfleet` |
-| GluCare | `I:\projects\GluCare` |
+### Later
+- Next.js migration  
+- A/B testing titles  
+- Case studies / more blog posts  
+- Paid SEO tools (Ahrefs etc.) — optional
 
 ---
 
-*Phase 1–3 code complete. Phase 4 is credibility content/visuals.*
+## Quick verify after deploy
+
+| Check | Expected |
+|--------|----------|
+| View source title | `Mach100 Tech Solutions \| Custom Software Development India` |
+| `https://mach100.in/robots.txt` | Allow + Sitemap line |
+| `https://mach100.in/sitemap.xml` | Full domain URLs |
+| Footer MFleet / PGPulse / GluCare | Open real product URLs |
+| PGPulse card | “No login required…” under Try Live Demo |
+| Theme toggle | Sun/moon works; chips readable in light mode |
+| `/blog` `/faq` `/keywords` | Pages load; FAQ accordion works |
+| Clarity | Fires only after env ID is set |
+
+---
+
+**Blocked on you:** redeploy + Search Console + Clarity project ID (+ optional GA4).

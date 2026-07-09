@@ -14,10 +14,11 @@ export default function Logo({ className }: LogoProps) {
     <div className={`flex items-center gap-2.5 ${className ?? ''}`}>
       <img
         src="/favicon.svg"
-        alt=""
-        aria-hidden="true"
+        alt="Mach100 Tech Solutions logo"
         className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-lg shadow-lg shadow-teal-500/20"
         draggable={false}
+        width={40}
+        height={40}
       />
       <div className="leading-tight">
         <span className="text-base sm:text-lg font-bold font-display tracking-tight text-white">

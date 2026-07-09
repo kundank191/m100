@@ -111,6 +111,24 @@ See `.env.example`. Without this variable, the form shows a clear error and asks
 
 Contact component: `src/components/Contact.tsx`
 
+### Microsoft Clarity
+
+```bash
+VITE_CLARITY_PROJECT_ID=your_project_id
+```
+
+Create a project at [clarity.microsoft.com](https://clarity.microsoft.com), copy the project ID, set the env var on Vercel, and redeploy.
+
+### Content routes (SPA)
+
+| Path | Page |
+|------|------|
+| `/` | Home |
+| `/blog` | Blog index |
+| `/blog/:slug` | Blog post |
+| `/faq` | FAQ (+ FAQPage schema) |
+| `/keywords` | Keyword map + free SEO tools + density checker |
+
 ### Branding & logo
 
 The navbar and footer logo live in:
