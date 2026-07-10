@@ -9,10 +9,9 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 
 const GoogleAnalytics = dynamic(() => import('@/components/GoogleAnalytics'), { ssr: false });
-const MicrosoftClarity = dynamic(() => import('@/components/MicrosoftClarity'), { ssr: false });
 const AnalyticsPageViews = dynamic(() => import('@/components/AnalyticsPageViews'), { ssr: false });
 
-/** Load analytics after idle so they do not compete with LCP. */
+/** Load GA after idle so it does not compete with LCP. Clarity is loaded separately. */
 export default function DeferredAnalytics() {
   const [ready, setReady] = useState(false);
 
@@ -56,7 +55,6 @@ export default function DeferredAnalytics() {
   return (
     <>
       <GoogleAnalytics />
-      <MicrosoftClarity />
       <AnalyticsPageViews />
     </>
   );
