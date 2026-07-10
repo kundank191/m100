@@ -13,9 +13,8 @@ import DeferredAnalytics from '@/components/DeferredAnalytics';
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
-      {/* Clarity loads immediately after interactive (setup verification + recordings) */}
+      {/* Both analytics load after window load so LCP stays clean */}
       <MicrosoftClarity />
-      {/* GA stays deferred for PageSpeed */}
       <DeferredAnalytics />
       {children}
     </ThemeProvider>

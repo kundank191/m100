@@ -14,7 +14,7 @@ import {
   SITE_URL,
   WEBSITE_JSON_LD,
 } from '@/lib/site';
-import { fontDisplay, fontMono, fontSans } from '@/lib/fonts';
+import { fontSans } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}
+      className={fontSans.variable}
     >
       <head>
         <script

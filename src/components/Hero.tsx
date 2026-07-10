@@ -31,10 +31,11 @@ export default function Hero() {
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
+    // Wait well after LCP on Slow 4G (PSI mobile)
     if (typeof w.requestIdleCallback === 'function') {
-      idleId = w.requestIdleCallback(enable, { timeout: 2500 });
+      idleId = w.requestIdleCallback(enable, { timeout: 5000 });
     } else {
-      timeoutId = setTimeout(enable, 1800);
+      timeoutId = setTimeout(enable, 4000);
     }
 
     return () => {
@@ -80,7 +81,7 @@ export default function Hero() {
 
         <h1
           id="hero-heading"
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-display tracking-tight text-white leading-[1.1] mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-sans tracking-tight text-white leading-[1.15] mb-6"
         >
           <span className="block text-teal-400 mb-1 sm:mb-2">Mach100 Tech</span>
           Fast, reliable software for business

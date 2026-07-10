@@ -5,7 +5,7 @@
 
 'use client';
 
-import Script from 'next/script';
+import { useEffect } from 'react';
 
 /** Clarity project ID (public in page source). */
 const CLARITY_ID = (
@@ -15,25 +15,45 @@ const CLARITY_ID = (
 ).trim();
 
 /**
- * Official Microsoft Clarity snippet via next/script.
- * Uses afterInteractive so the tag installs on real visits (setup can verify).
+ * Official Clarity install — delayed until after load so LCP is not blocked.
+ * collect XHR 204 still works; setup may take a few minutes to show data.
  */
 export default function MicrosoftClarity() {
-  if (!CLARITY_ID) return null;
+  useEffect(() => {
+    if (!CLARITY_ID || typeof window === 'undefined') return;
+    if (document.getElementById('microsoft-clarity')) return;
 
-  return (
-    <Script
-      id="microsoft-clarity"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
-(function(c,l,a,r,i,t,y){
-  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", ${JSON.stringify(CLARITY_ID)});
-        `.trim(),
-      }}
-    />
-  );
+    const inject = () => {
+      if (document.getElementById('microsoft-clarity')) return;
+
+      // Official Microsoft Clarity bootstrap
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (function (c: any, l: Document, a: string, r: string, i: string) {
+        c[a] =
+          c[a] ||
+          function () {
+            // eslint-disable-next-line prefer-rest-params
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        const t = l.createElement(r) as HTMLScriptElement;
+        t.async = true;
+        t.id = 'microsoft-clarity';
+        t.src = 'https://www.clarity.ms/tag/' + i;
+        const y = l.getElementsByTagName(r)[0];
+        y.parentNode?.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', CLARITY_ID);
+    };
+
+    const start = () => {
+      window.setTimeout(inject, 4500);
+    };
+
+    if (document.readyState === 'complete') {
+      start();
+    } else {
+      window.addEventListener('load', start, { once: true });
+    }
+  }, []);
+
+  return null;
 }
