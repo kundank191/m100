@@ -12,33 +12,33 @@ export default function Services() {
     {
       icon: Globe,
       title: 'Business Websites & Web Apps',
-      desc: 'Professional, SEO-friendly websites and web applications built with React and Next.js. Fast-loading, mobile-responsive, and designed to convert visitors into customers for your business.'
+      desc: 'Fast, SEO-friendly React and Next.js sites and apps built to convert.',
     },
     {
       icon: Database,
       title: 'Data Engineering',
-      desc: 'End-to-end data pipelines, ETL workflows, and analytics infrastructure. We design reliable data systems that collect, transform, and deliver insights your team can act on, at any scale.'
+      desc: 'Pipelines, ETL, warehouses, and analytics your team can act on.',
     },
     {
       icon: Bot,
       title: 'Agentic AI & Automation',
-      desc: 'Intelligent AI agents and agentic frameworks that automate repetitive tasks, handle customer workflows, and make decisions on your behalf. Built on modern LLM architectures with human oversight built in.'
+      desc: 'Practical AI agents with human guardrails for real business workflows.',
     },
     {
       icon: Cpu,
       title: 'Custom AI Solutions',
-      desc: 'Computer vision, predictive models, and NLP systems tailored to your domain. We integrate AI directly into your products, not as a gimmick, but as a tool that saves time and reduces errors.'
+      desc: 'Vision, prediction, and NLP integrated into your product, not bolted on.',
     },
     {
       icon: Smartphone,
       title: 'Mobile Applications',
-      desc: 'Cross-platform mobile apps with React Native that work reliably across devices. Offline-capable, fast, and built for the connectivity realities of Indian markets.'
+      desc: 'Cross-platform React Native apps that work offline and on slow networks.',
     },
     {
       icon: Workflow,
       title: 'Workflow Automation',
-      desc: 'Payment routing, WhatsApp and SMS integrations, automated reporting, and custom business process automation. Eliminate manual work and let your systems run themselves.'
-    }
+      desc: 'Payments, WhatsApp, SMS, and reporting so manual busywork disappears.',
+    },
   ];
 
   return (
@@ -57,13 +57,13 @@ export default function Services() {
               What We Build
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-              Software Services for Growing Businesses
+              What we build
             </h2>
             <div className="h-1.5 w-16 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full mb-6"></div>
           </div>
           <div className="lg:col-span-7">
             <p className="text-slate-400 text-base leading-relaxed">
-              At <strong className="text-slate-300">Mach100 Tech Solutions</strong>, we build custom software that solves real business problems, fast. From business websites and data engineering pipelines to agentic AI automation frameworks, we deliver reliable products on predictable timelines. Whether you are a startup, logistics operator, healthcare platform, or SME, we build systems that work from day one.
+              Custom software for startups and SMEs: websites that convert, data pipelines you can trust, and practical AI automation on clear timelines.
             </p>
           </div>
         </div>
@@ -113,9 +113,9 @@ export default function Services() {
             <span className="text-slate-800 hidden sm:inline">•</span>
             <span className="hover:text-teal-400 transition-colors">Healthcare &amp; Wellness</span>
             <span className="text-slate-800 hidden sm:inline">•</span>
-            <span className="hover:text-teal-400 transition-colors">Real Estate &amp; Property</span>
+            <span className="hover:text-teal-400 transition-colors">Real Estate &amp; PG</span>
             <span className="text-slate-800 hidden sm:inline">•</span>
-            <span className="hover:text-teal-400 transition-colors">Small &amp; Medium Businesses</span>
+            <span className="hover:text-teal-400 transition-colors">SMEs</span>
           </div>
         </div>
 

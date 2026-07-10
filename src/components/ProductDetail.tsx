@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ProductDetail } from '@/types';
 import { ArrowLeft, CheckCircle, ExternalLink, ArrowRight } from 'lucide-react';
+import { prefillForProduct, setContactPrefill } from '@/lib/contactPrefill';
 
 interface ProductDetailProps {
   product: ProductDetail;
@@ -140,7 +141,10 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
                 <button
                   id="product-request-access-btn"
                   type="button"
-                  onClick={() => router.push('/#contact-section')}
+                  onClick={() => {
+                    setContactPrefill(prefillForProduct(product.id));
+                    router.push('/#contact-section');
+                  }}
                   className="w-full py-4 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-white/5 hover:bg-teal-50 hover:scale-[1.01] transition-all duration-200 cursor-pointer inline-flex items-center justify-center gap-2"
                 >
                   <span>Request Demo / Access</span>

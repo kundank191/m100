@@ -8,7 +8,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Shield, Globe } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import Logo from '@/components/Logo';
 import { scrollToSection } from '@/lib/scroll';
 
@@ -35,20 +35,17 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-4">
             <Logo />
             <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
-              Fast, reliable software for businesses, custom websites, data engineering pipelines, and agentic AI automation. Engineered in India, deployed worldwide.
+              Mach100 Tech Solutions builds production-ready software: websites, data platforms, fleet and PG tools, and practical AI. Built in Bengaluru.
             </p>
-            <div className="flex items-center space-x-2.5 text-[11px] font-mono text-slate-400">
-              <Shield className="w-3.5 h-3.5 text-teal-400" />
-              <span>Data Engineering</span>
-              <span>•</span>
-              <Globe className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Agentic AI Automation</span>
+            <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+              <Shield className="w-3.5 h-3.5 text-teal-400 shrink-0" aria-hidden="true" />
+              <span>Privacy-first. Zero-PII where it matters.</span>
             </div>
           </div>
 
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Core Modules
+              Products
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -58,8 +55,8 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-teal-400 transition-colors"
                 >
-                  MFleet Engine
-                  <span className="text-slate-400"> (Request access)</span>
+                  MFleet
+                  <span className="text-slate-500"> · Request access</span>
                 </a>
               </li>
               <li>
@@ -69,8 +66,8 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-teal-400 transition-colors"
                 >
-                  PGPulse Portal
-                  <span className="text-slate-400"> (Open demo)</span>
+                  PGPulse
+                  <span className="text-slate-500"> · Open demo</span>
                 </a>
               </li>
               <li>
@@ -80,8 +77,8 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-teal-400 transition-colors"
                 >
-                  GluCare Edge App
-                  <span className="text-slate-400"> (Request access)</span>
+                  GluCare
+                  <span className="text-slate-500"> · Invite-only</span>
                 </a>
               </li>
             </ul>
@@ -89,7 +86,7 @@ export default function Footer() {
 
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Resources
+              Company
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -103,17 +100,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/keywords" className="hover:text-teal-400 transition-colors">
-                  Keyword tools
-                </Link>
-              </li>
-              <li>
                 <button
                   type="button"
                   onClick={() => goSection('about-section')}
                   className="hover:text-teal-400 transition-colors cursor-pointer text-left"
                 >
-                  About Mach100
+                  Why Mach100
                 </button>
               </li>
               <li>
@@ -136,10 +128,18 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            <span>© {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved.</span>
+            <span>
+              © {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved.
+            </span>
           </div>
-          <div className="text-xs text-slate-500">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <span>Bengaluru, India</span>
+            <Link href="/blog" className="hover:text-teal-400 transition-colors">
+              Blog
+            </Link>
+            <Link href="/faq" className="hover:text-teal-400 transition-colors">
+              FAQ
+            </Link>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { ProductDetail } from '@/types';
 import { Truck, Home, Activity, ArrowRight, ExternalLink, Zap, Plane, MessageSquare, Cpu, Lock } from 'lucide-react';
 import { scrollToSection } from '@/lib/scroll';
+import { prefillForProduct, setContactPrefill } from '@/lib/contactPrefill';
 
 interface ProductsProps {
   products: ProductDetail[];
@@ -58,10 +59,10 @@ export default function Products({ products }: ProductsProps) {
             <span>Our Products</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Products We Build &amp; Run
+            Products we have built
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            One open interactive demo (PGPulse) + two invite-only live products (MFleet &amp; GluCare). All built to the same engineering standards we deliver to clients.
+            Real software for fleet, PG operations, and health tech. Try PGPulse in your browser. Request access for MFleet and GluCare.
           </p>
         </div>
 
@@ -165,7 +166,10 @@ export default function Products({ products }: ProductsProps) {
                     <button
                       id={`product-access-btn-${product.id}`}
                       type="button"
-                      onClick={() => scrollToSection('contact-section')}
+                      onClick={() => {
+                        setContactPrefill(prefillForProduct(product.id));
+                        scrollToSection('contact-section');
+                      }}
                       className="w-full inline-flex items-center justify-between px-4 py-3 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 transition-all duration-200 shadow-md shadow-teal-500/20 cursor-pointer"
                     >
                       <span>Request Demo / Access</span>

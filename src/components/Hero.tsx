@@ -23,7 +23,6 @@ export default function Hero() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const enable = () => setShowCanvas(true);
-    // Defer canvas until after first paint / LCP window
     const w = window as Window & {
       requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
       cancelIdleCallback?: (id: number) => void;
@@ -31,7 +30,6 @@ export default function Hero() {
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
-    // Wait well after LCP on Slow 4G (PSI mobile)
     if (typeof w.requestIdleCallback === 'function') {
       idleId = w.requestIdleCallback(enable, { timeout: 5000 });
     } else {
@@ -51,7 +49,6 @@ export default function Hero() {
       id="hero-header"
       className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20 pb-10"
     >
-      {/* Static CSS backdrop paints immediately (LCP-friendly) */}
       <div
         className="absolute inset-0 -z-20 bg-[#070b14]"
         aria-hidden="true"
@@ -73,32 +70,33 @@ export default function Hero() {
         </>
       )}
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-        <div id="hero-badge" className="section-chip mb-8 shadow-lg shadow-teal-950/10">
-          <Sparkles className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          <span className="tracking-wider uppercase font-semibold">Mach100 Tech Solutions</span>
-        </div>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        <p
+          id="hero-eyebrow"
+          className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-teal-400/90 mb-5"
+        >
+          Mach100 Tech
+        </p>
 
         <h1
           id="hero-heading"
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-sans tracking-tight text-white leading-[1.15] mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-sans tracking-tight text-white leading-[1.12] mb-5"
         >
-          <span className="block text-teal-400 mb-1 sm:mb-2">Mach100 Tech</span>
-          Fast, reliable software for business
+          Fast, reliable software that actually ships.
         </h1>
 
         <p
           id="hero-subheadline"
-          className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed font-sans"
+          className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-4 leading-relaxed"
         >
-          Official website of <strong className="text-white font-semibold">Mach100 Tech Solutions</strong>
-          {' '}(also known as <strong className="text-white font-semibold">Mach 100</strong> or{' '}
-          <strong className="text-white font-semibold">Mach 100 Tech</strong>).
-          We are a custom software company in India: business websites, data engineering, fleet and PG products, and agentic AI.
-          Ship MVPs in 4-6 weeks. Try PGPulse freely; request access to MFleet and GluCare.
+          We build production-ready websites, data platforms, fleet and PG systems, and agentic AI in{' '}
+          <strong className="text-white font-semibold">4-6 weeks</strong>.
+        </p>
+        <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto mb-9 leading-relaxed">
+          No endless scoping. No fluff. Just software that works.
         </p>
 
-        <div id="hero-cta-group" className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+        <div id="hero-cta-group" className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12">
           <button
             id="hero-cta-explore"
             type="button"
@@ -113,7 +111,7 @@ export default function Hero() {
             id="hero-cta-build"
             type="button"
             onClick={() => scrollToSection('contact-section')}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900/40 backdrop-blur-md border border-white/5 text-slate-200 hover:text-white hover:bg-slate-800/80 transition-all duration-200 font-semibold text-sm cursor-pointer flex items-center justify-center space-x-2"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900/40 backdrop-blur-md border border-white/10 text-slate-200 hover:text-white hover:bg-slate-800/80 transition-all duration-200 font-semibold text-sm cursor-pointer flex items-center justify-center space-x-2"
           >
             <span>Start Your Project</span>
             <ChevronRight className="w-4 h-4" aria-hidden="true" />
@@ -122,35 +120,41 @@ export default function Hero() {
 
         <div
           id="hero-highlights"
-          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 border-t border-white/5 pt-8 text-left max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 border-t border-white/5 pt-8 text-left max-w-3xl mx-auto"
         >
-          <div className="flex items-start space-x-2.5">
-            <div className="p-1 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 mt-0.5">
+          <div className="flex items-start gap-3">
+            <div className="p-1.5 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 shrink-0">
               <Zap className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100 font-display">Fast Delivery</h2>
-              <p className="text-xs text-slate-400">Production-ready websites and apps shipped in weeks, not months.</p>
+              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">Fast Delivery</h2>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Production-ready websites and apps in weeks, not months.
+              </p>
             </div>
           </div>
 
-          <div className="flex items-start space-x-2.5">
-            <div className="p-1 rounded-md bg-blue-950/40 border border-blue-500/20 text-blue-400 mt-0.5">
+          <div className="flex items-start gap-3">
+            <div className="p-1.5 rounded-md bg-blue-950/40 border border-blue-500/20 text-blue-400 shrink-0">
               <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100 font-display">Built to Last</h2>
-              <p className="text-xs text-slate-400">Reliable architecture, observability, and systems designed to scale with you.</p>
+              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">Built to Last</h2>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Reliable architecture and systems designed to scale with you.
+              </p>
             </div>
           </div>
 
-          <div className="flex items-start space-x-2.5 col-span-2 md:col-span-1">
-            <div className="p-1 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 mt-0.5">
+          <div className="flex items-start gap-3">
+            <div className="p-1.5 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 shrink-0">
               <Sparkles className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100 font-display">Agentic AI &amp; Data</h2>
-              <p className="text-xs text-slate-400">Data engineering pipelines and AI agents that automate real business workflows.</p>
+              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">Agentic AI &amp; Data</h2>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Data pipelines and AI agents that automate real business workflows.
+              </p>
             </div>
           </div>
         </div>

@@ -5,9 +5,15 @@
 
 'use client';
 
-import React, { useState } from 'react';
-import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2, Clock } from 'lucide-react';
 import { trackEvent } from '@/components/GoogleAnalytics';
+import {
+  clearContactPrefill,
+  CONTACT_PREFILL_EVENT,
+  readContactPrefill,
+  type ContactPrefill,
+} from '@/lib/contactPrefill';
 
 const CONTACT_EMAIL = 'contact@mach100.in';
 
@@ -17,16 +23,40 @@ const FORMSPREE_ENDPOINT =
 
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
+const DEFAULT_SUBJECT = 'Business Website Development';
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'Business Website Development',
+    subject: DEFAULT_SUBJECT,
     message: '',
   });
-
+  const [prefillNote, setPrefillNote] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
+
+  useEffect(() => {
+    const applyPrefill = (prefill: ContactPrefill) => {
+      setFormData((prev) => ({
+        ...prev,
+        subject: prefill.subject,
+        message: prefill.message?.trim() ? prefill.message : prev.message,
+      }));
+      setPrefillNote(`Topic set to “${prefill.subject}”. Edit anything below before sending.`);
+      clearContactPrefill();
+    };
+
+    const stored = readContactPrefill();
+    if (stored) applyPrefill(stored);
+
+    const onPrefill = (e: Event) => {
+      const detail = (e as CustomEvent<ContactPrefill>).detail;
+      if (detail?.subject) applyPrefill(detail);
+    };
+    window.addEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+    return () => window.removeEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +69,7 @@ export default function Contact() {
 
     if (!FORMSPREE_ENDPOINT) {
       setError(
-        `Form is not configured yet. Email us directly at ${CONTACT_EMAIL} or set VITE_FORMSPREE_ENDPOINT.`
+        `Form is not configured yet. Email us directly at ${CONTACT_EMAIL} or set NEXT_PUBLIC_FORMSPREE_ENDPOINT.`
       );
       setSubmitState('error');
       return;
@@ -76,9 +106,10 @@ export default function Contact() {
       setFormData({
         name: '',
         email: '',
-        subject: 'Business Website Development',
+        subject: DEFAULT_SUBJECT,
         message: '',
       });
+      setPrefillNote(null);
     } catch {
       setSubmitState('error');
       setError(`Something went wrong. Please email us at ${CONTACT_EMAIL}.`);
@@ -93,52 +124,69 @@ export default function Contact() {
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] ambient-glow-blue opacity-25 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div id="contact-header" className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
           <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
             Get in Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Let's Build Your Next Product
+            Let&apos;s build your next product
           </h2>
-          <p className="text-slate-400 text-base leading-relaxed">
-            Tell us about your project, whether you need a business website, a data engineering pipeline, or an agentic AI automation system. Send an inquiry and we will get back to you with a clear timeline.
+          <p className="text-slate-400 text-base leading-relaxed mb-4">
+            Website, data platform, product demo, or AI automation. Tell us what you need and we will reply with a clear next step.
+          </p>
+          <p className="inline-flex items-center gap-2 text-sm text-teal-300/90 font-medium">
+            <Clock className="w-4 h-4 shrink-0" aria-hidden="true" />
+            We usually reply within 24 hours.
           </p>
         </div>
 
-        <div 
+        <div
           id="contact-grid"
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
         >
-          
           <div className="lg:col-span-5">
             <div className="rounded-2xl glass-panel glass-panel-hover p-8 space-y-6">
               <h3 className="text-lg font-bold font-display text-white">Direct Contact</h3>
-              
+
               <div className="flex items-start space-x-4">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-teal-950/40 border border-white/5 text-teal-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-slate-200">Email Us</h4>
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-teal-400 hover:underline mt-1 block">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-sm text-teal-400 hover:underline mt-1 block"
+                  >
                     {CONTACT_EMAIL}
                   </a>
-                  <p className="text-xs text-slate-500 mt-1">We typically respond within 24 hours.</p>
+                  <p className="text-xs text-slate-500 mt-1">We usually reply within 24 hours.</p>
                 </div>
+              </div>
+
+              <div className="rounded-xl border border-white/5 bg-slate-950/40 p-4 space-y-2">
+                <p className="text-xs font-semibold text-slate-200">What to include</p>
+                <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed">
+                  <li>What you want built (or which product to try)</li>
+                  <li>Team size or fleet / property scale</li>
+                  <li>Rough timeline</li>
+                </ul>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-7 rounded-2xl glass-panel p-8 relative">
-            <h3 className="text-lg font-bold font-display text-white mb-6">Inquire About a Project</h3>
+            <h3 className="text-lg font-bold font-display text-white mb-2">Send an inquiry</h3>
+            <p className="text-xs text-slate-500 mb-6">
+              Choosing a product above pre-fills the topic and a short message template. You can edit everything.
+            </p>
 
             {submitState === 'success' ? (
               <div id="contact-success" className="py-12 text-center space-y-4">
                 <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto" />
                 <p className="text-lg font-semibold text-white">Message sent</p>
                 <p className="text-sm text-slate-400 max-w-sm mx-auto">
-                  Thanks for reaching out. We will reply to your email shortly, usually within 24 hours.
+                  Thanks for reaching out. We usually reply within 24 hours.
                 </p>
                 <button
                   type="button"
@@ -150,6 +198,12 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {prefillNote && (
+                  <div className="p-3 rounded-lg bg-teal-500/10 border border-teal-500/25 text-teal-200 text-xs leading-relaxed">
+                    {prefillNote}
+                  </div>
+                )}
+
                 {error && (
                   <div className="p-3 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs flex items-center gap-2">
                     <AlertCircle className="w-4 h-4 shrink-0" />
@@ -159,7 +213,12 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Your Name *</label>
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
+                    >
+                      Your Name *
+                    </label>
                     <input
                       id="contact-name"
                       type="text"
@@ -174,7 +233,12 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-email" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Email Address *</label>
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
+                    >
+                      Email Address *
+                    </label>
                     <input
                       id="contact-email"
                       type="email"
@@ -191,36 +255,50 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="contact-topic" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Topic of Consultation</label>
+                  <label
+                    htmlFor="contact-topic"
+                    className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
+                  >
+                    Topic <span className="text-slate-500 normal-case font-sans">(pre-filled from product CTAs)</span>
+                  </label>
                   <select
                     id="contact-topic"
                     name="topic"
                     value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, subject: e.target.value });
+                      setPrefillNote(null);
+                    }}
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-slate-300 focus:outline-none focus:border-teal-500 font-sans"
                     disabled={submitState === 'loading'}
                   >
                     <option value="Business Website Development">Business Website Development</option>
                     <option value="MFleet Demo / Access">MFleet: Request Demo / Access</option>
+                    <option value="PGPulse Demo / Access">PGPulse: Demo / Setup</option>
                     <option value="GluCare Demo / Access">GluCare: Request Demo / Access</option>
-                    <option value="Data Engineering">Data Engineering & Analytics</option>
-                    <option value="Agentic AI Automation">Agentic AI & Automation</option>
+                    <option value="Data Engineering">Data Engineering &amp; Analytics</option>
+                    <option value="Agentic AI Automation">Agentic AI &amp; Automation</option>
                     <option value="Custom Web/Mobile Platform">Custom Web / Mobile App</option>
                     <option value="General Technical Partnership">General Partnership / Other</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message" className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold">Message Details *</label>
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
+                  >
+                    Message Details *
+                  </label>
                   <textarea
                     id="contact-message"
                     name="message"
                     required
-                    rows={4}
+                    rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
-                    placeholder="Describe your project, timeline, or software needs..."
+                    placeholder="Describe your project, timeline, or which product you want to try..."
                     disabled={submitState === 'loading'}
                   />
                 </div>
@@ -244,15 +322,13 @@ export default function Contact() {
                   )}
                 </button>
 
-                <p className="text-[10px] text-slate-500 text-center">
-                  Submissions go to {CONTACT_EMAIL}. We never share your details.
+                <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+                  Submissions go to {CONTACT_EMAIL}. We never share your details. Privacy-first.
                 </p>
               </form>
             )}
           </div>
-
         </div>
-
       </div>
     </section>
   );

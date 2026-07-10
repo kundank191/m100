@@ -6,7 +6,7 @@
 export const SITE_URL = 'https://mach100.in';
 export const SITE_NAME = 'Mach100 Tech Solutions';
 export const SITE_DESCRIPTION =
-  'Build fast, reliable custom software in India. Production-ready fleet (MFleet), PG operations (PGPulse), and AI health tools (GluCare). 4-6 week MVPs. Request a demo today.';
+  'Fast, reliable software that actually ships. Websites, data platforms, fleet and PG systems, and agentic AI in 4-6 weeks. Built in Bengaluru.';
 
 export const ORGANIZATION_JSON_LD = {
   '@context': 'https://schema.org',
@@ -18,7 +18,7 @@ export const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/logo.jpeg`,
   image: `${SITE_URL}/logo.jpeg`,
   description:
-    'Mach100 Tech Solutions builds custom software, fleet management, PG operations tools, data engineering pipelines, and agentic AI automation, engineered in India.',
+    'Mach100 Tech Solutions builds custom software, fleet management, PG operations tools, data engineering, and agentic AI automation. Built in Bengaluru.',
   areaServed: [
     { '@type': 'Country', name: 'India' },
     { '@type': 'City', name: 'Bengaluru' },

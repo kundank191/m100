@@ -60,16 +60,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     title: 'Mach100 Tech Solutions | Mach 100 Tech',
-    description:
-      'Official site of Mach100 Tech Solutions (Mach 100 Tech). Custom software, MFleet, PGPulse, and GluCare. Engineered in India.',
+    description: SITE_DESCRIPTION,
     images: [{ url: '/logo.jpeg', alt: 'Mach100 Tech Solutions logo' }],
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mach100 Tech Solutions | Mach 100 Tech',
-    description:
-      'Official Mach100 / Mach 100 Tech website. Custom software and products for fleet, PG, and health tech in India.',
+    description: SITE_DESCRIPTION,
     images: ['/logo.jpeg'],
   },
   alternates: {
