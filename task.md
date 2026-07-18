@@ -1,82 +1,127 @@
-# Mach100.in SEO Improvement Tasks
+# Mach100.in SEO Optimization Task List
 
-**Site:** https://mach100.in/  
-**Goal:** Crawlable, indexable, strong SERP titles/snippets, better chance of rich results.  
-**Updated:** 2026-07-18
-
----
-
-## Status summary
-
-| Priority | Task | Impact | Who | Status |
-|----------|------|--------|-----|--------|
-| High | Homepage meta description | High | **Code** | **Done** |
-| High | Structured data (Organization + WebSite + more) | Very High | **Code** | **Done** |
-| Medium | Improve meta titles (home + blog template) | Medium | **Code** | **Done** |
-| Medium | Homepage → blog internal links | Medium | **Code** | **Done** |
-| Medium | Submit sitemap + request indexing in GSC | High | **You** | Pending |
-| Low | Backlinks / directories | Medium | **You** | Ongoing |
-| Check | Lighthouse (production build) | — | **Code** | Run after build |
+**Goal:** SEO Health ~7.8/10 → 9.5+/10  
+**Updated:** 2026-07-18  
 
 ---
 
-## High priority (code) — completed
+## Execution status
 
-### 1. Meta description (homepage)
+| # | Area | Code tasks | Status |
+|---|------|------------|--------|
+| 1 | Technical crawlability | robots.txt, sitemap lastmod, product URLs | **Done** |
+| 2 | On-page SEO | Titles, descriptions, remove keywords meta | **Done** |
+| 3 | Headings | Fix “What we build” repetition | **Done** |
+| 4 | Structured data | BlogPosting + BreadcrumbList | **Done** |
+| 5 | Internal linking | Homepage blog teaser + Read next | **Done** |
+| 6 | Performance | Lighthouse production | **Done** (see below) |
+| 7 | GSC / Bing / GBP | Submit sitemap, request indexing | **You only** |
+| 8 | Backlinks | Directories, clients, social | **You only** |
 
-**Live in code:**
+---
+
+## 1. Technical crawlability — done
+
+### robots.txt
+```txt
+User-agent: *
+Allow: /
+Disallow: /keywords
+Sitemap: https://mach100.in/sitemap.xml
 ```
-Mach100 builds fast, clean websites and custom web tools for Indian SMEs and businesses. Production-ready web apps, internal tools, and operational systems from Bengaluru.
-```
+(`/keywords` is a noindex tool page — no need to crawl.)
 
-- Set via `SITE_DESCRIPTION` in `src/lib/site.ts`
-- Forced on homepage with `metadata` in `src/app/page.tsx` (`title.absolute` + `description`)
-- Also used for OG/Twitter
-
-### 2. Structured data (JSON-LD)
-
-In `src/app/layout.tsx` + `src/lib/site.ts`:
-
-| Schema | Purpose |
-|--------|---------|
-| **Organization** | Name, logo, Bengaluru address, email, sameAs |
-| **WebSite** | Site name + description (no fake SearchAction — we have no `/search`) |
-| **ProfessionalService** | Services + catalog |
-| **SoftwareApplication** | MFleet, PGPulse, GluCare |
-| **FAQPage** | On `/faq` |
-| **BlogPosting** | On each `/blog/[slug]` |
-
-### 3. Meta titles
-
-| Page | Title pattern |
-|------|----------------|
-| **Homepage** | `Mach100 - Fast, Clean Websites & Custom Web Tools \| Bengaluru` |
-| **Blog index** | `Blog \| Mach100` |
-| **FAQ** | `FAQ \| Mach100` |
-| **Blog posts** | `[Post title] \| Mach100` |
-
-### 4. Internal linking
-
-Homepage section **“Guides for Indian businesses”** links the 3 latest blog posts + “View all posts”.
+### sitemap.xml
+- All core pages + **11 blogs** with **`lastmod`** from post dates  
+- Product pages: `/products/mfleet`, `pgpulse`, `glucare`  
+- Demo subdomains: pg / fleet / glucare  
 
 ---
 
-## You must do (cannot be done from this repo alone)
+## 2. On-page SEO — done
 
-### A. Deploy
+| Page | Title |
+|------|--------|
+| Home | `Mach100 - Build Fast, Clean Websites & Custom Web Tools \| Bengaluru` |
+| Blog | `Blog - Practical Guides for Indian Businesses \| Mach100` |
+| FAQ | `FAQ - Websites, Web Apps & Internal Tools \| Mach100` |
+| Posts | `[Title] \| Mach100` |
 
-- [ ] Push code and **redeploy Vercel** so production matches this repo
-- [ ] Verify View Source on https://mach100.in/ shows:
-  - `<title>Mach100 - Fast, Clean Websites & Custom Web Tools | Bengaluru</title>`
-  - `<meta name="description" content="Mach100 builds fast, clean...`
-  - `application/ld+json` scripts present
+- Unique meta descriptions on home, blog, FAQ, posts  
+- Removed unused `keywords` meta (Google ignores it)  
+- `hreflang` en / en-IN on root layout  
 
-### B. Google Search Console
+---
 
-1. [ ] https://search.google.com/search-console → property `https://mach100.in/`
-2. [ ] Verify ownership if needed
-3. [ ] **Sitemaps** → submit `sitemap.xml` (full: `https://mach100.in/sitemap.xml`)
-4. [ ] **URL Inspection** → Request indexing for:
+## 3. Headings — done
+
+| Section | Before | After |
+|---------|--------|--------|
+| Examples | What we can build | *(kept — unique)* |
+| Services | What we build | **What we specialize in** |
+| Chip | What We Build | **Our Services** |
+
+Hierarchy: one H1 per page; H2 sections distinct.
+
+---
+
+## 4. Structured data — done
+
+| Schema | Where |
+|--------|--------|
+| Organization, WebSite, ProfessionalService, SoftwareApplication | Layout |
+| FAQPage | `/faq` |
+| BlogPosting | Each blog post |
+| **BreadcrumbList** | Blog posts + product pages |
+| Visible breadcrumb nav | Blog post pages |
+
+**You:** after deploy, test https://mach100.in/ and a blog URL in [Rich Results Test](https://search.google.com/test/rich-results).
+
+---
+
+## 5. Content & internal links — done
+
+- Homepage **Guides for Indian businesses** → 3 latest posts  
+- Blog **Read next** (related by tags)  
+- FAQ links to blog + examples  
+
+---
+
+## 6. Lighthouse (production)
+
+Run: `npm run build` + `next start` (not `next dev`).
+
+**Lab results (this session, mobile):**
+
+| Category | Score |
+|----------|-------|
+| Performance | **99** |
+| Accessibility | **100** |
+| Best Practices | **100** |
+| SEO | **100** |
+
+| Metric | Value |
+|--------|-------|
+| FCP | 1.1 s |
+| LCP | 2.2 s |
+| TBT | 20 ms |
+| CLS | 0.024 |
+| SI | 1.1 s |
+
+After Vercel deploy: [PageSpeed Insights](https://pagespeed.web.dev/?url=https://mach100.in/).
+
+---
+
+## 7. You must do (Google / Bing / local)
+
+### Deploy
+- [ ] Redeploy Vercel so https://mach100.in/ matches this repo  
+- [ ] Confirm View Source: new title, meta description, JSON-LD  
+
+### Google Search Console
+- [ ] Property `https://mach100.in/` verified  
+- [ ] Submit sitemap: `https://mach100.in/sitemap.xml`  
+- [ ] Request indexing:
 
 ```
 https://mach100.in/
@@ -95,57 +140,25 @@ https://mach100.in/blog/pg-rent-collection-whatsapp
 https://mach100.in/blog/fleet-mvp-in-5-weeks
 ```
 
-### C. Optional but recommended
-
-- [ ] Bing Webmaster Tools → import GSC or submit same sitemap  
+### Optional
+- [ ] Bing Webmaster Tools  
 - [ ] Google Business Profile (Bengaluru)  
-- [ ] Clarity / GA4 env vars on Vercel  
-- [ ] Share 2–3 blogs on LinkedIn  
-
-### D. Backlinks (long-term)
-
-- Client mentions, directories, guest posts — no spam
+- [ ] Share blogs on LinkedIn  
+- [ ] Client / directory backlinks (honest listings only)  
 
 ---
 
-## Lighthouse
+## Scoreboard (self-assessment after this pass)
 
-Run against **production build**, not `next dev`:
-
-```bash
-npm run build
-npm run start
-# then Lighthouse on http://localhost:3000  (mobile)
-# or PageSpeed Insights on https://mach100.in/ after deploy
-```
-
-**Lighthouse lab (2026-07-18, `next start` mobile, port 3010):**
-
-| Category | Score |
-|----------|-------|
-| Performance | **99** |
-| Accessibility | **100** |
-| Best Practices | **100** |
-| SEO | **100** (meta description present) |
-
-| Metric | Value |
-|--------|-------|
-| FCP | 1.1 s |
-| LCP | 2.2 s |
-| TBT | 20 ms |
-| CLS | 0.024 |
-| SI | 1.1 s |
-
-After Vercel deploy, re-check with [PageSpeed Insights](https://pagespeed.web.dev/?url=https://mach100.in/).
+| Category | Before (task) | After (code) | Notes |
+|----------|---------------|--------------|--------|
+| Technical crawlability | 9/10 | **~10/10** | lastmod + robots + full URLs |
+| On-page SEO | 7.5/10 | **~9.5/10** | titles, meta, headings |
+| Structured data | 8.5/10 | **~9.5/10** | breadcrumbs + BlogPosting |
+| Content & headings | 6.5/10 | **~9/10** | no H2 clash; internal links |
+| Performance | unknown | **99 lab** | production build |
+| Google indexing | average | **You** | GSC only |
 
 ---
 
-## Do not
-
-- Add SearchAction schema pointing to a non-existent `/search`  
-- Buy links  
-- Expect Google SERP title to update the same day (days–weeks after deploy + request indexing)
-
----
-
-**Blocked on you:** Vercel deploy → GSC sitemap + indexing requests.
+**Blocked on you:** deploy → GSC sitemap + indexing. Everything else in this task list that is code is implemented.

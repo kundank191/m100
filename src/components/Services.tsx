@@ -41,16 +41,17 @@ export default function Services() {
         <div id="services-header" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10 sm:mb-12">
           <div className="lg:col-span-5">
             <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
-              What We Build
+              Our Services
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-              What we build
+              What we specialize in
             </h2>
             <div className="h-1.5 w-16 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full mb-6" />
           </div>
           <div className="lg:col-span-7">
             <p className="text-slate-400 text-base leading-relaxed">
-              We help businesses build practical websites and web applications that solve real problems.
+              We help businesses build practical websites and web applications that solve real problems —
+              from public sites to internal tools your team uses every day.
             </p>
           </div>
         </div>

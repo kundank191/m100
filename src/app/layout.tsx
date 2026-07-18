@@ -34,19 +34,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.svg',
     apple: '/logo-icon.png',
   },
-  keywords: [
-    'Mach100 Tech Solutions',
-    'Mach100',
-    'mach100.in',
-    'website development Bengaluru',
-    'web app development India',
-    'custom web tools India',
-    'internal tools dashboard',
-    'business website development',
-    'website with login',
-    'fleet management software India',
-    'PG management software',
-  ],
+  // Note: meta keywords omitted — Google ignores them
   authors: [{ name: 'Mach100 Tech Solutions Private Limited', url: SITE_URL }],
   creator: 'Mach100 Tech Solutions',
   publisher: 'Mach100 Tech Solutions Private Limited',
@@ -74,6 +62,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/',
+    languages: {
+      'en-IN': '/',
+      en: '/',
+    },
   },
   other: {
     'geo.region': 'IN',

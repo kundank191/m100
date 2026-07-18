@@ -8,7 +8,9 @@ import FaqPage from '@/components/FaqPage';
 import { faqJsonLd } from '@/data/faqData';
 
 export const metadata: Metadata = {
-  title: 'FAQ',
+  title: {
+    absolute: 'FAQ - Websites, Web Apps & Internal Tools | Mach100',
+  },
   description:
     'FAQ for Mach100 in Bengaluru: websites, web apps with login, internal tools, process, pricing, PGPulse demo, MFleet access, and how to start a project.',
   alternates: { canonical: '/faq' },

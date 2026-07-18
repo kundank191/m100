@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';
 import BlogBody from '@/components/BlogBody';
 import { BLOG_POSTS, getPostBySlug, getRelatedPosts } from '@/data/blogData';
-import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { breadcrumbJsonLd, SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -77,7 +77,14 @@ export default async function BlogPostPage({ params }: Props) {
       '@id': `${SITE_URL}/blog/${post.slug}`,
     },
     keywords: post.tags.join(', '),
+    inLanguage: 'en-IN',
   };
+
+  const crumbs = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
 
   return (
     <article className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
@@ -85,6 +92,27 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
+      <nav aria-label="Breadcrumb" className="mb-6 text-[11px] font-mono text-slate-500">
+        <ol className="flex flex-wrap items-center gap-1.5">
+          <li>
+            <Link href="/" className="hover:text-teal-400 transition-colors">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <Link href="/blog" className="hover:text-teal-400 transition-colors">
+              Blog
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="text-slate-400 line-clamp-1 max-w-[14rem] sm:max-w-xs">{post.title}</li>
+        </ol>
+      </nav>
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-teal-400 hover:text-teal-300 mb-8"
