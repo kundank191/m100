@@ -5,7 +5,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
@@ -21,13 +21,23 @@ export default function Navbar() {
   const isHome = pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        ticking = false;
+      });
+    };
+    // Initial check without waiting for scroll
+    setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const sectionItems = [
-    { label: 'Products', id: 'products-section' },
+    { label: 'Examples', id: 'products-section' },
     { label: 'Services', id: 'services-section' },
     { label: 'About', id: 'about-section' },
   ];
@@ -37,22 +47,24 @@ export default function Navbar() {
     { label: 'FAQ', href: '/faq' },
   ];
 
-  const handleSectionClick = (sectionId: string) => {
-    setIsOpen(false);
-    if (isHome) {
-      scrollToSection(sectionId);
-    } else {
-      router.push(`/#${sectionId}`);
-    }
-  };
+  const handleSectionClick = useCallback(
+    (sectionId: string) => {
+      setIsOpen(false);
+      if (isHome) {
+        scrollToSection(sectionId);
+      } else {
+        router.push(`/#${sectionId}`);
+      }
+    },
+    [isHome, router],
+  );
 
   return (
     <nav
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-slate-950/65 backdrop-blur-md border-b border-white/5 shadow-2xl py-3'
-          : 'bg-transparent py-5'
+      data-scrolled={scrolled ? 'true' : 'false'}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
+        scrolled ? 'nav-scrolled border-b py-3' : 'bg-transparent border-b border-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +76,7 @@ export default function Navbar() {
             className="flex items-center cursor-pointer group"
             aria-label="Mach100 Tech Solutions home"
           >
-            <Logo className="group-hover:opacity-90 transition-opacity duration-300" />
+            <Logo className="group-hover:opacity-90 transition-opacity duration-200" />
           </Link>
 
           <div id="desktop-menu" className="hidden lg:flex items-center space-x-6">
@@ -74,35 +86,35 @@ export default function Navbar() {
                   key={item.label}
                   type="button"
                   onClick={() => handleSectionClick(item.id)}
-                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-200 cursor-pointer relative py-1 group"
+                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-150 cursor-pointer relative py-1 group"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
                 </button>
               ))}
               {pageItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors duration-200 relative py-1 group ${
+                  className={`text-sm font-medium transition-colors duration-150 relative py-1 group ${
                     pathname.startsWith(item.href)
                       ? 'text-teal-400'
                       : 'text-slate-300 hover:text-teal-400'
                   }`}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
                 </Link>
               ))}
             </div>
 
             <div className="flex items-center space-x-3 border-l border-slate-800/80 pl-5">
-              <ThemeToggle />
+              <ThemeToggle id="theme-toggle-desktop" />
               <button
                 type="button"
                 id="nav-cta-button"
                 onClick={() => handleSectionClick('contact-section')}
-                className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 hover:scale-[1.02] transition-all duration-300 shadow-md shadow-white/5 cursor-pointer"
+                className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 transition-colors duration-150 shadow-md shadow-white/5 cursor-pointer"
               >
                 Start a Project
               </button>
@@ -110,7 +122,7 @@ export default function Navbar() {
           </div>
 
           <div className="lg:hidden flex items-center space-x-2">
-            <ThemeToggle />
+            <ThemeToggle id="theme-toggle-mobile" />
             <button
               id="mobile-menu-toggle"
               type="button"
@@ -126,7 +138,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`lg:hidden absolute top-full left-0 right-0 bg-slate-950/98 backdrop-blur-xl border-b border-slate-900 transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-slate-950/98 border-b border-slate-900 transition-all duration-200 overflow-hidden ${
           isOpen ? 'max-h-screen py-6 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'
         }`}
       >

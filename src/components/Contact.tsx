@@ -11,6 +11,7 @@ import { trackEvent } from '@/components/GoogleAnalytics';
 import {
   clearContactPrefill,
   CONTACT_PREFILL_EVENT,
+  prefillFromUrlTopic,
   readContactPrefill,
   type ContactPrefill,
 } from '@/lib/contactPrefill';
@@ -23,7 +24,7 @@ const FORMSPREE_ENDPOINT =
 
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
-const DEFAULT_SUBJECT = 'Business Website Development';
+const DEFAULT_SUBJECT = 'Website';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -47,8 +48,20 @@ export default function Contact() {
       clearContactPrefill();
     };
 
-    const stored = readContactPrefill();
-    if (stored) applyPrefill(stored);
+    // Prefer URL topic from server-rendered CTAs: /?topic=mfleet#contact-section
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = prefillFromUrlTopic(params.get('topic'));
+      if (fromUrl) {
+        applyPrefill(fromUrl);
+      } else {
+        const stored = readContactPrefill();
+        if (stored) applyPrefill(stored);
+      }
+    } catch {
+      const stored = readContactPrefill();
+      if (stored) applyPrefill(stored);
+    }
 
     const onPrefill = (e: Event) => {
       const detail = (e as CustomEvent<ContactPrefill>).detail;
@@ -129,10 +142,11 @@ export default function Contact() {
             Get in Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Let&apos;s build your next product
+            Let&apos;s build your next website or web tool
           </h2>
           <p className="text-slate-400 text-base leading-relaxed mb-4">
-            Website, data platform, product demo, or AI automation. Tell us what you need and we will reply with a clear next step.
+            Whether you need a business website, a custom web application, or an internal tool, tell us what
+            you&apos;re looking for.
           </p>
           <p className="inline-flex items-center gap-2 text-sm text-teal-300/90 font-medium">
             <Clock className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -167,18 +181,18 @@ export default function Contact() {
               <div className="rounded-xl border border-white/5 bg-slate-950/40 p-4 space-y-2">
                 <p className="text-xs font-semibold text-slate-200">What to include</p>
                 <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed">
-                  <li>What you want built (or which product to try)</li>
-                  <li>Team size or fleet / property scale</li>
-                  <li>Rough timeline</li>
+                  <li>What you want built (website, app, or internal tool)</li>
+                  <li>Who will use it</li>
+                  <li>Any rough timeline</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-7 rounded-2xl glass-panel p-8 relative">
-            <h3 className="text-lg font-bold font-display text-white mb-2">Send an inquiry</h3>
+            <h3 className="text-lg font-bold font-display text-white mb-2">Send a message</h3>
             <p className="text-xs text-slate-500 mb-6">
-              Choosing a product above pre-fills the topic and a short message template. You can edit everything.
+              Example CTAs above can pre-fill the topic. You can edit everything before sending.
             </p>
 
             {submitState === 'success' ? (
@@ -259,7 +273,7 @@ export default function Contact() {
                     htmlFor="contact-topic"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    Topic <span className="text-slate-500 normal-case font-sans">(pre-filled from product CTAs)</span>
+                    What do you want to build?
                   </label>
                   <select
                     id="contact-topic"
@@ -272,14 +286,13 @@ export default function Contact() {
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-slate-300 focus:outline-none focus:border-teal-500 font-sans"
                     disabled={submitState === 'loading'}
                   >
-                    <option value="Business Website Development">Business Website Development</option>
-                    <option value="MFleet Demo / Access">MFleet: Request Demo / Access</option>
+                    <option value="Website">Website</option>
+                    <option value="Web App">Web App</option>
+                    <option value="Internal Tool">Internal Tool</option>
+                    <option value="Custom Tool">Custom Tool</option>
+                    <option value="MFleet Demo / Access">MFleet: Request Demo</option>
                     <option value="PGPulse Demo / Access">PGPulse: Demo / Setup</option>
-                    <option value="GluCare Demo / Access">GluCare: Request Demo / Access</option>
-                    <option value="Data Engineering">Data Engineering &amp; Analytics</option>
-                    <option value="Agentic AI Automation">Agentic AI &amp; Automation</option>
-                    <option value="Custom Web/Mobile Platform">Custom Web / Mobile App</option>
-                    <option value="General Technical Partnership">General Partnership / Other</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
@@ -288,7 +301,7 @@ export default function Contact() {
                     htmlFor="contact-message"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    Message Details *
+                    Message / Requirements *
                   </label>
                   <textarea
                     id="contact-message"
@@ -298,7 +311,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
-                    placeholder="Describe your project, timeline, or which product you want to try..."
+                    placeholder="Describe what you need, who will use it, and any timeline..."
                     disabled={submitState === 'loading'}
                   />
                 </div>
@@ -316,7 +329,7 @@ export default function Contact() {
                     </>
                   ) : (
                     <>
-                      <span>Send Your Inquiry</span>
+                      <span>Send Message</span>
                       <ArrowRight className="w-4 h-4 text-slate-950" />
                     </>
                   )}

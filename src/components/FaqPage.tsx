@@ -22,7 +22,8 @@ export default function FaqPage() {
         Frequently asked questions
       </h1>
       <p className="text-slate-400 text-base mb-8 sm:mb-10 leading-relaxed">
-        Timelines, products, pricing model, and how to get access. Still stuck? Email{' '}
+        Practical answers about websites, web apps, internal tools, our process, examples like PGPulse and
+        MFleet, pricing, and how to reach Mach100 in Bengaluru. Still stuck? Email{' '}
         <a href="mailto:contact@mach100.in" className="text-teal-400 hover:underline">
           contact@mach100.in
         </a>
@@ -43,6 +44,7 @@ export default function FaqPage() {
                 <span className="text-sm font-semibold text-white pr-2">{item.question}</span>
                 <ChevronDown
                   className={`w-4 h-4 shrink-0 text-teal-400 transition-transform ${open ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
                 />
               </button>
               {open && (
@@ -55,13 +57,24 @@ export default function FaqPage() {
         })}
       </div>
 
-      <div className="mt-12 text-center">
+      <div className="mt-12 text-center space-y-4">
         <Link
           href="/#contact-section"
           className="inline-flex px-6 py-3 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50"
         >
           Still have questions? Contact us
         </Link>
+        <p className="text-xs text-slate-500">
+          Prefer examples first?{' '}
+          <Link href="/blog" className="text-teal-400 hover:underline">
+            Read the blog
+          </Link>{' '}
+          or{' '}
+          <Link href="/#products-section" className="text-teal-400 hover:underline">
+            see what we can build
+          </Link>
+          .
+        </p>
       </div>
     </section>
   );
