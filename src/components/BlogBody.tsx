@@ -8,7 +8,8 @@ import Image from 'next/image';
 
 function renderInline(text: string): ReactNode[] {
   const nodes: ReactNode[] = [];
-  const re = /(\*\*[^*]+\*\*)/g;
+  // **bold** or [label](https://url)
+  const re = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
   let last = 0;
   let match: RegExpExecArray | null;
   let key = 0;
@@ -16,11 +17,36 @@ function renderInline(text: string): ReactNode[] {
     if (match.index > last) {
       nodes.push(text.slice(last, match.index));
     }
-    nodes.push(
-      <strong key={`b-${key++}`} className="font-semibold text-slate-100">
-        {match[1].slice(2, -2)}
-      </strong>,
-    );
+    const token = match[1];
+    if (token.startsWith('**') && token.endsWith('**')) {
+      nodes.push(
+        <strong key={`b-${key++}`} className="font-semibold text-slate-100">
+          {token.slice(2, -2)}
+        </strong>,
+      );
+    } else {
+      const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (linkMatch) {
+        const [, label, href] = linkMatch;
+        const safe =
+          href.startsWith('https://') || href.startsWith('http://') ? href : undefined;
+        if (safe) {
+          nodes.push(
+            <a
+              key={`a-${key++}`}
+              href={safe}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-400 underline underline-offset-2 hover:text-teal-300 break-words"
+            >
+              {label}
+            </a>,
+          );
+        } else {
+          nodes.push(label);
+        }
+      }
+    }
     last = match.index + match[0].length;
   }
   if (last < text.length) nodes.push(text.slice(last));

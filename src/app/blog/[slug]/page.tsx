@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';
 import BlogBody from '@/components/BlogBody';
-import { BLOG_POSTS, getPostBySlug } from '@/data/blogData';
+import { BLOG_POSTS, getPostBySlug, getRelatedPosts } from '@/data/blogData';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -48,6 +48,8 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
+
+  const related = getRelatedPosts(post.slug, 3);
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -162,6 +164,70 @@ export default async function BlogPostPage({ params }: Props) {
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
+
+      {related.length > 0 && (
+        <section className="mt-14 pt-10 border-t border-white/5" aria-labelledby="read-next-heading">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <div>
+              <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-teal-400 mb-2">
+                Keep reading
+              </p>
+              <h2
+                id="read-next-heading"
+                className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight"
+              >
+                Read next
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-teal-400 hover:text-teal-300"
+            >
+              All posts
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+            {related.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/blog/${item.slug}`}
+                className="group rounded-2xl glass-panel glass-panel-hover overflow-hidden block"
+              >
+                <div className="relative aspect-[16/10] w-full bg-slate-900/40 overflow-hidden">
+                  <Image
+                    src={item.coverImage.src}
+                    alt={item.coverImage.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-4">
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    {item.tags.slice(0, 2).map((tag) => (
+                      <span key={tag} className="text-[10px] font-mono text-teal-400/90">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-sm font-bold font-display text-white group-hover:text-teal-300 transition-colors leading-snug mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed mb-3">
+                    {item.excerpt}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-400">
+                    Read
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }

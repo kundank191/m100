@@ -45,7 +45,8 @@ export default function MicrosoftClarity() {
     };
 
     const start = () => {
-      window.setTimeout(inject, 4500);
+      // After LCP + first interaction window; Clarity is non-critical
+      window.setTimeout(inject, 9000);
     };
 
     if (document.readyState === 'complete') {

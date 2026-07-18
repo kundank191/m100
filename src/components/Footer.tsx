@@ -3,27 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 import { Shield } from 'lucide-react';
 import Logo from '@/components/Logo';
-import { scrollToSection } from '@/lib/scroll';
 
+/** Server Component — no hydration cost on the homepage shell. */
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const goSection = (sectionId: string) => {
-    if (pathname === '/') {
-      scrollToSection(sectionId);
-    } else {
-      router.push(`/#${sectionId}`);
-    }
-  };
 
   return (
     <footer
@@ -35,7 +22,8 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-4">
             <Logo />
             <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
-              Mach100 Tech Solutions builds production-ready software: websites, data platforms, fleet and PG tools, and practical AI. Built in Bengaluru.
+              Mach100 Tech Solutions builds fast, clean websites and custom web tools for businesses. Built in
+              Bengaluru, India.
             </p>
             <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400">
               <Shield className="w-3.5 h-3.5 text-teal-400 shrink-0" aria-hidden="true" />
@@ -44,9 +32,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Products
-            </h4>
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Products</h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <a
@@ -85,9 +71,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Company
-            </h4>
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Company</h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/blog" className="hover:text-teal-400 transition-colors">
@@ -100,22 +84,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => goSection('about-section')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
-                >
+                <a href="/#about-section" className="hover:text-teal-400 transition-colors">
                   Why Mach100
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => goSection('contact-section')}
-                  className="hover:text-teal-400 transition-colors cursor-pointer text-left"
-                >
+                <a href="/#contact-section" className="hover:text-teal-400 transition-colors">
                   Contact
-                </button>
+                </a>
               </li>
               <li>
                 <a href="mailto:contact@mach100.in" className="hover:text-teal-400 transition-colors">
@@ -128,9 +104,7 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            <span>
-              © {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved.
-            </span>
+            <span>© {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved.</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <span>Bengaluru, India</span>

@@ -48,10 +48,18 @@ export const PRODUCT_CONTACT_SUBJECT: Record<string, string> = {
   mfleet: 'MFleet Demo / Access',
   pgpulse: 'PGPulse Demo / Access',
   glucare: 'GluCare Demo / Access',
+  custom: 'Custom Tool',
 };
 
 export function prefillForProduct(productId: string): ContactPrefill {
-  const subject = PRODUCT_CONTACT_SUBJECT[productId] ?? 'General Technical Partnership';
+  const subject = PRODUCT_CONTACT_SUBJECT[productId] ?? 'Other';
+  if (productId === 'custom') {
+    return {
+      subject,
+      message:
+        'Hi, I would like to discuss a custom web tool or internal application.\n\nWhat we need:\nWho will use it:\n',
+    };
+  }
   const names: Record<string, string> = {
     mfleet: 'MFleet',
     pgpulse: 'PGPulse',
@@ -60,6 +68,16 @@ export function prefillForProduct(productId: string): ContactPrefill {
   const name = names[productId] ?? productId;
   return {
     subject,
-    message: `Hi, I would like a demo / pilot access for ${name}.\n\nCompany / fleet or property size:\nUse case:\nPreferred timeline:\n`,
+    message: `Hi, I would like a demo / access for ${name}.\n\nCompany / scale:\nUse case:\nPreferred timeline:\n`,
   };
+}
+
+/** Read ?topic= from the URL (used by server-rendered product CTAs). */
+export function prefillFromUrlTopic(topic: string | null): ContactPrefill | null {
+  if (!topic) return null;
+  const key = topic.trim().toLowerCase();
+  if (key in PRODUCT_CONTACT_SUBJECT || key === 'custom') {
+    return prefillForProduct(key);
+  }
+  return null;
 }

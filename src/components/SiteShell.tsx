@@ -3,12 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use client';
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+/** Server Component shell — Navbar/Footer stay client islands. */
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -22,9 +21,9 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
 
-      {/* One soft ambient blob only — cheaper than three animated blurs */}
+      {/* Single soft blob; reduced blur cost vs large animated layers */}
       <div
-        className="fixed top-[-15%] left-[20%] w-[500px] h-[500px] bg-teal-500/8 rounded-full blur-[100px] pointer-events-none -z-10"
+        className="fixed top-[-10%] left-[15%] w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] bg-teal-500/6 rounded-full blur-[80px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 

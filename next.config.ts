@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
-  // Smaller modern targets reduce legacy polyfills
+  // Smaller modern targets reduce legacy polyfills / TBT
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
   },

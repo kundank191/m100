@@ -11,7 +11,8 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
  */
 export const fontSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  // Two weights only — less font bytes / faster FCP-SI
+  weight: ['400', '700'],
   variable: '--font-jakarta',
   display: 'swap',
   preload: true,

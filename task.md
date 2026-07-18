@@ -1,211 +1,193 @@
-Here's the **exact, ready-to-copy text** for every major section of your website.
+# Mach100.in — Your SEO & ops checklist
 
-I’ve rewritten it with these goals:
-- Clients clearly understand you can build **almost anything** they need (websites, automation, internal tools, data systems, AI agents, fleet/PG tools, etc.).
-- Tone is confident and capable without sounding unrealistic or hype-heavy.
-- Focus on outcomes and scope rather than speed claims.
-- Social proof is removed (as you requested).
+**Site:** https://mach100.in/  
+**Updated:** 2026-07-18  
 
----
-
-### **1. Hero Section**
-
-**Headline:**
-Mach100 Tech
-
-**Subheadline:**
-We build the software your business actually needs.
-
-We create production-ready websites, web and mobile apps, data platforms, workflow automation, and custom internal tools — including fleet operations and PG management systems. Tell us what you want built. We’ll scope it clearly and ship it.
-
-**Primary CTA:** Start a Project  
-**Secondary CTA:** See What We’ve Built
+Code-side SEO is largely done (titles, meta, sitemap, robots, JSON-LD, blog, FAQ, light default, performance).  
+**What grows rankings now is mostly what you do outside the repo.**
 
 ---
 
-### **2. What We Deliver (Replace the old three-column section)**
+## 1. Deploy first (do this before Search Console)
 
-**Headline:**  
-Software built for how your business actually works
-
-**Three short points:**
-
-- **Websites & Web Apps**  
-  Fast, clean, conversion-focused sites and applications using modern React and Next.js.
-
-- **Internal Tools & Automation**  
-  Custom dashboards, workflow automation, WhatsApp/SMS integrations, payments, reporting, and admin systems that remove manual work.
-
-- **Data & AI Systems**  
-  Data pipelines, dashboards, and practical AI agents that handle real tasks with human oversight.
+- [ ] Push latest code and **redeploy on Vercel**
+- [ ] Confirm production: https://mach100.in/ loads new homepage + light mode + blogs
+- [ ] Confirm sitemap: https://mach100.in/sitemap.xml
+- [ ] Confirm robots: https://mach100.in/robots.txt (must list Sitemap)
 
 ---
 
-### **3. Our Products (Examples of What We’ve Built)**
+## 2. Google Search Console (highest priority)
 
-**Headline:**  
-Real tools we’ve built and use as reference
+### Setup
+- [ ] Open [Google Search Console](https://search.google.com/search-console)
+- [ ] Add property: **URL prefix** `https://mach100.in/`
+- [ ] Verify ownership (DNS TXT or HTML meta / Vercel domain verification)
+- [ ] Submit sitemap: `https://mach100.in/sitemap.xml`
+- [ ] Wait for “Sitemap successful” (can take hours)
 
-We’ve built and maintain production systems for fleet operations and PG/co-living management. These are live examples of the kind of software we deliver.
+### Request indexing (paste each URL → URL Inspection → **Request indexing**)
 
-**MFleet**  
-Fleet Management & Driver Operations Platform
+**Core pages**
+| Page | URL |
+|------|-----|
+| Home | https://mach100.in/ |
+| Blog index | https://mach100.in/blog |
+| FAQ | https://mach100.in/faq |
 
-Built for cab operators and logistics teams. Includes ride tracking, fuel logging, driver payouts, rental ledgers, invoices, and role-based access.  
-We can build similar fleet or logistics tools tailored to your operations.
+**All blog posts (11) — add these in Search Console**
 
-**CTA:** Request Demo / Discuss Similar Project
+| # | Title (short) | URL |
+|---|---------------|-----|
+| 1 | Why businesses regret websites without proper development | https://mach100.in/blog/regret-website-without-proper-development |
+| 2 | Wasting time managing everything on Excel | https://mach100.in/blog/wasting-time-managing-excel-sheets |
+| 3 | Why small business websites fail to bring customers | https://mach100.in/blog/why-small-business-websites-fail-customers |
+| 4 | Automate repetitive workflows with custom web tools | https://mach100.in/blog/automate-business-workflows-custom-web-tools |
+| 5 | Internal tools and dashboards for your team | https://mach100.in/blog/internal-tools-dashboards-for-teams |
+| 6 | Professional website with login for your business | https://mach100.in/blog/professional-website-with-login-business |
+| 7 | Website that brings customers for SMBs in India | https://mach100.in/blog/small-business-website-india-customers |
+| 8 | How we cleaned up mach100.in for SEO | https://mach100.in/blog/seo-optimization-mach100-nextjs |
+| 9 | Why we will not oversell a health app (GluCare) | https://mach100.in/blog/privacy-first-ai-health-demo |
+| 10 | PG rent collection & WhatsApp story | https://mach100.in/blog/pg-rent-collection-whatsapp |
+| 11 | Fleet MVP in 5 weeks (MFleet story) | https://mach100.in/blog/fleet-mvp-in-5-weeks |
 
----
+**Copy-paste list (one URL per line)**
 
-**PGPulse**  
-PG & Co-living Property Management
+```
+https://mach100.in/
+https://mach100.in/blog
+https://mach100.in/faq
+https://mach100.in/blog/regret-website-without-proper-development
+https://mach100.in/blog/wasting-time-managing-excel-sheets
+https://mach100.in/blog/why-small-business-websites-fail-customers
+https://mach100.in/blog/automate-business-workflows-custom-web-tools
+https://mach100.in/blog/internal-tools-dashboards-for-teams
+https://mach100.in/blog/professional-website-with-login-business
+https://mach100.in/blog/small-business-website-india-customers
+https://mach100.in/blog/seo-optimization-mach100-nextjs
+https://mach100.in/blog/privacy-first-ai-health-demo
+https://mach100.in/blog/pg-rent-collection-whatsapp
+https://mach100.in/blog/fleet-mvp-in-5-weeks
+```
 
-Complete system for rent collection, vacancy tracking, tenant onboarding, and WhatsApp-based communication.  
-Try the interactive demo in your browser.
+**Also useful (products / demos — index if public)**
+```
+https://mach100.in/products/mfleet
+https://mach100.in/products/pgpulse
+https://mach100.in/products/glucare
+https://pg.mach100.in/
+https://fleet.mach100.in/
+https://glucare.mach100.in/
+```
 
-**CTA:** Try Live Demo
+> Tip: Request indexing for **home + blog index + all 11 posts** first. Product subdomains can wait if they are separate Search Console properties.
 
----
-
-**GluCare** (Optional — keep only if you want to show health-tech capability)
-
-AI-powered glucose logging and trend tracking tool using computer vision. Currently in pilot phase.  
-We can build similar vision or data-driven tools for your domain.
-
-**CTA:** Request Access
-
----
-
-### **4. Need Something Custom? (This becomes a strong section)**
-
-**Headline:**  
-We build custom software for your exact requirements
-
-Whether you need a new website, an internal operations tool, automation layer, data platform, or a complete system — we can build it.
-
-We work with startups, SMEs, and operators who need practical software that fits their workflow instead of forcing them to adapt to generic tools.
-
-**What we commonly build:**
-- Business websites and customer-facing web apps
-- Internal tools and admin dashboards
-- Workflow automation (payments, WhatsApp, approvals, reporting)
-- Data pipelines and analytics systems
-- Custom fleet, logistics, or property management tools
-- AI agents for support, document processing, or decision support
-
-**CTA:** Tell Us What You Need
-
----
-
-### **5. What We Build (Services Section)**
-
-**Headline:**  
-Everything we can build for you
-
-We handle the full range of custom software projects:
-
-- **Websites & Web Applications** — Modern, fast, SEO-friendly sites and portals built with React and Next.js.
-- **Internal Tools & Dashboards** — Custom admin panels, operations tools, and business-specific applications.
-- **Workflow Automation** — Automate repetitive work using WhatsApp, SMS, email, payments, and approvals.
-- **Data Engineering** — Data pipelines, ETL processes, warehouses, and reporting systems.
-- **Mobile Applications** — Cross-platform apps using React Native that work reliably even on slower networks.
-- **AI & Automation Agents** — Practical AI agents that handle tasks like document processing, customer queries, or data entry — always with human oversight.
-
-If you have a specific requirement that doesn’t fit these categories, just describe it. We’ll tell you whether we can build it and how we’d approach it.
+- [ ] Optional: add separate GSC properties for `https://pg.mach100.in/`, `https://fleet.mach100.in/`, `https://glucare.mach100.in/` if you want them tracked alone
 
 ---
 
-### **6. Who We Work With**
+## 3. Bing Webmaster Tools (quick win)
 
-**Headline:**  
-We work with businesses that need real software
-
-We primarily work with:
-- Startups and growing SaaS companies
-- Logistics and fleet operators
-- PG, hostel, and co-living operators
-- Healthcare and wellness businesses
-- SMEs that need custom internal tools or automation
-
-We’re especially strong at building tools that combine **operations + payments + communication** (common in Indian businesses).
+- [ ] https://www.bing.com/webmasters → add `https://mach100.in/`
+- [ ] Import from Google Search Console **or** submit sitemap `https://mach100.in/sitemap.xml`
+- [ ] Request indexing for home + blog index
 
 ---
 
-### **7. How We Work (Replace the old “Why Mach100” section)**
+## 4. Analytics & behaviour (measure SEO success)
 
-**Headline:**  
-How we work
-
-We keep things simple and transparent:
-
-1. **You tell us what you need** — Share your requirements, current problems, or the tool you wish existed.
-2. **We scope it clearly** — We give you a clear scope, timeline, and what will be delivered.
-3. **We build and ship** — We use proven patterns and focus on getting working software in your hands.
-4. **You review and iterate** — We work in short cycles so you can give feedback early.
-
-We build production-grade systems with proper architecture, security, and maintainability — not throwaway prototypes.
-
-We’re based in Bengaluru and work with clients across India.
+- [ ] Confirm **Microsoft Clarity** env on Vercel: `NEXT_PUBLIC_CLARITY_PROJECT_ID`
+- [ ] Confirm Clarity dashboard receives sessions after deploy
+- [ ] Optional **GA4**: set `NEXT_PUBLIC_GA4_MEASUREMENT_ID` on Vercel → redeploy
+- [ ] Link GA4 property to Search Console (Admin → product links)
 
 ---
 
-### **8. Get in Touch / Contact Section**
+## 5. Local SEO (Bengaluru) — strong for “software company near me”
 
-**Headline:**  
-Let’s talk about what you want to build
-
-Whether you need a website, an internal tool, automation system, data platform, or something more specific — tell us about it.
-
-We usually reply within 24 hours with next steps.
-
-**Form Fields (keep similar structure):**
-- Your Name
-- Email Address
-- What are you looking to build? (Dropdown or text area)
-- Any specific requirements or timeline?
-
-**Suggested Dropdown Options:**
-- Business Website or Web App
-- Internal Tool / Dashboard
-- Workflow Automation (WhatsApp, Payments, etc.)
-- Fleet or Logistics System
-- PG / Co-living Management Tool
-- Data Platform or Analytics
-- AI Agent / Automation
-- Something else (please describe)
-
-**Big CTA Button:** Send Message
-
-**Below the form:**
-We keep all discussions confidential. We only use your information to respond to your inquiry.
+- [ ] Create / claim **Google Business Profile** (Bengaluru)
+  - Category: Software company / Website designer / IT services
+  - Website: https://mach100.in/
+  - Email: contact@mach100.in
+  - Service areas: Bengaluru + India (remote)
+- [ ] Add real photos (office/team/product screens if allowed)
+- [ ] Keep NAP consistent (Name, Address, Phone if you add a phone later)
+- [ ] Ask happy clients for **Google reviews**
 
 ---
 
-### **9. Footer**
+## 6. On-page / content habits (weekly)
 
-**Company Name:** Mach100 Tech Solutions
-
-**Tagline:** Custom software for websites, operations, automation, and data systems.
-
-**Links:**
-- Products
-- What We Build
-- Blog
-- FAQ
-- Contact
-
-**Contact:** contact@mach100.in
-
-**Legal:** © 2026 Mach100 Tech Solutions Private Limited. Bengaluru, India.
+- [ ] Publish **1–2 new blogs/month** on India SMB pain (websites, login apps, internal tools, Excel replacement, WhatsApp lead capture)
+- [ ] After each new post: add URL to sitemap (if not auto), deploy, **Request indexing** in GSC
+- [ ] Internal linking: from home/FAQ to best blogs; blogs already have “Read next”
+- [ ] When you have pilots: add short **case studies / testimonials** (real names if possible)
+- [ ] Optional: 1200×630 **OG image** → `public/og.png` (better social CTR)
 
 ---
 
-### Quick Notes on Usage:
+## 7. Off-page SEO (links & mentions)
 
-- **Tone**: Professional, capable, and direct. Clients will understand you can build a wide range of things without overpromising timelines.
-- **Focus**: Shifted from “we ship everything in 4-6 weeks” to **“we can build what you need”** — which is more believable and attractive for organic traffic.
-- **Products section** is now framed as **examples**, not the main offering. This opens the door for custom work.
-- **Services section** is now very broad and clear — this is what will help generate leads for “website + automation + everything”.
+- [ ] Share each blog on LinkedIn / X / WhatsApp status / founder network
+- [ ] List company on directories (if accurate): Clutch, GoodFirms, IndiaMART, Justdial, Sulekha (only real profiles)
+- [ ] Guest posts or partner mentions (local startup communities, college alumni, client sites)
+- [ ] Get backlinks from client sites (“Built by Mach100”) when allowed
+- [ ] Answer relevant Quora / Reddit / Indie Hackers questions with value + soft link to a blog (no spam)
 
-Would you like me to adjust any section (make it shorter, more salesy, more technical, etc.)? Or should I also write the **Blog** and **FAQ** page copy next?
+---
+
+## 8. Technical checks after every deploy
+
+- [ ] [Rich Results Test](https://search.google.com/test/rich-results) on `https://mach100.in/` and `https://mach100.in/faq`
+- [ ] [PageSpeed Insights](https://pagespeed.web.dev/) on home (use **mobile** production URL, not localhost dev)
+- [ ] GSC → **Pages** / **Indexing**: fix any “Crawled – currently not indexed” with better titles/internal links
+- [ ] GSC → **Experience** / Core Web Vitals once data appears (28 days)
+
+---
+
+## 9. Keywords to target (content + GBP)
+
+Use naturally in new posts and GBP services (not stuffing):
+
+| Intent | Examples |
+|--------|----------|
+| Service | custom software development India, website development Bengaluru, web app with login, internal tools dashboard |
+| Problem | small business website not getting customers, replace Excel with web app, automate invoices WhatsApp India |
+| Product | PG management software, fleet management software India |
+| Local | software company Bengaluru, website developer near me Bengaluru |
+
+---
+
+## 10. Do **not** waste time on (for now)
+
+- Buying links / PBNs  
+- Keyword stuffing  
+- Obsessing over daily ranking fluctuations  
+- Testing only with `next dev` Lighthouse (use production URL)
+
+---
+
+## Priority order (this week)
+
+1. **Redeploy Vercel** so live site = latest code  
+2. **Search Console** verify + sitemap  
+3. **Request indexing** for home, `/blog`, `/faq`, and **all 11 blog URLs** above  
+4. **Clarity / GA4** env vars confirmed  
+5. **Google Business Profile** start  
+6. Share 2–3 strongest blogs on LinkedIn  
+
+---
+
+## Code already done (no action unless broken)
+
+- Title / meta / OG / Twitter  
+- Canonical URLs  
+- `robots.txt` + `sitemap.xml`  
+- JSON-LD (Organization, WebSite, ProfessionalService, SoftwareApplication, FAQ, BlogPosting)  
+- Blog with covers, references, Read next  
+- Light mode default + light scrolled navbar  
+- Performance tuned for production (~99 mobile in lab when built with `next start`)
+
+---
+
+**Blocked on you:** deploy → GSC → indexing requests → GBP → content cadence.

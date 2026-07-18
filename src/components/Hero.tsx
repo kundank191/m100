@@ -3,47 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use client';
+import { Zap, CheckCircle2, ListChecks } from 'lucide-react';
+import HeroCTAs from '@/components/HeroCTAs';
 
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { ArrowRight, ChevronRight, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
-import { scrollToSection } from '@/lib/scroll';
-
-const HeroCanvas = dynamic(() => import('@/components/HeroCanvas'), {
-  ssr: false,
-  loading: () => null,
-});
-
+/**
+ * Server Component — H1 and copy ship in initial HTML for fast LCP.
+ * Only CTAs are a tiny client island (no canvas / no rAF).
+ */
 export default function Hero() {
-  const [showCanvas, setShowCanvas] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const enable = () => setShowCanvas(true);
-    const w = window as Window & {
-      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
-      cancelIdleCallback?: (id: number) => void;
-    };
-    let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
-
-    if (typeof w.requestIdleCallback === 'function') {
-      idleId = w.requestIdleCallback(enable, { timeout: 5000 });
-    } else {
-      timeoutId = setTimeout(enable, 4000);
-    }
-
-    return () => {
-      if (idleId !== undefined && typeof w.cancelIdleCallback === 'function') {
-        w.cancelIdleCallback(idleId);
-      }
-      if (timeoutId !== undefined) clearTimeout(timeoutId);
-    };
-  }, []);
-
   return (
     <header
       id="hero-header"
@@ -54,74 +21,40 @@ export default function Hero() {
         aria-hidden="true"
         style={{ backgroundColor: 'var(--page-bg, #070b14)' }}
       />
-      {showCanvas ? (
-        <HeroCanvas />
-      ) : (
-        <>
-          <div className="absolute inset-0 cyber-grid opacity-25 -z-10 pointer-events-none" aria-hidden="true" />
-          <div
-            className="absolute top-1/4 left-1/4 w-[280px] h-[280px] ambient-glow-cyan opacity-70 -z-10 pointer-events-none"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute bottom-1/3 right-1/4 w-[320px] h-[320px] ambient-glow-blue opacity-60 -z-10 pointer-events-none"
-            aria-hidden="true"
-          />
-        </>
-      )}
+      {/* Static CSS backdrop — server-rendered, zero JS */}
+      <div className="absolute inset-0 cyber-grid opacity-20 -z-10 pointer-events-none" aria-hidden="true" />
+      <div
+        className="absolute top-1/4 left-1/4 w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] ambient-glow-cyan opacity-45 -z-10 pointer-events-none"
+        aria-hidden="true"
+      />
 
-      {/*
-        Keep original type sizes. Only widen the column slightly on large
-        screens so 4K is not a tiny island — no aggressive fluid type.
-      */}
       <div className="w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
         <p
           id="hero-eyebrow"
           className="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-teal-400/90 mb-5"
         >
-          Custom Software Development · Bengaluru, India
+          Website &amp; Web App Development · Bengaluru, India
         </p>
 
         <h1
           id="hero-heading"
           className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-sans tracking-tight text-white leading-[1.12] mb-5"
         >
-          Custom software that actually ships.
+          We build fast, clean websites and custom web tools.
         </h1>
 
         <p
           id="hero-subheadline"
           className="text-base sm:text-lg text-slate-300 max-w-2xl xl:max-w-3xl mx-auto mb-4 leading-relaxed"
         >
-          Mach100 Tech Solutions builds production-ready websites, data platforms, fleet and PG systems, and
-          agentic AI for businesses across India — typically in{' '}
-          <strong className="text-white font-semibold">4–6 weeks</strong>.
+          Production-ready websites, web applications, and internal tools with login, SEO, payments, and clean
+          functionality — built quickly with proper quality.
         </p>
         <p className="text-sm sm:text-base text-slate-400 max-w-xl xl:max-w-2xl mx-auto mb-9 leading-relaxed">
-          No endless scoping. No fluff. Just reliable software from Bengaluru that works in production.
+          No endless meetings. No fluff. Just working software from Bengaluru.
         </p>
 
-        <div id="hero-cta-group" className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12">
-          <button
-            id="hero-cta-explore"
-            type="button"
-            onClick={() => scrollToSection('products-section')}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-white/5 hover:bg-teal-50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center space-x-2"
-          >
-            <span>See Our Products</span>
-            <ArrowRight className="w-4 h-4 text-slate-950" aria-hidden="true" />
-          </button>
-
-          <button
-            id="hero-cta-build"
-            type="button"
-            onClick={() => scrollToSection('contact-section')}
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900/40 backdrop-blur-md border border-white/10 text-slate-200 hover:text-white hover:bg-slate-800/80 transition-all duration-200 font-semibold text-sm cursor-pointer flex items-center justify-center space-x-2"
-          >
-            <span>Start Your Project</span>
-            <ChevronRight className="w-4 h-4" aria-hidden="true" />
-          </button>
-        </div>
+        <HeroCTAs />
 
         <div
           id="hero-highlights"
@@ -132,9 +65,12 @@ export default function Hero() {
               <Zap className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">Fast Delivery</h2>
+              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">
+                Fast Delivery with Quality
+              </h2>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Production-ready websites and MVPs in weeks, not months.
+                Production-ready websites and web tools built quickly — without cutting corners on code quality
+                or testing.
               </p>
             </div>
           </div>
@@ -144,21 +80,25 @@ export default function Hero() {
               <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">Built for India ops</h2>
+              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">
+                Websites &amp; Tools That Actually Work
+              </h2>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Fleet, PG, payments, and workflows designed for real Indian businesses.
+                Login systems, payments, dashboards, workflows, and features your team will use every day.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
             <div className="p-1.5 rounded-md bg-teal-950/40 border border-teal-500/20 text-teal-400 shrink-0">
-              <Sparkles className="w-4 h-4" aria-hidden="true" />
+              <ListChecks className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">Agentic AI &amp; Data</h2>
+              <h2 className="text-sm font-semibold text-slate-100 font-display mb-1">
+                Clear Process, Reliable Results
+              </h2>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Data engineering and AI agents that automate real business workflows.
+                Clear scope, regular updates, and proper testing so you know exactly what you&apos;re getting.
               </p>
             </div>
           </div>

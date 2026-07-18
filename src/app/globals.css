@@ -72,15 +72,28 @@ html[data-theme="dark"] {
   background: #14b8a6;
 }
 
+/* Smaller blur radius = less paint cost on mid/low-end phones */
 .ambient-glow-cyan,
 .ambient-glow-teal {
-  filter: blur(140px);
+  filter: blur(90px);
   background: radial-gradient(circle, var(--glow-teal) 0%, rgba(0, 0, 0, 0) 75%);
+  will-change: auto;
+  contain: strict;
 }
 
 .ambient-glow-blue {
-  filter: blur(140px);
+  filter: blur(90px);
   background: radial-gradient(circle, var(--glow-indigo) 0%, rgba(0, 0, 0, 0) 75%);
+  will-change: auto;
+  contain: strict;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow-cyan,
+  .ambient-glow-teal,
+  .ambient-glow-blue {
+    display: none;
+  }
 }
 
 .cyber-grid {
@@ -109,8 +122,13 @@ html[data-theme="dark"] .glass-panel {
 .glass-panel-hover:hover {
   border-color: rgba(45, 212, 191, 0.35);
   background: var(--surface-hover);
-  box-shadow: 0 10px 40px rgba(20, 184, 166, 0.06), 0 0 20px rgba(45, 212, 191, 0.04);
-  transform: translateY(-2px);
+  /* No transform — avoids forced reflow / layout thrash during scroll */
+  box-shadow: 0 8px 28px rgba(20, 184, 166, 0.06);
+}
+
+/* font-semibold maps to 600; we only load 400+700 */
+.font-semibold {
+  font-weight: 700;
 }
 
 @keyframes pulse-slow {
@@ -275,10 +293,19 @@ html[data-theme="light"] .bg-slate-950\/65 {
   background-color: rgba(244, 247, 251, 0.85) !important;
 }
 
-html[data-theme="light"] #main-navbar.bg-slate-950\/65,
-html[data-theme="light"] #main-navbar[class*="backdrop"] {
-  background-color: rgba(255, 255, 255, 0.82) !important;
-  border-color: rgba(15, 23, 42, 0.08) !important;
+/* Scrolled navbar surfaces (theme-aware) */
+#main-navbar.nav-scrolled {
+  background-color: rgba(7, 11, 20, 0.88);
+  border-color: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html[data-theme="light"] #main-navbar.nav-scrolled,
+html[data-theme="light"] #main-navbar[data-scrolled="true"] {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
 html[data-theme="light"] #mobile-menu {
@@ -424,26 +451,34 @@ html[data-theme="light"] .shadow-white\/5 {
   --tw-shadow-color: rgba(15, 23, 42, 0.08);
 }
 
-/* Theme toggle button surfaces */
-#theme-toggle {
+/* Theme toggle button surfaces (desktop + mobile ids) */
+#theme-toggle,
+#theme-toggle-desktop,
+#theme-toggle-mobile {
   border-color: rgba(148, 163, 184, 0.25);
   color: #94a3b8;
   background: transparent;
 }
 
-#theme-toggle:hover {
+#theme-toggle:hover,
+#theme-toggle-desktop:hover,
+#theme-toggle-mobile:hover {
   color: #2dd4bf;
   border-color: rgba(45, 212, 191, 0.4);
   background: rgba(45, 212, 191, 0.08);
 }
 
-html[data-theme="light"] #theme-toggle {
+html[data-theme="light"] #theme-toggle,
+html[data-theme="light"] #theme-toggle-desktop,
+html[data-theme="light"] #theme-toggle-mobile {
   color: #334155;
   border-color: rgba(15, 23, 42, 0.14);
   background: #ffffff;
 }
 
-html[data-theme="light"] #theme-toggle:hover {
+html[data-theme="light"] #theme-toggle:hover,
+html[data-theme="light"] #theme-toggle-desktop:hover,
+html[data-theme="light"] #theme-toggle-mobile:hover {
   color: var(--accent-strong);
   border-color: var(--accent-soft-border);
   background: var(--accent-soft-bg);

@@ -10,10 +10,14 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 export type Theme = 'dark' | 'light';
 
 const STORAGE_KEY = 'mach100-theme';
+/** Must match SSR default on <html data-theme="..."> */
+const DEFAULT_THEME: Theme = 'light';
 
 interface ThemeContextValue {
   theme: Theme;
   isDark: boolean;
+  /** False until after mount — avoid theme-dependent UI during hydration */
+  mounted: boolean;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
@@ -32,22 +36,20 @@ function readStoredTheme(): Theme {
   } catch {
     /* ignore */
   }
-  return 'dark';
+  return DEFAULT_THEME;
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof document !== 'undefined') {
-      const attr = document.documentElement.getAttribute('data-theme');
-      if (attr === 'light' || attr === 'dark') return attr;
-    }
-    return 'dark';
-  });
+  // Always the same on server + first client render. Reading localStorage/document
+  // here causes hydration mismatches when the FOUC script already set data-theme.
+  const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const initial = readStoredTheme();
     setThemeState(initial);
     applyTheme(initial);
+    setMounted(true);
   }, []);
 
   const setTheme = useCallback((next: Theme) => {
@@ -68,10 +70,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     () => ({
       theme,
       isDark: theme === 'dark',
+      mounted,
       setTheme,
       toggleTheme,
     }),
-    [theme, setTheme, toggleTheme],
+    [theme, mounted, setTheme, toggleTheme],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
