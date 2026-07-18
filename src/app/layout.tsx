@@ -9,9 +9,12 @@ import Providers from '@/components/Providers';
 import SiteShell from '@/components/SiteShell';
 import {
   ORGANIZATION_JSON_LD,
+  PROFESSIONAL_SERVICE_JSON_LD,
   SITE_DESCRIPTION,
   SITE_NAME,
+  SITE_TITLE_HOME,
   SITE_URL,
+  SOFTWARE_APPLICATIONS_JSON_LD,
   WEBSITE_JSON_LD,
 } from '@/lib/site';
 import { fontSans } from '@/lib/fonts';
@@ -19,10 +22,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: 'Mach100 Tech',
+  applicationName: SITE_NAME,
+  // Homepage default; inner pages use template "%s | Mach100 Tech Solutions"
   title: {
-    default: 'Mach100 Tech Solutions | Mach 100 Tech | Custom Software India',
-    template: `%s | Mach100 Tech`,
+    default: SITE_TITLE_HOME,
+    template: `%s | Mach100`,
   },
   description: SITE_DESCRIPTION,
   icons: {
@@ -31,19 +35,17 @@ export const metadata: Metadata = {
     apple: '/logo-icon.png',
   },
   keywords: [
-    'Mach100',
-    'Mach 100',
-    'Mach100 Tech',
-    'Mach 100 Tech',
     'Mach100 Tech Solutions',
-    'Mach 100 Tech Solutions',
+    'Mach100',
     'mach100.in',
-    'custom software development India',
+    'website development Bengaluru',
+    'web app development India',
+    'custom web tools India',
+    'internal tools dashboard',
+    'business website development',
+    'website with login',
     'fleet management software India',
     'PG management software',
-    'agentic AI automation',
-    'data engineering services India',
-    'business website development Bengaluru',
   ],
   authors: [{ name: 'Mach100 Tech Solutions Private Limited', url: SITE_URL }],
   creator: 'Mach100 Tech Solutions',
@@ -59,14 +61,14 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: 'Mach100 Tech Solutions | Mach 100 Tech',
+    title: SITE_TITLE_HOME,
     description: SITE_DESCRIPTION,
     images: [{ url: '/logo.jpeg', alt: 'Mach100 Tech Solutions logo' }],
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mach100 Tech Solutions | Mach 100 Tech',
+    title: SITE_TITLE_HOME,
     description: SITE_DESCRIPTION,
     images: ['/logo.jpeg'],
   },
@@ -83,14 +85,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       suppressHydrationWarning
       className={fontSans.variable}
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('mach100-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('mach100-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
           }}
         />
         <script
@@ -100,6 +102,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFESSIONAL_SERVICE_JSON_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_APPLICATIONS_JSON_LD) }}
         />
       </head>
       <body className="font-sans antialiased">

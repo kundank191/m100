@@ -5,8 +5,12 @@
 
 export const SITE_URL = 'https://mach100.in';
 export const SITE_NAME = 'Mach100 Tech Solutions';
+/** ~155 chars — used in SERP snippet under the blue title */
 export const SITE_DESCRIPTION =
-  'Website and web app development in Bengaluru, India. Mach100 builds fast, clean websites, web applications, and internal tools with login, SEO, payments, and production-ready quality.';
+  'Mach100 builds fast, clean websites and custom web tools for Indian SMEs and businesses. Production-ready web apps, internal tools, and operational systems from Bengaluru.';
+
+export const SITE_TITLE_HOME =
+  'Mach100 - Fast, Clean Websites & Custom Web Tools | Bengaluru';
 
 export const ORGANIZATION_JSON_LD = {
   '@context': 'https://schema.org',
@@ -18,7 +22,7 @@ export const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/logo.jpeg`,
   image: `${SITE_URL}/logo.jpeg`,
   description:
-    'Mach100 Tech Solutions builds practical websites, web applications, and custom web tools for businesses in India. Based in Bengaluru.',
+    'We build fast, clean websites and custom web tools for businesses. Based in Bengaluru, India.',
   areaServed: [
     { '@type': 'Country', name: 'India' },
     { '@type': 'City', name: 'Bengaluru' },
@@ -30,13 +34,13 @@ export const ORGANIZATION_JSON_LD = {
     addressCountry: 'IN',
   },
   knowsAbout: [
-    'Custom Software Development',
     'Business Website Development',
     'Web Application Development',
+    'Custom Web Tools',
     'Internal Tools and Dashboards',
+    'Workflow Automation',
     'Fleet Management Software',
     'PG Management Software',
-    'Workflow Automation',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -45,27 +49,24 @@ export const ORGANIZATION_JSON_LD = {
     areaServed: 'IN',
     availableLanguage: ['English', 'Hindi'],
   },
-  alternateName: [
-    'Mach100',
-    'Mach 100',
-    'Mach100 Tech',
-    'Mach 100 Tech',
-    'Mach100 Tech Solutions',
-    'Mach 100 Tech Solutions',
-  ],
+  alternateName: ['Mach100', 'Mach 100', 'mach100.in'],
+  sameAs: [`${SITE_URL}/`],
 };
 
 export const WEBSITE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: SITE_NAME,
-  alternateName: ['Mach100', 'Mach 100', 'Mach 100 Tech', 'mach100.in'],
+  alternateName: ['Mach100', 'mach100.in'],
   url: `${SITE_URL}/`,
   description: SITE_DESCRIPTION,
   publisher: {
     '@type': 'Organization',
     name: SITE_NAME,
-    logo: `${SITE_URL}/logo.jpeg`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/logo.jpeg`,
+    },
   },
   inLanguage: 'en-IN',
 };
