@@ -20,23 +20,8 @@
   --color-page: #070b14;
 }
 
-/* ---------- Dark (default) ---------- */
+/* ---------- Light (default) ---------- */
 :root,
-html[data-theme="dark"] {
-  --page-bg: #070b14;
-  --page-fg: #e8eef7;
-  --surface: rgba(15, 22, 41, 0.62);
-  --surface-hover: rgba(15, 22, 41, 0.82);
-  --border-soft: rgba(255, 255, 255, 0.07);
-  --glow-teal: rgba(45, 212, 191, 0.16);
-  --glow-indigo: rgba(99, 102, 241, 0.12);
-  --grid-line: rgba(255, 255, 255, 0.02);
-  --scroll-track: #070b14;
-  --scroll-thumb: #1e293b;
-  color-scheme: dark;
-}
-
-/* ---------- Light ---------- */
 html[data-theme="light"] {
   --page-bg: #f4f7fb;
   --page-fg: #0f172a;
@@ -49,6 +34,21 @@ html[data-theme="light"] {
   --scroll-track: #e2e8f0;
   --scroll-thumb: #94a3b8;
   color-scheme: light;
+}
+
+/* ---------- Dark ---------- */
+html[data-theme="dark"] {
+  --page-bg: #070b14;
+  --page-fg: #e8eef7;
+  --surface: rgba(15, 22, 41, 0.62);
+  --surface-hover: rgba(15, 22, 41, 0.82);
+  --border-soft: rgba(255, 255, 255, 0.07);
+  --glow-teal: rgba(45, 212, 191, 0.16);
+  --glow-indigo: rgba(99, 102, 241, 0.12);
+  --grid-line: rgba(255, 255, 255, 0.02);
+  --scroll-track: #070b14;
+  --scroll-thumb: #1e293b;
+  color-scheme: dark;
 }
 
 /* Custom Scrollbars */
@@ -204,40 +204,52 @@ html[data-theme="dark"] .text-\[10px\].font-mono.text-slate-500 {
   color: #2dd4bf;
 }
 
+/* Light-mode brand accent: deep teal for WCAG-friendly small text on #f4f7fb */
+html[data-theme="light"] {
+  --accent: #0f5f5a;
+  --accent-strong: #134e4a;
+  --accent-muted: #115e59;
+  --accent-soft-bg: #d1fae5;
+  --accent-soft-border: rgba(15, 95, 90, 0.28);
+}
+
 html[data-theme="light"] .section-chip {
-  background: #ecfdf5;
-  border-color: rgba(13, 148, 136, 0.28);
-  color: #0f766e;
+  background: var(--accent-soft-bg);
+  border-color: var(--accent-soft-border);
+  color: var(--accent-strong);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 html[data-theme="light"] .section-chip svg {
-  color: #0d9488;
+  color: var(--accent);
 }
 
 html[data-theme="light"] .section-chip-muted {
-  background: #f1f5f9;
-  border-color: rgba(15, 23, 42, 0.1);
-  color: #475569;
+  background: #e2e8f0;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #334155;
 }
 
 html[data-theme="light"] .section-chip-muted svg {
-  color: #0d9488;
+  color: var(--accent);
 }
 
 /* Teal icon wells: readable in light mode */
 html[data-theme="light"] .bg-teal-950\/40,
-html[data-theme="light"] .bg-teal-950\/30 {
-  background-color: #ecfdf5 !important;
+html[data-theme="light"] .bg-teal-950\/30,
+html[data-theme="light"] .bg-teal-950\/20 {
+  background-color: var(--accent-soft-bg) !important;
 }
 
 html[data-theme="light"] .bg-blue-950\/40 {
-  background-color: #eff6ff !important;
+  background-color: #dbeafe !important;
 }
 
 html[data-theme="light"] .border-teal-500\/20,
-html[data-theme="light"] .border-teal-500\/10 {
-  border-color: rgba(13, 148, 136, 0.25) !important;
+html[data-theme="light"] .border-teal-500\/10,
+html[data-theme="light"] .border-teal-500\/25,
+html[data-theme="light"] .border-teal-500\/30 {
+  border-color: var(--accent-soft-border) !important;
 }
 
 /* ---------- Light mode utility remaps ---------- */
@@ -287,12 +299,12 @@ html[data-theme="light"] .text-slate-300 {
 }
 
 html[data-theme="light"] .text-slate-400 {
-  color: #475569 !important;
+  color: #334155 !important;
 }
 
 html[data-theme="light"] .text-slate-500,
 html[data-theme="light"] .text-slate-600 {
-  color: #64748b !important;
+  color: #475569 !important;
 }
 
 html[data-theme="light"] .border-white\/5,
@@ -300,18 +312,54 @@ html[data-theme="light"] .border-white\/10,
 html[data-theme="light"] .border-slate-900,
 html[data-theme="light"] .border-slate-800,
 html[data-theme="light"] .border-slate-800\/80 {
-  border-color: rgba(15, 23, 42, 0.1) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
 }
 
+/*
+ * Teal text: dark-mode uses teal-300/400 which fail on light bg.
+ * Force deep teal (~#0f5f5a) for body accents, labels, links, icons.
+ */
+html[data-theme="light"] .text-teal-200,
+html[data-theme="light"] .text-teal-300,
+html[data-theme="light"] .text-teal-300\/90,
 html[data-theme="light"] .text-teal-400,
-html[data-theme="light"] .hover\:text-teal-400:hover,
-html[data-theme="light"] .group-hover\:text-teal-400,
-html[data-theme="light"] .group-hover\:text-teal-300 {
-  color: #0d9488 !important;
+html[data-theme="light"] .text-teal-400\/90,
+html[data-theme="light"] .text-teal-400\/80,
+html[data-theme="light"] .text-teal-500,
+html[data-theme="light"] .text-teal-500\/90,
+html[data-theme="light"] [class*="text-teal-2"],
+html[data-theme="light"] [class*="text-teal-3"],
+html[data-theme="light"] [class*="text-teal-4"],
+html[data-theme="light"] [class*="text-teal-5"] {
+  color: var(--accent) !important;
 }
 
-html[data-theme="light"] .text-teal-300 {
-  color: #0f766e !important;
+html[data-theme="light"] .hover\:text-teal-400:hover,
+html[data-theme="light"] .hover\:text-teal-300:hover,
+html[data-theme="light"] a.hover\:text-teal-400:hover,
+html[data-theme="light"] button.hover\:text-teal-400:hover {
+  color: var(--accent-strong) !important;
+}
+
+html[data-theme="light"] .group-hover\:text-teal-400,
+html[data-theme="light"] .group-hover\:text-teal-300,
+html[data-theme="light"] .group:hover .group-hover\:text-teal-400,
+html[data-theme="light"] .group:hover .group-hover\:text-teal-300 {
+  color: var(--accent-strong) !important;
+}
+
+html[data-theme="light"] .fill-teal-400\/20,
+html[data-theme="light"] .fill-teal-400 {
+  fill: rgba(15, 95, 90, 0.25) !important;
+}
+
+html[data-theme="light"] .bg-teal-400,
+html[data-theme="light"] .bg-teal-400.animate-pulse {
+  background-color: var(--accent) !important;
+}
+
+html[data-theme="light"] .bg-teal-500\/10 {
+  background-color: rgba(15, 95, 90, 0.1) !important;
 }
 
 /* Primary solid CTAs: invert white pills to dark slate in light mode */
@@ -324,17 +372,30 @@ html[data-theme="light"] a.bg-white {
 html[data-theme="light"] button.bg-white:hover,
 html[data-theme="light"] a.bg-white:hover,
 html[data-theme="light"] button.hover\:bg-teal-50:hover {
-  background-color: #134e4a !important;
+  background-color: var(--accent-strong) !important;
   color: #f0fdfa !important;
 }
 
 html[data-theme="light"] .bg-teal-500 {
-  background-color: #0d9488 !important;
+  background-color: var(--accent) !important;
   color: #ffffff !important;
 }
 
 html[data-theme="light"] .hover\:bg-teal-400:hover {
-  background-color: #0f766e !important;
+  background-color: var(--accent-strong) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] button.bg-teal-500,
+html[data-theme="light"] a.bg-teal-500 {
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] button.bg-teal-500 .text-slate-950,
+html[data-theme="light"] a.bg-teal-500 .text-slate-950,
+html[data-theme="light"] button.bg-teal-500 svg,
+html[data-theme="light"] a.bg-teal-500 svg {
+  color: #ffffff !important;
 }
 
 html[data-theme="light"] button .text-slate-950,
@@ -373,18 +434,59 @@ html[data-theme="light"] .shadow-white\/5 {
 }
 
 html[data-theme="light"] #theme-toggle {
-  color: #475569;
-  border-color: rgba(15, 23, 42, 0.12);
+  color: #334155;
+  border-color: rgba(15, 23, 42, 0.14);
   background: #ffffff;
 }
 
 html[data-theme="light"] #theme-toggle:hover {
-  color: #0d9488;
-  border-color: rgba(13, 148, 136, 0.35);
-  background: #f0fdfa;
+  color: var(--accent-strong);
+  border-color: var(--accent-soft-border);
+  background: var(--accent-soft-bg);
 }
 
 /* Soften dark ambient blobs in light mode */
 html[data-theme="light"] #app-wrapper > .fixed.rounded-full {
-  opacity: 0.45;
+  opacity: 0.35;
+}
+
+html[data-theme="light"] .text-teal-400 svg,
+html[data-theme="light"] .text-teal-300 svg,
+html[data-theme="light"] [class*="text-teal-"] svg {
+  color: inherit !important;
+}
+
+html[data-theme="light"] .text-teal-200,
+html[data-theme="light"] .bg-teal-500\/10 {
+  color: var(--accent-strong) !important;
+}
+
+html[data-theme="light"] .selection\:text-teal-700,
+html[data-theme="light"] ::selection {
+  color: #134e4a;
+  background: rgba(15, 95, 90, 0.18);
+}
+
+/* Product badge tints (indigo/blue/amber) — avoid pale-on-light */
+html[data-theme="light"] .text-indigo-300,
+html[data-theme="light"] [class*="text-indigo-3"] {
+  color: #3730a3 !important;
+}
+html[data-theme="light"] .text-blue-300,
+html[data-theme="light"] .text-blue-400,
+html[data-theme="light"] [class*="text-blue-3"],
+html[data-theme="light"] [class*="text-blue-4"] {
+  color: #1e40af !important;
+}
+html[data-theme="light"] .text-amber-300,
+html[data-theme="light"] .text-amber-400,
+html[data-theme="light"] [class*="text-amber-3"],
+html[data-theme="light"] [class*="text-amber-4"] {
+  color: #b45309 !important;
+}
+html[data-theme="light"] .text-emerald-300,
+html[data-theme="light"] .text-emerald-400,
+html[data-theme="light"] [class*="text-emerald-3"],
+html[data-theme="light"] [class*="text-emerald-4"] {
+  color: #047857 !important;
 }

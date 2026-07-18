@@ -4,10 +4,13 @@
  */
 
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';
+import BlogBody from '@/components/BlogBody';
 import { BLOG_POSTS, getPostBySlug } from '@/data/blogData';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,6 +26,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: post.excerpt,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      images: [{ url: post.coverImage.src, alt: post.coverImage.alt }],
+      publishedTime: post.date,
+      tags: post.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage.src],
+    },
   };
 }
 
@@ -31,8 +49,40 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    image: [post.coverImage.src],
+    author: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/logo.jpeg`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/blog/${post.slug}`,
+    },
+    keywords: post.tags.join(', '),
+  };
+
   return (
     <article className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-teal-400 hover:text-teal-300 mb-8"
@@ -53,7 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
       <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight mb-4 leading-tight">
         {post.title}
       </h1>
-      <div className="flex items-center gap-4 text-xs text-slate-500 mb-10">
+      <div className="flex items-center gap-4 text-xs text-slate-500 mb-8">
         <span className="inline-flex items-center gap-1.5">
           <Calendar className="w-3.5 h-3.5" />
           {post.date}
@@ -63,38 +113,45 @@ export default async function BlogPostPage({ params }: Props) {
           {post.readMinutes} min read
         </span>
       </div>
-      <div className="space-y-5 text-slate-300 leading-relaxed text-base">
-        {post.body.map((para, i) => {
-          if (para.startsWith('### ')) {
-            return (
-              <h3
-                key={i}
-                className="text-lg font-bold font-display text-white tracking-tight pt-4 !mb-0"
-              >
-                {para.slice(4)}
-              </h3>
-            );
-          }
-          if (para.startsWith('## ')) {
-            return (
-              <h2
-                key={i}
-                className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight pt-6 border-t border-white/5 !mt-8 first:border-0 first:pt-0 first:!mt-0"
-              >
-                {para.slice(3)}
-              </h2>
-            );
-          }
-          if (/^\d+\.\s/.test(para)) {
-            return (
-              <p key={i} className="pl-1 text-slate-300">
-                {para}
-              </p>
-            );
-          }
-          return <p key={i}>{para}</p>;
-        })}
-      </div>
+
+      <figure className="mb-10 overflow-hidden rounded-2xl border border-white/5">
+        <div className="relative aspect-[16/9] w-full bg-slate-900/40">
+          <Image
+            src={post.coverImage.src}
+            alt={post.coverImage.alt}
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 720px"
+          />
+        </div>
+        {(post.coverImage.credit || post.coverImage.alt) && (
+          <figcaption className="px-3 py-2 text-[11px] text-slate-500 font-mono flex flex-wrap gap-x-2 gap-y-1">
+            <span className="sr-only">{post.coverImage.alt}</span>
+            {post.coverImage.credit ? (
+              <span>
+                Photo:{' '}
+                {post.coverImage.creditUrl ? (
+                  <a
+                    href={post.coverImage.creditUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-500/90 hover:underline"
+                  >
+                    {post.coverImage.credit}
+                  </a>
+                ) : (
+                  post.coverImage.credit
+                )}{' '}
+                on Unsplash
+              </span>
+            ) : null}
+          </figcaption>
+        )}
+      </figure>
+
+      <BlogBody body={post.body} />
+
       <div className="mt-12 p-6 rounded-2xl glass-panel">
         <p className="text-sm text-slate-400 mb-4">Want this built for your team?</p>
         <Link
