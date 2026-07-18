@@ -10,9 +10,11 @@ import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { getPostsSorted } from '@/data/blogData';
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: {
+    absolute: 'Blog - Practical Guides for Indian Businesses | Mach100',
+  },
   description:
-    'Practical notes from Mach100 on websites that convert, web apps with login, internal tools, Excel replacement, and workflow automation for Indian businesses.',
+    'Practical guides for Indian businesses: websites that convert, web apps with login, internal tools, Excel replacement, and workflow automation.',
   alternates: { canonical: '/blog' },
 };
 

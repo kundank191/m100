@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Prefer HTML product/blog pages over tools that are secondary
+Disallow: /keywords
+
 Sitemap: https://mach100.in/sitemap.xml

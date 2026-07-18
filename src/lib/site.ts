@@ -10,7 +10,21 @@ export const SITE_DESCRIPTION =
   'Mach100 builds fast, clean websites and custom web tools for Indian SMEs and businesses. Production-ready web apps, internal tools, and operational systems from Bengaluru.';
 
 export const SITE_TITLE_HOME =
-  'Mach100 - Fast, Clean Websites & Custom Web Tools | Bengaluru';
+  'Mach100 - Build Fast, Clean Websites & Custom Web Tools | Bengaluru';
+
+/** BreadcrumbList JSON-LD helper for inner pages */
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.path.startsWith('http') ? item.path : `${SITE_URL}${item.path}`,
+    })),
+  };
+}
 
 export const ORGANIZATION_JSON_LD = {
   '@context': 'https://schema.org',
