@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.svg',
     apple: '/logo-icon.png',
   },
-  // Note: meta keywords omitted — Google ignores them
+  // Note: meta keywords omitted - Google ignores them
   authors: [{ name: 'Mach100 Tech Solutions Private Limited', url: SITE_URL }],
   creator: 'Mach100 Tech Solutions',
   publisher: 'Mach100 Tech Solutions Private Limited',

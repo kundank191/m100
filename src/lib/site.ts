@@ -5,12 +5,11 @@
 
 export const SITE_URL = 'https://mach100.in';
 export const SITE_NAME = 'Mach100 Tech Solutions';
-/** ~155 chars — used in SERP snippet under the blue title */
+/** ~155 chars - used in SERP snippet under the blue title */
 export const SITE_DESCRIPTION =
-  'Mach100 builds fast, clean websites and custom web tools for Indian SMEs and businesses. Production-ready web apps, internal tools, and operational systems from Bengaluru.';
+  'We build agentic AI systems and intelligent tools that run PG management, fleet operations, and custom workflows autonomously. Production-ready operational AI.';
 
-export const SITE_TITLE_HOME =
-  'Mach100 - Build Fast, Clean Websites & Custom Web Tools | Bengaluru';
+export const SITE_TITLE_HOME = 'Mach100 | Agentic AI for Business Operations';
 
 /** BreadcrumbList JSON-LD helper for inner pages */
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
@@ -36,26 +35,30 @@ export const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/logo.jpeg`,
   image: `${SITE_URL}/logo.jpeg`,
   description:
-    'We build fast, clean websites and custom web tools for businesses. Based in Bengaluru, India.',
+    'Mach100 builds agentic AI systems and intelligent operational tools for real businesses. Based in Bengaluru, India.',
   areaServed: [
     { '@type': 'Country', name: 'India' },
     { '@type': 'City', name: 'Bengaluru' },
   ],
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Hosa Road',
     addressLocality: 'Bengaluru',
     addressRegion: 'Karnataka',
+    postalCode: '560100',
     addressCountry: 'IN',
   },
   knowsAbout: [
-    'Business Website Development',
-    'Web Application Development',
-    'Custom Web Tools',
-    'Internal Tools and Dashboards',
+    'Agentic AI',
+    'AI Agents',
+    'Operational AI Systems',
     'Workflow Automation',
     'Fleet Management Software',
     'PG Management Software',
+    'Internal Tools and Dashboards',
+    'Custom Web Applications',
   ],
+
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'contact@mach100.in',
@@ -102,51 +105,55 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
   ],
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Hosa Road',
     addressLocality: 'Bengaluru',
     addressRegion: 'Karnataka',
+    postalCode: '560100',
     addressCountry: 'IN',
   },
   serviceType: [
-    'Custom Software Development',
-    'Business Website Development',
-    'Web Application Development',
+    'Agentic AI Systems',
+    'AI Agents and Workflow Automation',
+    'Intelligent Web Applications',
     'Internal Tools and Dashboards',
-    'Workflow Automation',
     'Fleet Management Software',
     'PG Management Software',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Mach100 software services',
+    name: 'Mach100 agentic AI services',
     itemListElement: [
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Business Websites & Web Apps',
+          name: 'Agentic Operational Systems',
           description:
-            'Clean, fast, SEO-friendly websites and web applications with login and modern features.',
+            'AI agents that handle multi-step business processes end-to-end with minimal human intervention.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Internal Tools & Dashboards',
-          description: 'Custom admin panels, operational dashboards, and team productivity tools.',
+          name: 'Intelligent Web Apps & Dashboards',
+          description:
+            'AI-native applications with embedded agents, payments, WhatsApp automation, and role-based access.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Operational Web Tools',
-          description: 'Custom tools for fleet, logistics, PG management, and similar operations.',
+          name: 'Custom AI Agents & Workflow Automation',
+          description:
+            'Domain-specific agents and orchestration tailored to your operational workflows.',
         },
       },
     ],
   },
 };
+
 
 export const SOFTWARE_APPLICATIONS_JSON_LD = {
   '@context': 'https://schema.org',
@@ -158,7 +165,7 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       operatingSystem: 'Web',
       url: 'https://fleet.mach100.in/',
       description:
-        'Fleet management and driver operations platform for cab operators and logistics teams in India. Invite-only access.',
+        'Agentic fleet and logistics system for cab operators and logistics teams. Intelligent route optimization, automated ledgers, UPI payouts, and anomaly detection. Invite-only access.',
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/LimitedAvailability',
@@ -175,7 +182,7 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       operatingSystem: 'Web',
       url: 'https://pg.mach100.in/',
       description:
-        'PG and co-living property management demo: rent collection, vacancy tracking, and tenant onboarding. No login required for the demo.',
+        'Agentic AI for PG and co-living operators. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Open interactive demo.',
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/InStock',

@@ -8,23 +8,23 @@ import React from 'react';
 const STEPS = [
   {
     n: '01',
-    title: 'Tell us what you need',
-    desc: "Share your requirements — whether it's a website, web app, or internal tool.",
+    title: 'Tell us the operation',
+    desc: 'Share the workflows you want automated or the problems you want agents to solve.',
   },
   {
     n: '02',
-    title: 'We scope it clearly',
-    desc: 'We give you a clear scope, timeline, and cost with no hidden surprises.',
+    title: 'We design the agentic system',
+    desc: 'Clear scope, timeline, and approach - no hidden surprises.',
   },
   {
     n: '03',
-    title: 'We build and share progress',
-    desc: 'We work in short cycles and keep you updated throughout the development.',
+    title: 'We build and show progress',
+    desc: 'Short cycles with regular demos of the actual agents and tools.',
   },
   {
     n: '04',
-    title: 'We test and deliver',
-    desc: 'We thoroughly test everything and deliver production-ready software.',
+    title: 'We deliver production-ready systems',
+    desc: 'Thoroughly tested AI systems ready for real operational use.',
   },
 ];
 
@@ -43,7 +43,7 @@ export default function HowWeWork() {
             How we work
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            A simple and transparent process.
+            A simple, transparent path from your operations problem to working agents.
           </p>
         </div>
 

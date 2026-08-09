@@ -1,9 +1,9 @@
 # Mach100 Tech Solutions
 
-Marketing site for **Mach100 Tech Solutions** — custom software, fleet (MFleet), PG ops (PGPulse), and health tech (GluCare).
+Marketing site for **Mach100 Tech Solutions** - agentic AI systems and intelligent operational tools for PG management, fleet ops (MFleet / PGPulse), custom workflows, and health tech (GluCare).
 
 **Stack:** Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS 4  
-**Deploy:** [Vercel](https://vercel.com) (native Next.js — no SPA rewrites needed)
+**Deploy:** [Vercel](https://vercel.com) (native Next.js - no SPA rewrites needed)
 
 ## Scripts
 
@@ -17,7 +17,7 @@ Marketing site for **Mach100 Tech Solutions** — custom software, fleet (MFleet
 ## Deploy to Vercel
 
 1. Push this repo to GitHub.
-2. Import in Vercel — framework preset **Next.js** is auto-detected.
+2. Import in Vercel - framework preset **Next.js** is auto-detected.
 3. Set environment variables (below).
 4. Deploy.
 
@@ -26,7 +26,7 @@ Framework settings: Build `npm run build`, Output is Next default (not `dist`).
 
 ### Custom domain
 
-Add `mach100.in` in Vercel → Domains.  
+Add `mach100.in` in Vercel -> Domains.  
 `public/sitemap.xml` and `public/robots.txt` already use full production URLs.
 
 ## Environment variables
@@ -73,9 +73,9 @@ Email: [contact@mach100.in](mailto:contact@mach100.in)
 
 | Product | Access |
 |---------|--------|
-| MFleet | Live — request demo/access |
+| MFleet | Live - request demo/access |
 | PGPulse | Public demo: https://pg.mach100.in/ |
-| GluCare | Live — request demo/access |
+| GluCare | Live - request demo/access |
 
 ## License
 

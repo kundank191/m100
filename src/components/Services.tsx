@@ -4,29 +4,29 @@
  */
 
 import React from 'react';
-import { Globe, LayoutDashboard, Workflow, Truck } from 'lucide-react';
+import { Bot, LayoutDashboard, Sparkles, Workflow } from 'lucide-react';
 
 export default function Services() {
   const services = [
     {
-      icon: Globe,
-      title: 'Business Websites & Web Apps',
-      desc: 'Clean, fast, and SEO-friendly websites and web applications with login systems, modern design, and essential features.',
+      icon: Bot,
+      title: 'Agentic Operational Systems',
+      desc: 'AI agents that handle multi-step business processes end-to-end. Rent collection, vacancy decisions, driver payouts, anomaly detection, automated communication, and reporting - with minimal human intervention.',
     },
     {
       icon: LayoutDashboard,
-      title: 'Internal Tools & Dashboards',
-      desc: 'Custom admin panels, operational dashboards, and internal tools that help teams manage work more efficiently.',
+      title: 'Intelligent Web Apps & Dashboards',
+      desc: 'AI-native applications with embedded agents, predictive insights, WhatsApp automation, payments, and role-based access. Built for daily operational use.',
     },
     {
       icon: Workflow,
-      title: 'Workflow Automation',
-      desc: 'Web tools that handle payments, notifications, approvals, reporting, and other repetitive business tasks.',
+      title: 'Custom AI Agents & Workflow Automation',
+      desc: 'Domain-specific agents tailored to your processes. Powered by modern agent frameworks and reliable orchestration so your operations run themselves.',
     },
     {
-      icon: Truck,
-      title: 'Custom Operational Tools',
-      desc: 'Specialized web tools for fleet management, logistics, PG/hostel operations, and similar business workflows.',
+      icon: Sparkles,
+      title: 'AI-Powered Internal Tools',
+      desc: 'Smart admin panels, client portals, and operational systems that make decisions, trigger actions, and keep your team focused on growth instead of manual work.',
     },
   ];
 
@@ -44,14 +44,15 @@ export default function Services() {
               Our Services
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-              What we specialize in
+              What we build
             </h2>
             <div className="h-1.5 w-16 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full mb-6" />
           </div>
           <div className="lg:col-span-7">
             <p className="text-slate-400 text-base leading-relaxed">
-              We help businesses build practical websites and web applications that solve real problems —
-              from public sites to internal tools your team uses every day.
+              We design and ship agentic AI systems that don&apos;t just display data - they act on it. From
+              autonomous rent collection and tenant communication to intelligent fleet operations and custom
+              business workflows.
             </p>
           </div>
         </div>

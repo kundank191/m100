@@ -7,7 +7,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-/** Server Component shell — Navbar/Footer stay client islands. */
+/** Server Component shell - Navbar/Footer stay client islands. */
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div

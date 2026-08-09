@@ -11,10 +11,10 @@ import { getPostsSorted } from '@/data/blogData';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Blog - Practical Guides for Indian Businesses | Mach100',
+    absolute: 'Blog - Operational AI & Business Systems | Mach100',
   },
   description:
-    'Practical guides for Indian businesses: websites that convert, web apps with login, internal tools, Excel replacement, and workflow automation.',
+    'Practical guides on agentic operations, fleet and PG systems, internal tools, Excel replacement, and shipping production AI for Indian businesses.',
   alternates: { canonical: '/blog' },
 };
 
@@ -30,8 +30,8 @@ export default function BlogIndexPage() {
         Blog
       </h1>
       <p className="text-slate-400 text-base max-w-2xl mb-8 sm:mb-10 leading-relaxed">
-        Practical notes on websites that convert, fleet software, PG operations, AI health tools, and shipping
-        MVPs in India.
+        Practical notes on agentic operations, fleet and PG systems, internal tools, and shipping production AI
+        for businesses in India.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.map((item) => (

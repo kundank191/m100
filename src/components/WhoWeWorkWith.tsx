@@ -4,23 +4,23 @@
  */
 
 import React from 'react';
-import { Building2, LayoutDashboard, Rocket } from 'lucide-react';
+import { Building2, Home, Truck } from 'lucide-react';
 
 const AUDIENCES = [
   {
+    icon: Home,
+    title: 'PG & co-living operators',
+    desc: 'Teams that want rent, vacancies, and tenant communication to run with far less manual work.',
+  },
+  {
+    icon: Truck,
+    title: 'Fleet & logistics businesses',
+    desc: 'Cab operators and logistics teams ready for ledgers, payouts, routes, and anomaly detection that act.',
+  },
+  {
     icon: Building2,
-    title: 'Indian SMEs',
-    desc: 'Looking for professional websites and web applications.',
-  },
-  {
-    icon: LayoutDashboard,
-    title: 'Businesses needing tools',
-    desc: 'Teams that need custom internal tools or dashboards.',
-  },
-  {
-    icon: Rocket,
-    title: 'Growing companies',
-    desc: 'Want practical, reliable web tools built quickly.',
+    title: 'SMEs automating internal ops',
+    desc: 'Indian and international businesses that need practical agentic tools for custom workflows.',
   },
 ];
 
@@ -39,7 +39,8 @@ export default function WhoWeWorkWith() {
             Who we work with
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            We mainly work with businesses that need clean, functional web development — without the fluff.
+            We primarily work with Indian SMEs and growing businesses that need operational systems - and with
+            international clients who want production-ready agentic tools.
           </p>
         </div>
 
@@ -59,8 +60,8 @@ export default function WhoWeWorkWith() {
         </div>
 
         <p className="text-center text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
-          We also work with international clients who need clean and functional web development at reasonable
-          costs.
+          If manual work still dominates your operations, an agentic approach may be a fit - we&apos;ll tell you
+          honestly either way.
         </p>
       </div>
     </section>

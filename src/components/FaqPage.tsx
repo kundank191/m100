@@ -22,8 +22,8 @@ export default function FaqPage() {
         Frequently asked questions
       </h1>
       <p className="text-slate-400 text-base mb-8 sm:mb-10 leading-relaxed">
-        Practical answers about websites, web apps, internal tools, our process, examples like PGPulse and
-        MFleet, pricing, and how to reach Mach100 in Bengaluru. Still stuck? Email{' '}
+        Practical answers about agentic AI, PGPulse and MFleet, custom agent systems, our process, pricing, and
+        how to reach Mach100 in Bengaluru. Still stuck? Email{' '}
         <a href="mailto:contact@mach100.in" className="text-teal-400 hover:underline">
           contact@mach100.in
         </a>
@@ -65,13 +65,13 @@ export default function FaqPage() {
           Still have questions? Contact us
         </Link>
         <p className="text-xs text-slate-500">
-          Prefer examples first?{' '}
+          Prefer to explore first?{' '}
           <Link href="/blog" className="text-teal-400 hover:underline">
             Read the blog
           </Link>{' '}
           or{' '}
           <Link href="/#products-section" className="text-teal-400 hover:underline">
-            see what we can build
+            see live products
           </Link>
           .
         </p>

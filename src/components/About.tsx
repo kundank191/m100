@@ -4,28 +4,28 @@
  */
 
 import React from 'react';
-import { Zap, CheckCircle2, MessageSquare, MapPin, Plane, Shield } from 'lucide-react';
+import { Bot, CheckCircle2, Layers, MessageSquare, Plane, Shield, Target } from 'lucide-react';
 
 const POINTS = [
   {
-    icon: Zap,
-    title: 'Fast & Practical Delivery',
-    desc: 'We focus on building things that work well in real use.',
+    icon: Bot,
+    title: 'Real agentic systems',
+    desc: 'Not chatbots bolted onto old tools - agents that plan, act, and complete multi-step operational work.',
+  },
+  {
+    icon: Target,
+    title: 'Operational domain focus',
+    desc: 'Deep focus on PG & co-living, fleet & logistics, and custom internal workflows where manual work still dominates.',
+  },
+  {
+    icon: Layers,
+    title: 'Production quality',
+    desc: 'Clean, maintainable architecture with systems built for real day-to-day use - not demos that fall over.',
   },
   {
     icon: CheckCircle2,
-    title: 'Clean Code & Quality',
-    desc: 'We write reliable code and test properly before delivery.',
-  },
-  {
-    icon: MessageSquare,
-    title: 'Clear Communication',
-    desc: 'We keep the process simple and transparent.',
-  },
-  {
-    icon: MapPin,
-    title: 'Based in Bengaluru',
-    desc: 'A development team focused on building useful websites and web tools.',
+    title: 'Practical delivery',
+    desc: 'Transparent process from first conversation to live deployment. Systems your team will actually use every day.',
   },
 ];
 
@@ -42,14 +42,29 @@ export default function About() {
         <div id="about-headline" className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
           <div className="section-chip mb-4">
             <Plane className="w-3.5 h-3.5 rotate-45 transform shrink-0" />
-            <span>Why Mach100</span>
+            <span>About Mach100</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Why Mach100
+            About Mach100
           </h2>
-          <p className="text-slate-400 text-base leading-relaxed">
-            Practical websites and web tools — delivered with care from Bengaluru.
+          <p className="text-slate-400 text-base leading-relaxed mb-4">
+            Mach100 builds agentic AI systems and intelligent operational tools for real businesses.
           </p>
+          <p className="text-slate-400 text-base leading-relaxed">
+            We focus on domains where manual work still dominates - PG &amp; co-living management, fleet &amp;
+            logistics, and custom internal operations. Our systems don&apos;t just store information. They act:
+            collecting rent, talking to tenants, optimizing routes, processing payouts, detecting issues, and
+            keeping ledgers clean.
+          </p>
+          <p className="text-slate-300 text-sm font-medium mt-5 leading-relaxed">
+            Clean architecture. Clear process. Production systems that actually run day-to-day operations.
+          </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
+          <h3 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight">
+            Why Mach100
+          </h3>
         </div>
 
         <div
@@ -83,7 +98,11 @@ export default function About() {
           </div>
           <div className="section-chip section-chip-muted py-2.5 px-5">
             <Shield className="w-3.5 h-3.5 shrink-0 text-teal-400" />
-            <span className="uppercase tracking-widest font-bold">Privacy-first. Clear process.</span>
+            <span className="uppercase tracking-widest font-bold">Agents that act, not just chat</span>
+          </div>
+          <div className="section-chip section-chip-muted py-2.5 px-5">
+            <MessageSquare className="w-3.5 h-3.5 shrink-0 text-teal-400" />
+            <span className="uppercase tracking-widest font-bold">Clear process end-to-end</span>
           </div>
         </div>
       </div>

@@ -8,67 +8,72 @@ export interface FaqItem {
   answer: string;
 }
 
-/** Aligned with homepage positioning: websites, web apps, internal tools, clear process. */
+/** Aligned with Agentic AI positioning (see task.md). Shown on /faq and FAQPage JSON-LD. */
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What does Mach100 build?',
     answer:
-      'We build fast, clean websites and custom web tools: business websites and web apps (including login, SEO, and payments), internal tools and dashboards, workflow automation, and operational systems such as PG or fleet tools. Based in Bengaluru, India.',
+      'We build agentic AI systems and intelligent operational tools. This includes AI agents that run multi-step workflows for PG and co-living management, fleet and logistics operations, and custom business processes - with minimal human intervention. We also build AI-native web applications, dashboards, and internal tools that act on data instead of only displaying it.',
   },
   {
-    question: 'Who do you work with?',
+    question: 'What is agentic AI?',
     answer:
-      'Mainly Indian SMEs, businesses that need custom internal tools or dashboards, and growing companies that want practical web tools built properly. We also work with international clients who need clean, functional web development at reasonable cost.',
-  },
-  {
-    question: 'How does your process work?',
-    answer:
-      'Four steps: (1) you tell us what you need, (2) we scope timeline and cost clearly, (3) we build in short cycles and share progress, (4) we test thoroughly and deliver production-ready software. No hidden surprises by default.',
-  },
-  {
-    question: 'How long does a project take?',
-    answer:
-      'It depends on scope, integrations (login, payments, WhatsApp, etc.), and how quickly you give feedback. We aim for fast delivery with proper quality — not endless meetings. After a short discovery, we give a clear timeline before work starts.',
+      'Agentic AI goes beyond regular chatbots or generative tools. These systems can plan, use tools, make decisions, and complete multi-step work on their own - for example generating rent invoices, sending WhatsApp reminders, optimizing routes, processing payouts, detecting anomalies, or updating ledgers without constant human input.',
   },
   {
     question: 'What are PGPulse and MFleet?',
     answer:
-      'They are real examples of tools we have built. PGPulse is a PG and co-living operations demo at pg.mach100.in (no login required; demo data stays in your browser). MFleet is a fleet and logistics operations product — live, invite-only; request a demo via the contact form. We also build fully custom tools for your workflows.',
+      'PGPulse is an agentic system for PG and co-living operators. AI agents and automation cover rent collection, payment tracking, vacancy management, tenant onboarding, and WhatsApp-style communication. Open demo: https://pg.mach100.in/. MFleet is an agentic system for cab and logistics fleets with intelligent route optimization, automated ledgers, instant UPI payouts, fuel and trip intelligence, and anomaly detection. MFleet is live and invite-only - request a demo via the contact form.',
   },
   {
-    question: 'Do you only sell products, or can you build something custom for us?',
+    question: 'Do you only sell products, or can you build custom systems?',
     answer:
-      'Both. Our products show the kind of operational web tools we ship. Most client work is custom: websites, web apps, admin dashboards, client portals, reporting tools, and workflow automation tailored to your team.',
+      'Both. We have ready products (PGPulse and MFleet) and we also design fully custom agentic systems and intelligent tools tailored to your specific operations and workflows.',
   },
   {
-    question: 'Can you build a website with login, payments, or a client portal?',
+    question: 'We currently run everything on Excel and WhatsApp. Can you help?',
     answer:
-      'Yes. That is core work for us — secure login, role-based access, dashboards, invoices/payments patterns, and mobile-friendly UX. We plan who logs in and what they do after login before we build.',
+      'Yes. This is one of the most common situations we work with. We help businesses move from spreadsheets and scattered WhatsApp chats into intelligent systems where agents handle the repetitive work (reminders, tracking, reconciliation, notifications) while giving you clean visibility and control.',
   },
   {
-    question: 'We run everything on Excel / WhatsApp. Can you help?',
+    question: 'Can you build systems with login, payments, client portals, or WhatsApp automation?',
     answer:
-      'Yes. Many teams start there. We help replace messy spreadsheets and manual follow-ups with simple internal tools, dashboards, and automated workflows — starting with one painful process, then expanding.',
+      'Yes. Most of our systems include secure login, role-based access, UPI and payment flows, client or tenant portals, and WhatsApp automation when those capabilities are needed.',
+  },
+  {
+    question: 'Who do you work with?',
+    answer:
+      'We primarily work with Indian SMEs and growing businesses that need operational systems - especially in property and PG management, fleet and logistics, and teams automating internal workflows. We also work with international clients who want practical, production-ready agentic tools.',
+  },
+  {
+    question: 'How does your process work?',
+    answer:
+      '1. You tell us the operations or workflows you want automated. 2. We scope the agentic system clearly (timeline, approach, and cost). 3. We build in short cycles and show you live progress. 4. We thoroughly test and deliver production-ready systems.',
+  },
+  {
+    question: 'How long does a project usually take?',
+    answer:
+      'It depends on complexity. Smaller custom tools or enhancements can take a few weeks. Full agentic systems or significant custom builds typically take 4-10 weeks. We always give a clear timeline during scoping.',
   },
   {
     question: 'What is your pricing model?',
     answer:
-      'Custom work is scoped per project (fixed phases or weekly delivery). Product demos and pilots are discussed case by case. We share a clear estimate after discovery — scope and cost up front, not open-ended billing by default.',
+      'We work on clear project-based pricing after understanding the scope. No hidden costs. We provide a transparent quote once requirements are clear. For product demos or pilots, we discuss options case by case.',
   },
   {
-    question: 'What tech stack do you use?',
+    question: 'What tech approach do you use?',
     answer:
-      'Typically React and TypeScript, modern web APIs, Tailwind, and proven auth/database options (for example Supabase) when needed. We choose the stack to fit the problem rather than forcing one framework on every project.',
+      'We build modern, maintainable systems with clean architecture. For agentic capabilities we use reliable orchestration, AI agents, and integration patterns that work with real business tools (WhatsApp, payments, existing data sources). The focus is systems that work reliably in production.',
   },
   {
     question: 'Where is Mach100 based?',
     answer:
-      'Bengaluru, India. We work with clients across India and internationally, with English (and Hindi when useful) on sales contact.',
+      'Bengaluru, India (Hosa Road area, Karnataka). We work with clients across India and internationally. Sales contact is available in English and Hindi.',
   },
   {
     question: 'How do I start a project or request a demo?',
     answer:
-      'Use the contact form on mach100.in or email contact@mach100.in. Choose Website, Web App, Internal Tool, Custom Tool, or a product topic (MFleet / PGPulse). We usually reply within 24 hours.',
+      'Use the contact form on https://mach100.in/ and select the relevant topic (General, PGPulse, MFleet, or Custom Agentic System). You can also email contact@mach100.in. We usually reply within 24 hours.',
   },
   {
     question: 'Is GluCare a medical device?',

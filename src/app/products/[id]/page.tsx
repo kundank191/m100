@@ -19,10 +19,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const product = PRODUCTS.find((p) => p.id === id);
   if (!product) return { title: 'Product not found' };
+  const title = `${product.name} - ${product.tagline}`;
   return {
-    title: product.name,
+    title: {
+      absolute: `${title} | Mach100`,
+    },
     description: product.description,
     alternates: { canonical: `/products/${product.id}` },
+    openGraph: {
+      title,
+      description: product.description,
+      url: `/products/${product.id}`,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: product.description,
+    },
   };
 }
 
@@ -33,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
 
   const crumbs = breadcrumbJsonLd([
     { name: 'Home', path: '/' },
-    { name: 'Examples', path: '/#products-section' },
+    { name: 'Products', path: '/#products-section' },
     { name: product.name, path: `/products/${product.id}` },
   ]);
 

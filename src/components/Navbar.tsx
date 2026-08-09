@@ -37,7 +37,7 @@ export default function Navbar() {
   }, []);
 
   const sectionItems = [
-    { label: 'Examples', id: 'products-section' },
+    { label: 'Products', id: 'products-section' },
     { label: 'Services', id: 'services-section' },
     { label: 'About', id: 'about-section' },
   ];
