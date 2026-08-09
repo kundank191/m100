@@ -47,8 +47,7 @@ export default function Hero() {
           id="hero-subheadline"
           className="text-base sm:text-lg text-slate-300 max-w-2xl xl:max-w-3xl mx-auto mb-4 leading-relaxed"
         >
-          We build intelligent systems and AI agents that run PG management, fleet operations, and custom
-          workflows - autonomously.
+          We build intelligent systems and AI agents that run your business operations and custom workflows—autonomously.
         </p>
         <p className="text-sm sm:text-base text-slate-400 max-w-xl xl:max-w-2xl mx-auto mb-9 leading-relaxed">
           No endless meetings. No fluff. Just working agents.
