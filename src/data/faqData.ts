@@ -8,22 +8,22 @@ export interface FaqItem {
   answer: string;
 }
 
-/** Aligned with Agentic AI positioning (see task.md). */
+/** Aligned with Agentic AI positioning (see task.md). Shown on /faq and FAQPage JSON-LD. */
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What does Mach100 build?',
     answer:
-      'We build agentic AI systems and intelligent operational tools. This includes AI agents that run multi-step workflows for PG & co-living management, fleet & logistics operations, and custom business processes - with minimal human intervention. We also build AI-native web applications, dashboards, and internal tools that actually act on data instead of just displaying it.',
+      'We build agentic AI systems and intelligent operational tools. This includes AI agents that run multi-step workflows for PG and co-living management, fleet and logistics operations, and custom business processes - with minimal human intervention. We also build AI-native web applications, dashboards, and internal tools that act on data instead of only displaying it.',
   },
   {
     question: 'What is agentic AI?',
     answer:
-      'Agentic AI goes beyond regular chatbots or generative tools. These systems can plan, use tools, make decisions, and complete multi-step work on their own - for example, generating rent invoices, sending WhatsApp reminders, optimizing routes, processing payouts, detecting anomalies, or updating ledgers without constant human input.',
+      'Agentic AI goes beyond regular chatbots or generative tools. These systems can plan, use tools, make decisions, and complete multi-step work on their own - for example generating rent invoices, sending WhatsApp reminders, optimizing routes, processing payouts, detecting anomalies, or updating ledgers without constant human input.',
   },
   {
     question: 'What are PGPulse and MFleet?',
     answer:
-      'PGPulse is an agentic system for PG and co-living operators. AI agents handle rent collection, payment tracking, vacancy management, tenant onboarding, and WhatsApp communication. MFleet is an agentic system for cab and logistics fleets. It includes intelligent route optimization, automated ledgers, instant UPI payouts, fuel & trip intelligence, and anomaly detection. Both are live products you can explore or request a demo for.',
+      'PGPulse is an agentic system for PG and co-living operators. AI agents and automation cover rent collection, payment tracking, vacancy management, tenant onboarding, and WhatsApp-style communication. Open demo: https://pg.mach100.in/. MFleet is an agentic system for cab and logistics fleets with intelligent route optimization, automated ledgers, instant UPI payouts, fuel and trip intelligence, and anomaly detection. MFleet is live and invite-only - request a demo via the contact form.',
   },
   {
     question: 'Do you only sell products, or can you build custom systems?',
@@ -38,12 +38,12 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Can you build systems with login, payments, client portals, or WhatsApp automation?',
     answer:
-      'Yes. Most of our systems include secure login, role-based access, UPI/payment flows, client or tenant portals, and WhatsApp automation as standard capabilities when needed.',
+      'Yes. Most of our systems include secure login, role-based access, UPI and payment flows, client or tenant portals, and WhatsApp automation when those capabilities are needed.',
   },
   {
     question: 'Who do you work with?',
     answer:
-      'We primarily work with Indian SMEs and growing businesses that need operational systems - especially in property/PG management, fleet & logistics, and teams looking to automate internal workflows. We also work with international clients who want practical, production-ready agentic tools.',
+      'We primarily work with Indian SMEs and growing businesses that need operational systems - especially in property and PG management, fleet and logistics, and teams automating internal workflows. We also work with international clients who want practical, production-ready agentic tools.',
   },
   {
     question: 'How does your process work?',
@@ -63,21 +63,17 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What tech approach do you use?',
     answer:
-      'We build modern, maintainable systems with clean architecture. For agentic capabilities we use reliable orchestration, AI agents, and integration patterns that work well with real business tools (WhatsApp, payments, existing data sources). The focus is always on systems that work reliably in production.',
+      'We build modern, maintainable systems with clean architecture. For agentic capabilities we use reliable orchestration, AI agents, and integration patterns that work with real business tools (WhatsApp, payments, existing data sources). The focus is systems that work reliably in production.',
   },
   {
     question: 'Where is Mach100 based?',
-    answer: 'Bengaluru, India.',
+    answer:
+      'Bengaluru, India (Hosa Road area, Karnataka). We work with clients across India and internationally. Sales contact is available in English and Hindi.',
   },
   {
     question: 'How do I start a project or request a demo?',
     answer:
-      'Use the contact form on the website and select the relevant topic (General, PGPulse, MFleet, or Custom). You can also email us at contact@mach100.in. We usually reply within 24 hours.',
-  },
-  {
-    question: 'Still have questions?',
-    answer:
-      'Email us at contact@mach100.in or use the contact form. We are happy to discuss your specific operations and whether an agentic approach makes sense.',
+      'Use the contact form on https://mach100.in/ and select the relevant topic (General, PGPulse, MFleet, or Custom Agentic System). You can also email contact@mach100.in. We usually reply within 24 hours.',
   },
   {
     question: 'Is GluCare a medical device?',

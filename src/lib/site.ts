@@ -155,15 +155,6 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
 };
 
 
-/** Shared rating block for SoftwareApplication schema */
-const APP_AGGREGATE_RATING = {
-  '@type': 'AggregateRating' as const,
-  ratingValue: 5,
-  bestRating: 5,
-  worstRating: 1,
-  ratingCount: 1,
-};
-
 export const SOFTWARE_APPLICATIONS_JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -175,7 +166,6 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       url: 'https://fleet.mach100.in/',
       description:
         'Agentic fleet and logistics system for cab operators and logistics teams. Intelligent route optimization, automated ledgers, UPI payouts, and anomaly detection. Invite-only access.',
-
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/LimitedAvailability',
@@ -183,7 +173,6 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
         priceCurrency: 'INR',
         description: 'Request demo or pilot access',
       },
-      aggregateRating: APP_AGGREGATE_RATING,
       provider: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/` },
     },
     {
@@ -194,7 +183,6 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       url: 'https://pg.mach100.in/',
       description:
         'Agentic AI for PG and co-living operators. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Open interactive demo.',
-
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/InStock',
@@ -202,7 +190,6 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
         priceCurrency: 'INR',
         description: 'Open interactive demo',
       },
-      aggregateRating: APP_AGGREGATE_RATING,
       provider: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/` },
     },
     {
@@ -220,7 +207,6 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
         priceCurrency: 'INR',
         description: 'Request pilot access',
       },
-      aggregateRating: APP_AGGREGATE_RATING,
       provider: { '@type': 'Organization', name: SITE_NAME, url: `${SITE_URL}/` },
     },
   ],
