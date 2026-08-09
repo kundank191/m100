@@ -4,7 +4,7 @@
  */
 
 /**
- * Static backdrop only — no canvas / rAF (saves TBT on mid-range phones).
+ * Static backdrop only - no canvas / rAF (saves TBT on mid-range phones).
  * Visual interest comes from CSS grid + one soft glow.
  */
 export default function HeroDecor() {

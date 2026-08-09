@@ -64,7 +64,7 @@ export default function KeywordsPage() {
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Filter keywords…"
+          placeholder="Filter keywords..."
           className="w-full pl-10 pr-3 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-sm text-white focus:outline-none focus:border-teal-500"
         />
       </div>
@@ -151,7 +151,7 @@ export default function KeywordsPage() {
             rows={5}
             value={checkText}
             onChange={(e) => setCheckText(e.target.value)}
-            placeholder="Paste blog intro or service copy…"
+            placeholder="Paste blog intro or service copy..."
             className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-sm text-white focus:outline-none focus:border-teal-500"
           />
         </div>

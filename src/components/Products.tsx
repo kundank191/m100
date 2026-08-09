@@ -6,14 +6,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { ProductDetail } from '@/types';
-import { Truck, Home, ArrowRight, ExternalLink, Zap, Plane, MessageSquare, Wrench, Lock } from 'lucide-react';
+import { Truck, Home, ArrowRight, ExternalLink, Zap, Plane, MessageSquare, Bot, Lock } from 'lucide-react';
 
 interface ProductsProps {
   products: ProductDetail[];
 }
 
 /**
- * Server Component — zero hydration cost for the examples section.
+ * Server Component - zero hydration cost for the products section.
  * Contact prefill via query string: /?topic=mfleet#contact-section
  */
 export default function Products({ products }: ProductsProps) {
@@ -28,13 +28,13 @@ export default function Products({ products }: ProductsProps) {
         <div id="products-header" className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="section-chip mb-4">
             <Plane className="w-3.5 h-3.5 rotate-45 transform shrink-0" />
-            <span>Examples</span>
+            <span>Live Products</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            What we can build
+            Live Products
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            Here are some real examples of the kind of websites and web tools we develop.
+            Agentic systems shipping today - plus custom AI agents tailored to your operations.
           </p>
         </div>
 
@@ -53,22 +53,19 @@ export default function Products({ products }: ProductsProps) {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
-                  PGPulse
+                  PGPulse - Agentic AI for PG &amp; Co-living
                 </h3>
                 <p className="text-xs font-mono text-slate-400 mb-4 font-semibold uppercase tracking-wider">
-                  PG &amp; Co-living Management System
+                  Intelligent operational system
                 </p>
                 <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                  A complete operational web tool for rent collection, vacancy tracking, tenant onboarding, and
-                  WhatsApp communication.
-                </p>
-                <p className="text-xs text-slate-500 leading-relaxed mb-2">
-                  <span className="font-semibold text-slate-400">Best for:</span> PG owners and hostel operators
-                  who want to manage operations digitally.
+                  AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and
+                  WhatsApp communication. Digital ledgers, automated reminders, and smart decision support so
+                  operations run with far less manual effort.
                 </p>
                 <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                  <span className="font-semibold text-slate-400">Features:</span> Digital rent invoices, tenant
-                  records, WhatsApp integration, payment tracking.
+                  <span className="font-semibold text-slate-400">Best for:</span> PG and co-living operators who
+                  want their operations to run themselves.
                 </p>
               </div>
               <div className="pt-2 space-y-2">
@@ -85,7 +82,7 @@ export default function Products({ products }: ProductsProps) {
                       <ExternalLink className="w-4 h-4" aria-hidden="true" />
                     </a>
                     <p className="text-[10px] text-slate-400 text-center leading-relaxed">
-                      No login required — data stays in your browser.
+                      No login required - data stays in your browser.
                     </p>
                   </>
                 )}
@@ -114,22 +111,19 @@ export default function Products({ products }: ProductsProps) {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
-                  MFleet
+                  MFleet - Agentic Fleet &amp; Logistics
                 </h3>
                 <p className="text-xs font-mono text-slate-400 mb-4 font-semibold uppercase tracking-wider">
-                  Fleet &amp; Logistics Operations Tool
+                  AI-powered fleet operations
                 </p>
                 <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                  A web-based system for managing cab fleets and logistics operations, including driver tracking,
-                  fuel logging, payouts, and reporting.
-                </p>
-                <p className="text-xs text-slate-500 leading-relaxed mb-2">
-                  <span className="font-semibold text-slate-400">Best for:</span> Cab operators, fleet owners, and
-                  logistics businesses.
+                  Intelligent route optimization, automated rental ledgers, instant UPI payouts, fuel &amp; trip
+                  intelligence, idle-time detection, and role-based control. Agents surface anomalies and handle
+                  routine decisions so your team focuses on growth.
                 </p>
                 <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                  <span className="font-semibold text-slate-400">Features:</span> Driver management, UPI payouts,
-                  trip records, role-based access.
+                  <span className="font-semibold text-slate-400">Best for:</span> Fleet owners who want lower fuel
+                  waste, faster payouts, and less manual coordination.
                 </p>
               </div>
               <div className="pt-2 space-y-2">
@@ -158,26 +152,26 @@ export default function Products({ products }: ProductsProps) {
           >
             <div>
               <div className="flex items-center justify-between mb-6">
-                <Wrench className="w-7 h-7 text-teal-400" aria-hidden="true" />
+                <Bot className="w-7 h-7 text-teal-400" aria-hidden="true" />
                 <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-teal-500/10 text-[10px] font-mono text-teal-300 border border-teal-500/25">
                   <span>Custom build</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
-                Custom Web Tools &amp; Internal Tools
+                Custom Agentic Systems
               </h3>
               <p className="text-xs font-mono text-slate-400 mb-4 font-semibold uppercase tracking-wider">
-                Tailored for your business
+                Tailored AI agents for your workflows
               </p>
               <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                We build tailored web applications and internal tools such as:
+                We build tailored AI agents and intelligent tools for your specific workflows - admin dashboards,
+                client portals, internal automation, and domain-specific operational systems.
               </p>
               <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed mb-6">
-                <li>Admin dashboards</li>
-                <li>Client portals</li>
-                <li>Workflow automation systems</li>
-                <li>Custom reporting tools</li>
-                <li>Business web apps with login and payments</li>
+                <li>Domain-specific AI agents</li>
+                <li>Admin dashboards &amp; client portals</li>
+                <li>Internal workflow automation</li>
+                <li>Operational decision support</li>
               </ul>
             </div>
             <div className="pt-2">
@@ -203,8 +197,8 @@ export default function Products({ products }: ProductsProps) {
             <div>
               <h3 className="text-lg font-bold font-display text-white">Need something different?</h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-                Tell us what you need — a business website, custom web app, or internal tool. We will scope it
-                clearly and build it properly.
+                Tell us the operations you want agents to run - we will scope an agentic system clearly and build
+                it for production use.
               </p>
             </div>
           </div>

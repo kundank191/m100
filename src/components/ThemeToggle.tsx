@@ -17,7 +17,7 @@ interface ThemeToggleProps {
 export default function ThemeToggle({ className = '', id = 'theme-toggle' }: ThemeToggleProps) {
   const { isDark, toggleTheme, mounted } = useTheme();
 
-  // Until mounted, render a stable placeholder that matches SSR (light → Moon).
+  // Until mounted, render a stable placeholder that matches SSR (light -> Moon).
   // After mount, show the real icon for the stored preference.
   const showDark = mounted ? isDark : false;
 

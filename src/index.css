@@ -148,7 +148,7 @@ body {
 /* WCAG: slate-500/600 on dark page fails for small text (~3.9:1). Bump to slate-400. */
 html[data-theme="dark"] .text-slate-500,
 html[data-theme="dark"] .text-slate-600 {
-  color: #94a3b8; /* slate-400 ≈ 4.6:1 on #070b14 */
+  color: #94a3b8; /* slate-400 ~ 4.6:1 on #070b14 */
 }
 
 /* Prefer slightly larger micro-labels for readability */
@@ -497,7 +497,7 @@ html[data-theme="light"] ::selection {
   background: rgba(15, 95, 90, 0.18);
 }
 
-/* Product badge tints (indigo/blue/amber) — avoid pale-on-light */
+/* Product badge tints (indigo/blue/amber) - avoid pale-on-light */
 html[data-theme="light"] .text-indigo-300,
 html[data-theme="light"] [class*="text-indigo-3"] {
   color: #3730a3 !important;

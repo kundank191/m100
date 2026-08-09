@@ -24,7 +24,7 @@ const FORMSPREE_ENDPOINT =
 
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
-const DEFAULT_SUBJECT = 'Website';
+const DEFAULT_SUBJECT = 'General';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ export default function Contact() {
         subject: prefill.subject,
         message: prefill.message?.trim() ? prefill.message : prev.message,
       }));
-      setPrefillNote(`Topic set to “${prefill.subject}”. Edit anything below before sending.`);
+      setPrefillNote(`Topic set to "${prefill.subject}". Edit anything below before sending.`);
       clearContactPrefill();
     };
 
@@ -142,11 +142,11 @@ export default function Contact() {
             Get in Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Let&apos;s build your next website or web tool
+            Let&apos;s put agents to work on your operations
           </h2>
           <p className="text-slate-400 text-base leading-relaxed mb-4">
-            Whether you need a business website, a custom web application, or an internal tool, tell us what
-            you&apos;re looking for.
+            Whether you want a demo of PGPulse or MFleet, or a custom agentic system for your workflows, tell us
+            what operations you need automated.
           </p>
           <p className="inline-flex items-center gap-2 text-sm text-teal-300/90 font-medium">
             <Clock className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -181,8 +181,8 @@ export default function Contact() {
               <div className="rounded-xl border border-white/5 bg-slate-950/40 p-4 space-y-2">
                 <p className="text-xs font-semibold text-slate-200">What to include</p>
                 <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed">
-                  <li>What you want built (website, app, or internal tool)</li>
-                  <li>Who will use it</li>
+                  <li>Which operations or workflows you want agents to run</li>
+                  <li>Who will use the system</li>
                   <li>Any rough timeline</li>
                 </ul>
               </div>
@@ -286,12 +286,11 @@ export default function Contact() {
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-slate-300 focus:outline-none focus:border-teal-500 font-sans"
                     disabled={submitState === 'loading'}
                   >
-                    <option value="Website">Website</option>
-                    <option value="Web App">Web App</option>
-                    <option value="Internal Tool">Internal Tool</option>
-                    <option value="Custom Tool">Custom Tool</option>
+                    <option value="General">General</option>
+                    <option value="Custom Agentic System">Custom Agentic System</option>
                     <option value="MFleet Demo / Access">MFleet: Request Demo</option>
                     <option value="PGPulse Demo / Access">PGPulse: Demo / Setup</option>
+                    <option value="Internal Tool">AI-Powered Internal Tool</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -325,7 +324,7 @@ export default function Contact() {
                   {submitState === 'loading' ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending…</span>
+                      <span>Sending...</span>
                     </>
                   ) : (
                     <>

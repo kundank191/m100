@@ -16,7 +16,7 @@ const DEFAULT_THEME: Theme = 'light';
 interface ThemeContextValue {
   theme: Theme;
   isDark: boolean;
-  /** False until after mount — avoid theme-dependent UI during hydration */
+  /** False until after mount - avoid theme-dependent UI during hydration */
   mounted: boolean;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;

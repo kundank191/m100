@@ -48,7 +48,7 @@ export const PRODUCT_CONTACT_SUBJECT: Record<string, string> = {
   mfleet: 'MFleet Demo / Access',
   pgpulse: 'PGPulse Demo / Access',
   glucare: 'GluCare Demo / Access',
-  custom: 'Custom Tool',
+  custom: 'Custom Agentic System',
 };
 
 export function prefillForProduct(productId: string): ContactPrefill {
@@ -57,7 +57,7 @@ export function prefillForProduct(productId: string): ContactPrefill {
     return {
       subject,
       message:
-        'Hi, I would like to discuss a custom web tool or internal application.\n\nWhat we need:\nWho will use it:\n',
+        'Hi, I would like to discuss a custom agentic system or intelligent operational tool.\n\nOperations to automate:\nWho will use it:\n',
     };
   }
   const names: Record<string, string> = {

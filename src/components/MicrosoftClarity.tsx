@@ -15,7 +15,7 @@ const CLARITY_ID = (
 ).trim();
 
 /**
- * Official Clarity install — delayed until after load so LCP is not blocked.
+ * Official Clarity install - delayed until after load so LCP is not blocked.
  * collect XHR 204 still works; setup may take a few minutes to show data.
  */
 export default function MicrosoftClarity() {

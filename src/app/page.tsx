@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * Contact is the only heavy client section — load after first paint.
+ * Contact is the only heavy client section - load after first paint.
  * Everything above is Server Components (no hydration).
  */
 const Contact = dynamic(() => import('@/components/Contact'), {
@@ -60,7 +60,7 @@ export default function HomePage() {
       <HowWeWork />
       <About />
 
-      {/* Internal links for SEO — latest guides */}
+      {/* Internal links for SEO - latest guides */}
       <section
         id="home-blog-teaser"
         className="py-14 sm:py-16 border-t border-white/5 bg-[#070b14]"
@@ -76,14 +76,14 @@ export default function HomePage() {
                 id="home-blog-heading"
                 className="text-2xl sm:text-3xl font-bold font-display text-white tracking-tight"
               >
-                Guides for Indian businesses
+                Guides for operational teams
               </h2>
             </div>
             <Link
               href="/blog"
               className="text-sm font-semibold text-teal-400 hover:text-teal-300 shrink-0"
             >
-              View all posts →
+              View all posts
             </Link>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -94,7 +94,7 @@ export default function HomePage() {
                   className="block h-full rounded-2xl glass-panel glass-panel-hover p-5 sm:p-6"
                 >
                   <p className="text-[10px] font-mono text-teal-400 mb-2">
-                    {post.tags.slice(0, 2).join(' · ')}
+                    {post.tags.slice(0, 2).join(' | ')}
                   </p>
                   <h3 className="text-base font-bold font-display text-white mb-2 leading-snug">
                     {post.title}

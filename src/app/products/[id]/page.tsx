@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: Props) {
 
   const crumbs = breadcrumbJsonLd([
     { name: 'Home', path: '/' },
-    { name: 'Examples', path: '/#products-section' },
+    { name: 'Products', path: '/#products-section' },
     { name: product.name, path: `/products/${product.id}` },
   ]);
 

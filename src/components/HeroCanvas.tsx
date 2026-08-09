@@ -8,7 +8,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
-/** Particle network — mounted only after idle so it does not hurt LCP. */
+/** Particle network - mounted only after idle so it does not hurt LCP. */
 export default function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { isDark } = useTheme();
