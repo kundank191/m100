@@ -7,9 +7,9 @@ export const SITE_URL = 'https://mach100.in';
 export const SITE_NAME = 'Mach100 Tech Solutions';
 /** ~155 chars - used in SERP snippet under the blue title */
 export const SITE_DESCRIPTION =
-  'Autonomous AI agents for operations, plus data-driven growth marketing that scales customers. Ex-DoorDash leadership. UK, US, and India.';
+  'We engineer acquisition funnels that bring in customers, and autonomous AI agents that qualify leads, collect payments, and run daily workflows.';
 
-export const SITE_TITLE_HOME = 'Mach100 | Agentic AI for Operations and Growth';
+export const SITE_TITLE_HOME = 'Mach100 | More Customers. Zero Manual Operations';
 
 /** BreadcrumbList JSON-LD helper for inner pages */
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {

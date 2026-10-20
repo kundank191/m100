@@ -37,10 +37,10 @@ export default function Navbar() {
   }, []);
 
   const sectionItems = [
-    { label: 'Growth Engine', id: 'growth' },
-    { label: 'AI Operations', id: 'operations' },
-    { label: 'Live Products', id: 'products' },
-    { label: 'Track Record', id: 'proof' },
+    { label: 'Services', id: 'services' },
+    { label: 'Products', id: 'products' },
+    { label: 'Case Studies', id: 'proof' },
+    { label: 'About', id: 'about' },
   ];
 
   const handleSectionClick = useCallback(
@@ -98,7 +98,7 @@ export default function Navbar() {
                 onClick={() => handleSectionClick('contact')}
                 className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 transition-colors duration-150 shadow-md shadow-white/5 cursor-pointer"
               >
-                Book an Audit
+                Book an audit
               </button>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default function Navbar() {
               onClick={() => handleSectionClick('contact')}
               className="w-full py-3 rounded-lg bg-gradient-to-r from-teal-500 to-teal-700 text-slate-950 text-sm font-semibold text-center hover:from-teal-400 hover:to-teal-600 transition-colors"
             >
-              Book an Audit
+              Book an audit
             </button>
           </div>
         </div>

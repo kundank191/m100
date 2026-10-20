@@ -6,7 +6,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2, Clock } from 'lucide-react';
+import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '@/components/GoogleAnalytics';
 import {
   clearContactPrefill,
@@ -95,7 +95,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email) {
       setError('Please fill in all mandatory fields.');
       return;
     }
@@ -162,19 +162,11 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="contact-header" className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
-          <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
-            Get in Touch
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Let&apos;s Scale Your Acquisition &amp; Put AI Agents to Work on Your Operations
+            Book an audit
           </h2>
-          <p className="text-slate-400 text-base leading-relaxed mb-4">
-            Whether you want to scale your leads and orders via data-driven marketing, test a demo of PGPulse or
-            MFleet, or build a custom agentic system, tell us what you want to achieve. We reply within 24 hours.
-          </p>
-          <p className="inline-flex items-center gap-2 text-sm text-teal-300/90 font-medium">
-            <Clock className="w-4 h-4 shrink-0" aria-hidden="true" />
-            We usually reply within 24 hours.
+          <p className="text-slate-400 text-base leading-relaxed">
+            Tell us what you want to grow or automate. We reply within 24 hours.
           </p>
         </div>
 
@@ -298,16 +290,16 @@ export default function Contact() {
                     htmlFor="contact-company"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    Company / Website URL
+                    Website URL
                   </label>
                   <input
                     id="contact-company"
                     type="text"
-                    name="company"
+                    name="website"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
-                    placeholder="Company name or https://"
+                    placeholder="https://"
                     disabled={submitState === 'loading'}
                     autoComplete="organization"
                   />
@@ -318,7 +310,7 @@ export default function Contact() {
                     htmlFor="contact-topic"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    What do you want to build or scale?
+                    Primary Goal
                   </label>
                   <select
                     id="contact-topic"
@@ -344,12 +336,11 @@ export default function Contact() {
                     htmlFor="contact-message"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    Message / Goals *
+                    Message / Brief Notes
                   </label>
                   <textarea
                     id="contact-message"
                     name="message"
-                    required
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -372,7 +363,7 @@ export default function Contact() {
                     </>
                   ) : (
                     <>
-                      <span>Send Message &amp; Request Audit</span>
+                      <span>Book an audit</span>
                       <ArrowRight className="w-4 h-4 text-slate-950" />
                     </>
                   )}

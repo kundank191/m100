@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import Link from 'next/link';
 import { Shield } from 'lucide-react';
 import Logo from '@/components/Logo';
 
@@ -22,95 +21,45 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-4">
             <Logo />
             <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
-              Mach100 builds agentic AI operational systems and data-driven growth engines for real businesses.
-              Built by Ex-DoorDash &amp; Mylo engineering leadership.
+              More customers. Zero manual operations.
             </p>
             <div className="flex items-center gap-2 text-[11px] font-mono text-slate-300">
               <Shield className="w-3.5 h-3.5 text-teal-400 shrink-0" aria-hidden="true" />
-              <span>Agents that act. Marketing that converts. Production systems that last.</span>
+              <a href="mailto:contact@mach100.in" className="hover:text-teal-400 transition-colors">
+                contact@mach100.in
+              </a>
             </div>
           </div>
 
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Solutions</h4>
-            <ul className="space-y-2 text-xs">
+          <div className="md:col-span-2 space-y-3">
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Links</h4>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
               <li>
-                <a href="/#growth" className="hover:text-teal-400 transition-colors">
-                  Growth Marketing &amp; CRO
+                <a href="/#services" className="hover:text-teal-400 transition-colors">
+                  Services
                 </a>
               </li>
               <li>
-                <a href="/#growth" className="hover:text-teal-400 transition-colors">
-                  AI Lead Conversion Agents
+                <a href="/#products" className="hover:text-teal-400 transition-colors">
+                  Products
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://pg.mach100.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  PGPulse (Open Demo)
-                </a>
-              </li>
-              <li>
-                <a href="/?topic=mfleet#contact" className="hover:text-teal-400 transition-colors">
-                  MFleet (Request Access)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://glucare.mach100.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  GluCare (Invite-Only)
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Company</h4>
-            <ul className="space-y-2 text-xs">
               <li>
                 <a href="/#proof" className="hover:text-teal-400 transition-colors">
-                  Track Record
+                  Case Studies
                 </a>
               </li>
               <li>
                 <a href="/#about" className="hover:text-teal-400 transition-colors">
-                  Why Mach100
-                </a>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-teal-400 transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-teal-400 transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <a href="mailto:contact@mach100.in" className="hover:text-teal-400 transition-colors">
-                  Contact: contact@mach100.in
+                  About
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>
-            <span>
-              (c) {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved. | Bengaluru, India |
-              Serving clients across the UK, US &amp; India
-            </span>
-          </div>
+        <div className="border-t border-white/5 pt-8 text-xs text-slate-400">
+          <span>(c) {currentYear} Mach100 Tech Solutions Private Limited. All rights reserved.</span>
         </div>
       </div>
     </footer>

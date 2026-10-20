@@ -10,33 +10,34 @@ const WAYS = [
   {
     id: 'growth',
     n: '01',
-    title: 'Performance Growth & Conversion (CRO)',
-    summary: 'Scale customer acquisition without burning cash on broken funnels.',
-    build: 'High-ROAS Meta/Google ad engines, heatmap conversion audits, and rapid A/B testing frameworks.',
+    title: 'Customer Acquisition & Conversion (CRO)',
+    summary: 'Scale customer acquisition without wasting spend on broken funnels.',
+    build:
+      'High-ROAS Google and Meta ad campaigns, interactive web calculators, search visibility, and heatmap-driven A/B tests to lift checkout conversions.',
     bestFor: 'Businesses looking to scale leads and orders predictably.',
-    cta: 'Explore Growth Engine',
+    cta: 'Explore growth systems',
     href: '/?topic=growth#contact',
   },
   {
     id: 'operations',
     n: '02',
-    title: '24/7 AI Speed-to-Lead Agents',
-    summary: 'Never let an inbound buyer wait hours for a response.',
+    title: '24/7 AI Lead & Speed-to-Lead Agents',
+    summary: 'Engage every prospect the second they show interest.',
     build:
-      'Autonomous WhatsApp and Web agents that engage prospects within 15 seconds, qualify budget, and book appointments directly.',
-    bestFor: 'Service companies, clinics, and high-ticket B2B looking to double conversion rates.',
-    cta: 'Explore AI Agents',
+      'Autonomous Web and WhatsApp agents that answer questions within 15 seconds, qualify buyer budgets, and book meetings directly into your calendar.',
+    bestFor: 'High-ticket services, clinics, and B2B teams losing leads to slow follow-ups.',
+    cta: 'Explore AI agents',
     href: '/?topic=growth-agent#contact',
   },
   {
     id: 'live-ops',
     n: '03',
     title: 'Autonomous Operational Systems',
-    summary: 'Eliminate repetitive manual Excel, invoice, and WhatsApp chaos.',
+    summary: 'Stop running core operations on manual spreadsheets and chat threads.',
     build:
-      'Production platforms like PGPulse (for property/co-living) and MFleet (for fleet ledgers & payouts), plus custom internal workflow agents.',
-    bestFor: 'Operators who want rent runs, payouts, and dispatching to run themselves.',
-    cta: 'Explore Live Products',
+      'Autonomous platforms like PGPulse (for property/co-living) and MFleet (for driver ledgers & payouts), plus custom agents for repetitive workflows.',
+    bestFor: 'Operators who want rent runs, driver ledgers, and billing to run themselves.',
+    cta: 'Explore operational systems',
     href: '#products',
   },
 ];
@@ -56,7 +57,7 @@ export default function Services() {
             Services
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-            3 Ways to Work Together
+            3 ways to work together
           </h2>
         </div>
 

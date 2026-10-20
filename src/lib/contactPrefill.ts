@@ -45,13 +45,9 @@ export function clearContactPrefill(): void {
 }
 
 export const CONTACT_TOPICS = [
-  'Growth Marketing, Ads, SEO & Conversion (Scale Leads/Orders)',
-  'Growth + AI Lead Conversion Agent (Full Funnel Bundle)',
-  'Custom Agentic AI System / Workflow Automation',
-  'PGPulse: Property / HMO / Co-Living Automation Demo',
-  'MFleet: Fleet & Logistics Operations Demo',
-  'AI-Powered Internal Tool / Recommendation Engine',
-  'Other',
+  'Get more customers (Ads, SEO, CRO)',
+  'Automate manual operations (AI Agents & Workflows)',
+  'Both',
 ] as const;
 
 export const DEFAULT_CONTACT_SUBJECT = CONTACT_TOPICS[0];
@@ -59,16 +55,16 @@ export const DEFAULT_CONTACT_SUBJECT = CONTACT_TOPICS[0];
 export const PRODUCT_CONTACT_SUBJECT: Record<string, string> = {
   growth: CONTACT_TOPICS[0],
   'growth-agent': CONTACT_TOPICS[1],
-  custom: CONTACT_TOPICS[2],
-  pgpulse: CONTACT_TOPICS[3],
-  mfleet: CONTACT_TOPICS[4],
-  internal: CONTACT_TOPICS[5],
-  glucare: CONTACT_TOPICS[6],
-  other: CONTACT_TOPICS[6],
+  custom: CONTACT_TOPICS[1],
+  pgpulse: CONTACT_TOPICS[1],
+  mfleet: CONTACT_TOPICS[1],
+  internal: CONTACT_TOPICS[1],
+  glucare: CONTACT_TOPICS[2],
+  other: CONTACT_TOPICS[2],
 };
 
 export function prefillForProduct(productId: string): ContactPrefill {
-  const subject = PRODUCT_CONTACT_SUBJECT[productId] ?? CONTACT_TOPICS[6];
+  const subject = PRODUCT_CONTACT_SUBJECT[productId] ?? CONTACT_TOPICS[2];
   if (productId === 'growth' || productId === 'growth-agent') {
     return {
       subject,

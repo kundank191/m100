@@ -8,19 +8,19 @@ import HeroCTAs from '@/components/HeroCTAs';
 const STATS = [
   {
     stat: '50x',
-    label: 'Daily orders scaled (20 -> 1,000+ at Mylo)',
+    label: 'Daily order scale (20 -> 1,000+ orders/day)',
   },
   {
     stat: '250K',
-    label: 'Daily active users scaled via recommendation engines',
+    label: 'Daily active users scaled via recommendation systems',
   },
   {
-    stat: 'Enterprise AI',
-    label: 'AI workflows & finance data pipelines at DoorDash',
+    stat: 'Enterprise',
+    label: 'AI automation & finance data infrastructure at DoorDash',
   },
   {
-    stat: '100% Autonomous',
-    label: 'Multi-step agentic systems (PGPulse & MFleet)',
+    stat: 'Autonomous',
+    label: 'Live production agents shipping today',
   },
 ];
 
@@ -49,22 +49,23 @@ export default function Hero() {
           id="hero-eyebrow"
           className="text-[11px] sm:text-xs font-mono font-semibold tracking-[0.14em] uppercase text-teal-400/90 mb-5"
         >
-          Growth Marketing &amp; Agentic AI Systems
+          For Growing Businesses
         </p>
 
         <h1
           id="hero-heading"
-          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-white leading-[1.15] mb-5 max-w-4xl mx-auto"
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-sans tracking-tight text-white leading-[1.08] mb-5"
         >
-          We Engineer Customer Growth &amp; Autonomous AI Agents.
+          More Customers.
+          <span className="block">Zero Manual Operations.</span>
         </h1>
 
         <p
           id="hero-subheadline"
-          className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-9 leading-relaxed"
+          className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-9 leading-relaxed font-normal"
         >
-          We scale customer acquisition through data-driven marketing - then deploy autonomous AI agents that run
-          your operations. Built by Ex-DoorDash AI engineering leadership who scaled commerce engines 50x.
+          We engineer high-converting acquisition funnels to bring in customers, and deploy autonomous AI agents to
+          qualify leads, collect payments, and run your daily workflows.
         </p>
 
         <HeroCTAs />
