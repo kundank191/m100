@@ -11,6 +11,8 @@ import { trackEvent } from '@/components/GoogleAnalytics';
 import {
   clearContactPrefill,
   CONTACT_PREFILL_EVENT,
+  CONTACT_TOPICS,
+  DEFAULT_CONTACT_SUBJECT,
   prefillFromUrlTopic,
   readContactPrefill,
   type ContactPrefill,
@@ -24,15 +26,35 @@ const FORMSPREE_ENDPOINT =
 
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
-const DEFAULT_SUBJECT = 'General';
+type ContactFormState = {
+  name: string;
+  email: string;
+  company: string;
+  subject: string;
+  message: string;
+};
+
+const EMPTY_FORM: ContactFormState = {
+  name: '',
+  email: '',
+  company: '',
+  subject: DEFAULT_CONTACT_SUBJECT,
+  message: '',
+};
+
+function isEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+function isEmailOrPhone(value: string) {
+  const v = value.trim();
+  if (isEmail(v)) return true;
+  const digits = v.replace(/\D/g, '');
+  return digits.length >= 8 && digits.length <= 15 && /^[+\d\s().-]+$/.test(v);
+}
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: DEFAULT_SUBJECT,
-    message: '',
-  });
+  const [formData, setFormData] = useState(EMPTY_FORM);
   const [prefillNote, setPrefillNote] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
@@ -48,7 +70,7 @@ export default function Contact() {
       clearContactPrefill();
     };
 
-    // Prefer URL topic from server-rendered CTAs: /?topic=mfleet#contact-section
+    // Prefer URL topic from server-rendered CTAs: /?topic=growth#contact
     try {
       const params = new URLSearchParams(window.location.search);
       const fromUrl = prefillFromUrlTopic(params.get('topic'));
@@ -77,6 +99,10 @@ export default function Contact() {
       setError('Please fill in all mandatory fields.');
       return;
     }
+    if (!isEmailOrPhone(formData.email)) {
+      setError('Enter a work email or a WhatsApp number.');
+      return;
+    }
 
     setError('');
 
@@ -99,8 +125,10 @@ export default function Contact() {
         },
         body: JSON.stringify({
           name: formData.name,
-          email: formData.email,
-          _replyto: formData.email,
+          email: isEmail(formData.email) ? formData.email.trim() : CONTACT_EMAIL,
+          _replyto: isEmail(formData.email) ? formData.email.trim() : undefined,
+          contact: formData.email.trim(),
+          company: formData.company.trim(),
           subject: formData.subject,
           message: formData.message,
           _subject: `[Mach100 Inquiry] ${formData.subject}`,
@@ -116,12 +144,7 @@ export default function Contact() {
         method: 'contact_form',
         topic: formData.subject,
       });
-      setFormData({
-        name: '',
-        email: '',
-        subject: DEFAULT_SUBJECT,
-        message: '',
-      });
+      setFormData(EMPTY_FORM);
       setPrefillNote(null);
     } catch {
       setSubmitState('error');
@@ -131,9 +154,10 @@ export default function Contact() {
 
   return (
     <section
-      id="contact-section"
+      id="contact"
       className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14] border-t border-slate-900"
     >
+      <div id="contact-section" className="absolute top-0 left-0" aria-hidden="true" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] ambient-glow-blue opacity-25 -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,11 +166,11 @@ export default function Contact() {
             Get in Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
-            Let&apos;s put agents to work on your operations
+            Let&apos;s Scale Your Acquisition &amp; Put AI Agents to Work on Your Operations
           </h2>
           <p className="text-slate-400 text-base leading-relaxed mb-4">
-            Whether you want a demo of PGPulse or MFleet, or a custom agentic system for your workflows, tell us
-            what operations you need automated.
+            Whether you want to scale your leads and orders via data-driven marketing, test a demo of PGPulse or
+            MFleet, or build a custom agentic system, tell us what you want to achieve. We reply within 24 hours.
           </p>
           <p className="inline-flex items-center gap-2 text-sm text-teal-300/90 font-medium">
             <Clock className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -181,9 +205,9 @@ export default function Contact() {
               <div className="rounded-xl border border-white/5 bg-slate-950/40 p-4 space-y-2">
                 <p className="text-xs font-semibold text-slate-200">What to include</p>
                 <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed">
-                  <li>Which operations or workflows you want agents to run</li>
-                  <li>Who will use the system</li>
-                  <li>Any rough timeline</li>
+                  <li>Whether you want Customer Growth/Marketing, Operational AI Agents, or Both</li>
+                  <li>Your current website or workflow bottleneck</li>
+                  <li>Your rough timeline</li>
                 </ul>
               </div>
             </div>
@@ -251,21 +275,42 @@ export default function Contact() {
                       htmlFor="contact-email"
                       className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                     >
-                      Email Address *
+                      Work Email / WhatsApp Number *
                     </label>
                     <input
                       id="contact-email"
-                      type="email"
+                      type="text"
                       name="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
-                      placeholder="you@company.com"
+                      placeholder="you@company.com or +44..."
                       disabled={submitState === 'loading'}
                       autoComplete="email"
+                      inputMode="email"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-company"
+                    className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
+                  >
+                    Company / Website URL
+                  </label>
+                  <input
+                    id="contact-company"
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
+                    placeholder="Company name or https://"
+                    disabled={submitState === 'loading'}
+                    autoComplete="organization"
+                  />
                 </div>
 
                 <div>
@@ -273,7 +318,7 @@ export default function Contact() {
                     htmlFor="contact-topic"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    What do you want to build?
+                    What do you want to build or scale?
                   </label>
                   <select
                     id="contact-topic"
@@ -286,12 +331,11 @@ export default function Contact() {
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3 py-2.5 text-sm text-slate-300 focus:outline-none focus:border-teal-500 font-sans"
                     disabled={submitState === 'loading'}
                   >
-                    <option value="General">General</option>
-                    <option value="Custom Agentic System">Custom Agentic System</option>
-                    <option value="MFleet Demo / Access">MFleet: Request Demo</option>
-                    <option value="PGPulse Demo / Access">PGPulse: Demo / Setup</option>
-                    <option value="Internal Tool">AI-Powered Internal Tool</option>
-                    <option value="Other">Other</option>
+                    {CONTACT_TOPICS.map((topicOption) => (
+                      <option key={topicOption} value={topicOption}>
+                        {topicOption}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -300,7 +344,7 @@ export default function Contact() {
                     htmlFor="contact-message"
                     className="block text-[10px] font-mono text-slate-400 uppercase mb-1.5 font-bold"
                   >
-                    Message / Requirements *
+                    Message / Goals *
                   </label>
                   <textarea
                     id="contact-message"
@@ -310,7 +354,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full bg-slate-950 border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 font-sans"
-                    placeholder="Describe what you need, who will use it, and any timeline..."
+                    placeholder="Tell us about your business, current monthly orders/leads, or the manual workflows you want to automate..."
                     disabled={submitState === 'loading'}
                   />
                 </div>
@@ -328,14 +372,14 @@ export default function Contact() {
                     </>
                   ) : (
                     <>
-                      <span>Send Message</span>
+                      <span>Send Message &amp; Request Audit</span>
                       <ArrowRight className="w-4 h-4 text-slate-950" />
                     </>
                   )}
                 </button>
 
                 <p className="text-[10px] text-slate-500 text-center leading-relaxed">
-                  Submissions go to {CONTACT_EMAIL}. We never share your details. Privacy-first.
+                  Submissions go directly to {CONTACT_EMAIL}. We never share your details. Privacy-first.
                 </p>
               </form>
             )}

@@ -44,20 +44,43 @@ export function clearContactPrefill(): void {
   }
 }
 
+export const CONTACT_TOPICS = [
+  'Growth Marketing, Ads, SEO & Conversion (Scale Leads/Orders)',
+  'Growth + AI Lead Conversion Agent (Full Funnel Bundle)',
+  'Custom Agentic AI System / Workflow Automation',
+  'PGPulse: Property / HMO / Co-Living Automation Demo',
+  'MFleet: Fleet & Logistics Operations Demo',
+  'AI-Powered Internal Tool / Recommendation Engine',
+  'Other',
+] as const;
+
+export const DEFAULT_CONTACT_SUBJECT = CONTACT_TOPICS[0];
+
 export const PRODUCT_CONTACT_SUBJECT: Record<string, string> = {
-  mfleet: 'MFleet Demo / Access',
-  pgpulse: 'PGPulse Demo / Access',
-  glucare: 'GluCare Demo / Access',
-  custom: 'Custom Agentic System',
+  growth: CONTACT_TOPICS[0],
+  'growth-agent': CONTACT_TOPICS[1],
+  custom: CONTACT_TOPICS[2],
+  pgpulse: CONTACT_TOPICS[3],
+  mfleet: CONTACT_TOPICS[4],
+  internal: CONTACT_TOPICS[5],
+  glucare: CONTACT_TOPICS[6],
+  other: CONTACT_TOPICS[6],
 };
 
 export function prefillForProduct(productId: string): ContactPrefill {
-  const subject = PRODUCT_CONTACT_SUBJECT[productId] ?? 'Other';
-  if (productId === 'custom') {
+  const subject = PRODUCT_CONTACT_SUBJECT[productId] ?? CONTACT_TOPICS[6];
+  if (productId === 'growth' || productId === 'growth-agent') {
     return {
       subject,
       message:
-        'Hi, I would like to discuss a custom agentic system or intelligent operational tool.\n\nOperations to automate:\nWho will use it:\n',
+        'Hi, I would like a growth and AI audit.\n\nWebsite:\nCurrent monthly leads or orders:\nWhat you want to scale:\n',
+    };
+  }
+  if (productId === 'custom' || productId === 'internal') {
+    return {
+      subject,
+      message:
+        'Hi, I would like to discuss a custom agentic system or growth engine.\n\nOperations or funnel to automate:\nWho will use it:\n',
     };
   }
   const names: Record<string, string> = {

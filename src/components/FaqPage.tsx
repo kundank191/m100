@@ -22,8 +22,8 @@ export default function FaqPage() {
         Frequently asked questions
       </h1>
       <p className="text-slate-400 text-base mb-8 sm:mb-10 leading-relaxed">
-        Practical answers about agentic AI, PGPulse and MFleet, custom agent systems, our process, pricing, and
-        how to reach Mach100 in Bengaluru. Still stuck? Email{' '}
+        Practical answers about growth marketing, agentic AI, PGPulse and MFleet, our process, and how Mach100
+        works with teams in the UK, US, and India. Still stuck? Email{' '}
         <a href="mailto:contact@mach100.in" className="text-teal-400 hover:underline">
           contact@mach100.in
         </a>
@@ -58,23 +58,21 @@ export default function FaqPage() {
       </div>
 
       <div className="mt-12 text-center space-y-4">
+        <h2 className="text-lg font-bold font-display text-white">Still have questions?</h2>
+        <p className="text-sm text-slate-400 leading-relaxed max-w-xl mx-auto">
+          Email us at{' '}
+          <a href="mailto:contact@mach100.in" className="text-teal-400 hover:underline">
+            contact@mach100.in
+          </a>{' '}
+          or use the contact form. We&apos;re happy to discuss your specific operations and whether an
+          agentic approach makes sense.
+        </p>
         <Link
           href="/#contact-section"
           className="inline-flex px-6 py-3 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50"
         >
-          Still have questions? Contact us
+          Use the contact form
         </Link>
-        <p className="text-xs text-slate-500">
-          Prefer to explore first?{' '}
-          <Link href="/blog" className="text-teal-400 hover:underline">
-            Read the blog
-          </Link>{' '}
-          or{' '}
-          <Link href="/#products-section" className="text-teal-400 hover:underline">
-            see live products
-          </Link>
-          .
-        </p>
       </div>
     </section>
   );

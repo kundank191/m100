@@ -7,7 +7,7 @@
 
 import { useEffect } from 'react';
 
-/** Scroll to hash section after navigating from other pages (e.g. /#contact-section). */
+/** Scroll to hash section after navigating from other pages (e.g. /?topic=growth#contact). */
 export default function HomeScroll() {
   useEffect(() => {
     const hash = window.location.hash?.replace('#', '');

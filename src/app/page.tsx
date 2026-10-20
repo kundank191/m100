@@ -7,11 +7,13 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
-import Products from '@/components/Products';
 import Services from '@/components/Services';
+import Products from '@/components/Products';
+import Proof from '@/components/Proof';
 import WhoWeWorkWith from '@/components/WhoWeWorkWith';
 import HowWeWork from '@/components/HowWeWork';
 import About from '@/components/About';
+import HomeFaq from '@/components/HomeFaq';
 import { PRODUCTS } from '@/productsData';
 import { getPostsSorted } from '@/data/blogData';
 import HomeScroll from '@/components/HomeScroll';
@@ -54,11 +56,13 @@ export default function HomePage() {
     <div id="homepage-flow">
       <HomeScroll />
       <Hero />
-      <Products products={PRODUCTS} />
       <Services />
+      <Products products={PRODUCTS} />
+      <Proof />
       <WhoWeWorkWith />
       <HowWeWork />
       <About />
+      <HomeFaq />
 
       {/* Internal links for SEO - latest guides */}
       <section
@@ -76,7 +80,7 @@ export default function HomePage() {
                 id="home-blog-heading"
                 className="text-2xl sm:text-3xl font-bold font-display text-white tracking-tight"
               >
-                Guides for operational teams
+                Guides for growth and operations
               </h2>
             </div>
             <Link

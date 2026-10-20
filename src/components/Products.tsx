@@ -6,7 +6,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ProductDetail } from '@/types';
-import { Truck, Home, ArrowRight, ExternalLink, Zap, Plane, MessageSquare, Bot, Lock } from 'lucide-react';
+import { Truck, Home, ArrowRight, ExternalLink, Zap, Lock, ChartLine } from 'lucide-react';
 
 interface ProductsProps {
   products: ProductDetail[];
@@ -14,27 +14,28 @@ interface ProductsProps {
 
 /**
  * Server Component - zero hydration cost for the products section.
- * Contact prefill via query string: /?topic=mfleet#contact-section
+ * Contact prefill via query string: /?topic=mfleet#contact
  */
 export default function Products({ products }: ProductsProps) {
   const pgpulse = products.find((p) => p.id === 'pgpulse');
   const mfleet = products.find((p) => p.id === 'mfleet');
 
   return (
-    <section id="products-section" className="py-16 sm:py-20 relative overflow-hidden bg-[#070b14]">
+    <section id="products" className="relative py-16 sm:py-20 overflow-hidden bg-[#070b14]">
+      <div id="products-section" className="absolute top-0 left-0" aria-hidden="true" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] ambient-glow-cyan opacity-30 -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="products-header" className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="section-chip mb-4">
-            <Plane className="w-3.5 h-3.5 rotate-45 transform shrink-0" />
-            <span>Live Products</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
+          <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
             Live Products
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
+            Agentic Systems Shipping Today - Plus Custom Growth &amp; AI Engines
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
-            Agentic systems shipping today - plus custom AI agents tailored to your operations.
+            Battle-tested vertical platforms running in production today. Try our interactive demos directly in
+            your browser.
           </p>
         </div>
 
@@ -45,27 +46,25 @@ export default function Products({ products }: ProductsProps) {
               className="group relative flex flex-col justify-between rounded-2xl glass-panel glass-panel-hover p-6 sm:p-8"
             >
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <Home className="w-7 h-7 text-blue-400" aria-hidden="true" />
-                  <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 text-[10px] font-mono text-amber-300 border border-amber-500/25">
+                <div className="flex items-center justify-between mb-6 gap-3">
+                  <Home className="w-7 h-7 text-blue-400 shrink-0" aria-hidden="true" />
+                  <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 text-[10px] font-mono text-amber-300 border border-amber-500/25 text-right leading-tight max-w-[12rem]">
                     <Zap className="w-3 h-3 text-amber-400 fill-amber-400/20" aria-hidden="true" />
-                    <span>Interactive Demo</span>
+                    <span>Interactive Demo | Property &amp; Co-Living</span>
                   </div>
                 </div>
                 <h3 className="text-xl font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
-                  PGPulse - Agentic AI for PG &amp; Co-living
+                  PGPulse - Agentic AI for Co-Living, HMOs &amp; Property Operators
                 </h3>
-                <p className="text-xs font-mono text-slate-400 mb-4 font-semibold uppercase tracking-wider">
-                  Intelligent operational system
-                </p>
+                <p className="text-sm text-slate-300 mb-3 leading-relaxed">Intelligent property operational system</p>
                 <p className="text-sm text-slate-400 leading-relaxed mb-4">
                   AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and
                   WhatsApp communication. Digital ledgers, automated reminders, and smart decision support so
-                  operations run with far less manual effort.
+                  property portfolios in the UK and India run with far less manual effort.
                 </p>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                  <span className="font-semibold text-slate-400">Best for:</span> PG and co-living operators who
-                  want their operations to run themselves.
+                <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <span className="font-semibold text-slate-300">Best for:</span> Co-living operators, UK HMO
+                  landlords, student housing, and PG managers who want operations to run themselves.
                 </p>
               </div>
               <div className="pt-2 space-y-2">
@@ -103,33 +102,32 @@ export default function Products({ products }: ProductsProps) {
               className="group relative flex flex-col justify-between rounded-2xl glass-panel glass-panel-hover p-6 sm:p-8"
             >
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <Truck className="w-7 h-7 text-indigo-400" aria-hidden="true" />
-                  <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 text-[10px] font-mono text-emerald-300 border border-emerald-500/25">
+                <div className="flex items-center justify-between mb-6 gap-3">
+                  <Truck className="w-7 h-7 text-indigo-400 shrink-0" aria-hidden="true" />
+                  <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 text-[10px] font-mono text-emerald-300 border border-emerald-500/25 text-right leading-tight max-w-[12rem]">
                     <Lock className="w-3 h-3 text-emerald-400" aria-hidden="true" />
-                    <span>Live Product</span>
+                    <span>Live Product | Fleet &amp; Logistics</span>
                   </div>
                 </div>
                 <h3 className="text-xl font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
-                  MFleet - Agentic Fleet &amp; Logistics
+                  MFleet - Agentic Fleet, Private Hire &amp; Logistics Operations
                 </h3>
-                <p className="text-xs font-mono text-slate-400 mb-4 font-semibold uppercase tracking-wider">
-                  AI-powered fleet operations
-                </p>
+                <p className="text-sm text-slate-300 mb-3 leading-relaxed">AI-powered fleet operations</p>
                 <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                  Intelligent route optimization, automated rental ledgers, instant UPI payouts, fuel &amp; trip
-                  intelligence, idle-time detection, and role-based control. Agents surface anomalies and handle
-                  routine decisions so your team focuses on growth.
+                  Intelligent route optimization, automated weekly/daily rental ledgers, instant payouts, fuel
+                  &amp; trip intelligence, idle-time detection, and role-based control. Agents surface anomalies
+                  and handle routine decisions so fleet owners focus on scaling.
                 </p>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                  <span className="font-semibold text-slate-400">Best for:</span> Fleet owners who want lower fuel
-                  waste, faster payouts, and less manual coordination.
+                <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <span className="font-semibold text-slate-300">Best for:</span> Commercial fleet owners, UK
+                  PCO/private hire operators, and logistics teams who want lower fuel waste, automated ledgers,
+                  and less manual coordination.
                 </p>
               </div>
               <div className="pt-2 space-y-2">
                 <a
                   id="product-access-btn-mfleet"
-                  href="/?topic=mfleet#contact-section"
+                  href="/?topic=mfleet#contact"
                   className="w-full inline-flex items-center justify-between px-4 py-3 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 transition-colors shadow-md shadow-teal-500/20"
                 >
                   <span>Request Demo</span>
@@ -147,68 +145,50 @@ export default function Products({ products }: ProductsProps) {
           )}
 
           <article
-            id="product-card-custom"
+            id="product-card-growth"
             className="group relative flex flex-col justify-between rounded-2xl glass-panel glass-panel-hover p-6 sm:p-8"
           >
             <div>
-              <div className="flex items-center justify-between mb-6">
-                <Bot className="w-7 h-7 text-teal-400" aria-hidden="true" />
-                <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-teal-500/10 text-[10px] font-mono text-teal-300 border border-teal-500/25">
-                  <span>Custom build</span>
+              <div className="flex items-center justify-between mb-6 gap-3">
+                <ChartLine className="w-7 h-7 text-teal-400 shrink-0" aria-hidden="true" />
+                <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-teal-500/10 text-[10px] font-mono text-teal-300 border border-teal-500/25 text-right leading-tight max-w-[12rem]">
+                  <span>Growth SKU | Acquisition + AI Lead Agent</span>
                 </div>
               </div>
               <h3 className="text-xl font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
-                Custom Agentic Systems
+                Mach100 Growth Engine - Ads, CRO &amp; Autonomous Lead Conversion
               </h3>
-              <p className="text-xs font-mono text-slate-400 mb-4 font-semibold uppercase tracking-wider">
-                Tailored AI agents for your workflows
+              <p className="text-sm text-slate-300 mb-3 leading-relaxed">
+                End-to-end customer acquisition &amp; AI booking system
               </p>
               <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                We build tailored AI agents and intelligent tools for your specific workflows - admin dashboards,
-                client portals, internal automation, and domain-specific operational systems.
+                We combine targeted Google/Meta acquisition, heatmap-backed landing page optimization, and an
+                autonomous AI Speed-to-Lead Agent that replies to every prospect in seconds, qualifies their
+                budget, and books them straight onto your calendar.
               </p>
-              <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed mb-6">
-                <li>Domain-specific AI agents</li>
-                <li>Admin dashboards &amp; client portals</li>
-                <li>Internal workflow automation</li>
-                <li>Operational decision support</li>
-              </ul>
+              <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                <span className="font-semibold text-slate-300">Best for:</span> London &amp; Global SMEs, clinics,
+                property firms, and high-growth startups that want predictable customer pipelines without hiring a
+                5-person marketing team.
+              </p>
             </div>
-            <div className="pt-2">
+            <div className="pt-2 space-y-2">
               <a
-                href="/?topic=custom#contact-section"
+                href="/?topic=growth#contact"
                 className="w-full inline-flex items-center justify-between px-4 py-3 rounded-full bg-teal-500 text-slate-950 text-xs font-bold hover:bg-teal-400 transition-colors shadow-md shadow-teal-500/20"
               >
-                <span>Discuss Your Project</span>
+                <span>Book a Growth Audit</span>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </a>
+              <a
+                href="#growth"
+                className="w-full flex items-center justify-between px-4 py-3 rounded-full bg-slate-950/60 border border-white/5 text-xs font-semibold text-slate-300 hover:bg-slate-900/60 hover:border-teal-500/20 hover:text-teal-400 transition-colors"
+              >
+                <span>See How It Works</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </article>
-        </div>
-
-        <div
-          id="products-custom-cta"
-          className="mt-10 sm:mt-12 rounded-2xl glass-panel p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6"
-        >
-          <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-teal-950/30 text-teal-400 border border-teal-500/10">
-              <MessageSquare className="w-5 h-5" aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold font-display text-white">Need something different?</h3>
-              <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-                Tell us the operations you want agents to run - we will scope an agentic system clearly and build
-                it for production use.
-              </p>
-            </div>
-          </div>
-          <a
-            id="products-custom-cta-btn"
-            href="/#contact-section"
-            className="w-full md:w-auto shrink-0 px-6 py-3.5 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wider uppercase hover:bg-teal-50 transition-colors text-center shadow-md shadow-white/5"
-          >
-            Start a Project
-          </a>
         </div>
       </div>
     </section>

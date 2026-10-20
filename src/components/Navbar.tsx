@@ -37,14 +37,10 @@ export default function Navbar() {
   }, []);
 
   const sectionItems = [
-    { label: 'Products', id: 'products-section' },
-    { label: 'Services', id: 'services-section' },
-    { label: 'About', id: 'about-section' },
-  ];
-
-  const pageItems = [
-    { label: 'Blog', href: '/blog' },
-    { label: 'FAQ', href: '/faq' },
+    { label: 'Growth Engine', id: 'growth' },
+    { label: 'AI Operations', id: 'operations' },
+    { label: 'Live Products', id: 'products' },
+    { label: 'Track Record', id: 'proof' },
   ];
 
   const handleSectionClick = useCallback(
@@ -67,8 +63,8 @@ export default function Navbar() {
         scrolled ? 'nav-scrolled border-b py-3' : 'bg-transparent border-b border-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
             id="nav-logo"
@@ -86,25 +82,11 @@ export default function Navbar() {
                   key={item.label}
                   type="button"
                   onClick={() => handleSectionClick(item.id)}
-                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-150 cursor-pointer relative py-1 group"
+                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-150 cursor-pointer relative py-1 group whitespace-nowrap"
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
                 </button>
-              ))}
-              {pageItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors duration-150 relative py-1 group ${
-                    pathname.startsWith(item.href)
-                      ? 'text-teal-400'
-                      : 'text-slate-300 hover:text-teal-400'
-                  }`}
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
-                </Link>
               ))}
             </div>
 
@@ -113,10 +95,10 @@ export default function Navbar() {
               <button
                 type="button"
                 id="nav-cta-button"
-                onClick={() => handleSectionClick('contact-section')}
+                onClick={() => handleSectionClick('contact')}
                 className="px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-bold hover:bg-teal-50 transition-colors duration-150 shadow-md shadow-white/5 cursor-pointer"
               >
-                Start a Project
+                Book an Audit
               </button>
             </div>
           </div>
@@ -154,25 +136,15 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
-            {pageItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-left py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
           </div>
           <div className="pt-4 border-t border-slate-900">
             <button
               type="button"
               id="mobile-nav-cta-button"
-              onClick={() => handleSectionClick('contact-section')}
+              onClick={() => handleSectionClick('contact')}
               className="w-full py-3 rounded-lg bg-gradient-to-r from-teal-500 to-teal-700 text-slate-950 text-sm font-semibold text-center hover:from-teal-400 hover:to-teal-600 transition-colors"
             >
-              Build With Us
+              Book an Audit
             </button>
           </div>
         </div>

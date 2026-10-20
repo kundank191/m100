@@ -7,9 +7,9 @@ export const SITE_URL = 'https://mach100.in';
 export const SITE_NAME = 'Mach100 Tech Solutions';
 /** ~155 chars - used in SERP snippet under the blue title */
 export const SITE_DESCRIPTION =
-  'We build agentic AI systems and intelligent tools that run PG management, fleet operations, and custom workflows autonomously. Production-ready operational AI.';
+  'Autonomous AI agents for operations, plus data-driven growth marketing that scales customers. Ex-DoorDash leadership. UK, US, and India.';
 
-export const SITE_TITLE_HOME = 'Mach100 | Agentic AI for Business Operations';
+export const SITE_TITLE_HOME = 'Mach100 | Agentic AI for Operations and Growth';
 
 /** BreadcrumbList JSON-LD helper for inner pages */
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
@@ -35,10 +35,13 @@ export const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/logo.jpeg`,
   image: `${SITE_URL}/logo.jpeg`,
   description:
-    'Mach100 builds agentic AI systems and intelligent operational tools for real businesses. Based in Bengaluru, India.',
+    'Mach100 builds agentic AI systems, operational platforms, and data-driven growth engines. Founded by Ex-DoorDash AI and data engineering leadership. Based in Bengaluru, serving the UK, US, and India.',
   areaServed: [
     { '@type': 'Country', name: 'India' },
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
     { '@type': 'City', name: 'Bengaluru' },
+    { '@type': 'City', name: 'London' },
   ],
   address: {
     '@type': 'PostalAddress',
@@ -51,6 +54,9 @@ export const ORGANIZATION_JSON_LD = {
   knowsAbout: [
     'Agentic AI',
     'AI Agents',
+    'Growth Marketing',
+    'Conversion Rate Optimization',
+    'Performance Marketing',
     'Operational AI Systems',
     'Workflow Automation',
     'Fleet Management Software',
@@ -101,7 +107,10 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
   priceRange: '$$',
   areaServed: [
     { '@type': 'Country', name: 'India' },
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United States' },
     { '@type': 'City', name: 'Bengaluru' },
+    { '@type': 'City', name: 'London' },
   ],
   address: {
     '@type': 'PostalAddress',
@@ -112,6 +121,7 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
     addressCountry: 'IN',
   },
   serviceType: [
+    'Growth Marketing and Conversion Optimization',
     'Agentic AI Systems',
     'AI Agents and Workflow Automation',
     'Intelligent Web Applications',
@@ -121,8 +131,17 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Mach100 agentic AI services',
+    name: 'Mach100 growth and agentic AI services',
     itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI-Powered Growth Marketing, SEO & Conversion Optimization',
+          description:
+            'Full-funnel paid acquisition, programmatic SEO, A/B testing, and AI speed-to-lead conversion for SMEs in the UK, US, and India.',
+        },
+      },
       {
         '@type': 'Offer',
         itemOffered: {
@@ -136,18 +155,9 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Intelligent Web Apps & Dashboards',
+          name: 'Intelligent Web Apps, Dashboards & Custom AI Agents',
           description:
-            'AI-native applications with embedded agents, payments, WhatsApp automation, and role-based access.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Custom AI Agents & Workflow Automation',
-          description:
-            'Domain-specific agents and orchestration tailored to your operational workflows.',
+            'AI-native applications with embedded agents, recommendation engines, payments, and role-based access.',
         },
       },
     ],
@@ -165,7 +175,7 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       operatingSystem: 'Web',
       url: 'https://fleet.mach100.in/',
       description:
-        'Agentic fleet and logistics system for cab operators and logistics teams. Intelligent route optimization, automated ledgers, UPI payouts, and anomaly detection. Invite-only access.',
+        'Agentic fleet, private hire, and logistics operations. Intelligent route optimization, automated ledgers, payouts, and anomaly detection. Invite-only access.',
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/LimitedAvailability',
@@ -182,7 +192,7 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       operatingSystem: 'Web',
       url: 'https://pg.mach100.in/',
       description:
-        'Agentic AI for PG and co-living operators. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Open interactive demo.',
+        'Agentic AI for co-living, HMO, and PG operators. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Open interactive demo.',
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/InStock',

@@ -9,9 +9,9 @@ export const PRODUCTS: ProductDetail[] = [
   {
     id: 'mfleet',
     name: 'MFleet',
-    tagline: 'Agentic Fleet & Logistics',
+    tagline: 'Agentic Fleet, Private Hire & Logistics Operations',
     description:
-      'AI-powered system for cab operators and logistics teams. Intelligent route optimization, automated rental ledgers, instant UPI payouts, fuel & trip intelligence, idle-time detection, and role-based control. Agents surface anomalies and handle routine decisions so your team focuses on growth.',
+      'AI-powered fleet operations for commercial fleets, UK PCO/private hire, and logistics teams. Intelligent route optimization, automated weekly/daily rental ledgers, instant payouts, fuel & trip intelligence, idle-time detection, and role-based control. Agents surface anomalies and handle routine decisions so fleet owners focus on scaling.',
     icon: 'Truck',
     accentColor: '#818cf8',
     bgGradient: 'from-indigo-950/40 to-slate-950/40',
@@ -51,9 +51,9 @@ export const PRODUCTS: ProductDetail[] = [
   {
     id: 'pgpulse',
     name: 'PGPulse',
-    tagline: 'Agentic AI for PG & Co-living',
+    tagline: 'Agentic AI for Co-Living, HMOs & Property Operators',
     description:
-      'Intelligent operational system for PG owners and hostel operators. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Digital ledgers, automated reminders, and smart decision support so operations run with far less manual effort.',
+      'Intelligent property operational system for co-living operators, UK HMO landlords, student housing, and PG managers. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Digital ledgers, automated reminders, and smart decision support so property portfolios in the UK and India run with far less manual effort.',
     icon: 'Home',
     accentColor: '#60a5fa',
     bgGradient: 'from-blue-950/40 to-slate-950/40',
