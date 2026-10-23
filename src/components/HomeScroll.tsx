@@ -12,13 +12,18 @@ export default function HomeScroll() {
   useEffect(() => {
     const hash = window.location.hash?.replace('#', '');
     if (!hash) return;
-    const t = window.setTimeout(() => {
+    let tries = 0;
+    const tick = window.setInterval(() => {
       const el = document.getElementById(hash);
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY - 70;
-      window.scrollTo({ top, behavior: 'smooth' });
+      tries += 1;
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.clearInterval(tick);
+      } else if (tries > 10) {
+        window.clearInterval(tick);
+      }
     }, 80);
-    return () => window.clearTimeout(t);
+    return () => window.clearInterval(tick);
   }, []);
 
   return null;

@@ -28,7 +28,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <Link
           id="product-back-btn"
-          href="/#products-section"
+          href="/products"
           className="inline-flex items-center space-x-2 text-xs font-mono font-semibold text-teal-400 hover:text-teal-300 mb-10 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -82,7 +82,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
                 return (
                   <div key={idx} className="flex items-start space-x-3">
                     <CheckCircle className="w-4 h-4 text-teal-400 shrink-0 mt-1" />
-                    <p className="text-sm text-slate-300 leading-relaxed">
+                    <p className="text-base text-slate-300 leading-relaxed">
                       <strong className="text-white">{title}:</strong> {desc}
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
             {product.features.map((feature) => (
               <div key={feature.title} className="rounded-xl glass-panel p-6">
                 <h4 className="text-base font-bold font-display text-white mb-2">{feature.title}</h4>
-                <p className="text-sm text-slate-400 leading-relaxed">{feature.desc}</p>
+                <p className="text-base text-slate-400 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>

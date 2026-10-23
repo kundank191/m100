@@ -8,7 +8,7 @@ import { ArrowRight, ChevronRight } from 'lucide-react';
 /** Server-rendered links. Topic query is applied by the contact form. */
 export default function HeroCTAs() {
   return (
-    <div id="hero-cta-group" className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12">
+    <div id="hero-cta-group" className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
       <a
         id="hero-cta-build"
         href="#contact"

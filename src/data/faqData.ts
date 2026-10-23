@@ -8,7 +8,120 @@ export interface FaqItem {
   answer: string;
 }
 
-/** Homepage shows the first four. Full list is on /faq and in FAQPage JSON-LD. */
+export interface AnswerBlock {
+  label: string;
+  text: string;
+}
+
+export interface HomeQuestion {
+  question: string;
+  blocks: AnswerBlock[];
+  note?: string;
+}
+
+/** The five questions shown on the homepage. The FAQ page includes these too. */
+export const HOME_QUESTIONS: HomeQuestion[] = [
+  {
+    question: 'How do your projects work?',
+    blocks: [
+      {
+        label: 'Week 1: Align',
+        text: 'Tie the work to one number: leads, paid orders, or hours taken off the team.',
+      },
+      {
+        label: 'Weeks 2-3: Diagnose',
+        text: 'Review the ads, the site, and the manual workflow. Name the few fixes worth doing first.',
+      },
+      {
+        label: 'Weeks 4-8: Build',
+        text: 'Ship the funnel, the speed-to-lead agent, or the operational system. Production code, not a slide deck.',
+      },
+      {
+        label: 'After launch: Compound',
+        text: 'Measure that number every week and tighten what is already live.',
+      },
+    ],
+  },
+  {
+    question: 'How long until we see results?',
+    blocks: [
+      {
+        label: '7 days',
+        text: 'The audit names where leads or hours are leaking.',
+      },
+      {
+        label: '2-3 weeks',
+        text: 'Ad and conversion funnels, and web or WhatsApp lead agents, go live.',
+      },
+      {
+        label: '4-10 weeks',
+        text: 'A custom operational system for rent, fleet, or your own workflow is in production.',
+      },
+    ],
+  },
+  {
+    question: 'What does my team need to provide?',
+    blocks: [
+      {
+        label: 'An owner',
+        text: 'One person who can pick the business number and approve the scope.',
+      },
+      {
+        label: 'Access',
+        text: 'The ad accounts, the site, and the calendar or WhatsApp thread where leads go quiet.',
+      },
+      {
+        label: 'The current workflow',
+        text: 'The sheet, ledger, or chat thread the new system is meant to replace.',
+      },
+    ],
+    note: 'With those three, we can scope the build. We bring the engineering and the growth work.',
+  },
+  {
+    question: 'What is included?',
+    blocks: [
+      {
+        label: 'Acquisition',
+        text: 'Google and Meta campaigns, landing pages, calculators, and tests that lift conversion.',
+      },
+      {
+        label: 'Speed-to-lead',
+        text: 'Web and WhatsApp agents that answer, qualify the buyer, and book a meeting.',
+      },
+      {
+        label: 'Operations',
+        text: 'PGPulse for property, MFleet for fleet ledgers and payouts, or a custom agent for a repetitive workflow.',
+      },
+      {
+        label: 'Measurement',
+        text: 'Tracking tied to the number we agreed: leads, orders, or hours saved.',
+      },
+    ],
+  },
+  {
+    question: 'What is not included?',
+    blocks: [
+      {
+        label: 'Content calendars',
+        text: 'We do not run a daily social or blog feed.',
+      },
+      {
+        label: 'FAQ-only chatbots',
+        text: 'If it cannot qualify, book, or update a record, it is out of scope.',
+      },
+      {
+        label: 'Clinical claims',
+        text: 'GluCare is not a medical device and does not diagnose.',
+      },
+      {
+        label: 'A full company rebuild',
+        text: 'We do not replatform everything you run. We scope the system that moves the number.',
+      },
+    ],
+  },
+];
+
+/** Longer answers. Shown on /faq and in FAQPage JSON-LD. */
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question:
@@ -97,17 +210,27 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
+function homeAnswer(item: HomeQuestion) {
+  return [...item.blocks.map((block) => `${block.label}: ${block.text}`), item.note]
+    .filter(Boolean)
+    .join(' ');
+}
+
 export function faqJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
+    mainEntity: [
+      ...HOME_QUESTIONS.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: homeAnswer(item) },
+      })),
+      ...FAQ_ITEMS.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    ],
   };
 }

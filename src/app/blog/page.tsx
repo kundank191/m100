@@ -26,7 +26,7 @@ export default function BlogIndexPage() {
       <div className="section-chip mb-4">
         <span>Resources</span>
       </div>
-      <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight mb-3">
+      <h1 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight mb-3">
         Blog
       </h1>
       <p className="text-slate-400 text-base max-w-2xl mb-8 sm:mb-10 leading-relaxed">
@@ -60,7 +60,7 @@ export default function BlogIndexPage() {
               <h2 className="text-lg font-bold font-display text-white group-hover:text-teal-300 transition-colors mb-2">
                 {item.title}
               </h2>
-              <p className="text-sm text-slate-400 leading-relaxed mb-4">{item.excerpt}</p>
+              <p className="text-base text-slate-400 leading-relaxed mb-4">{item.excerpt}</p>
               <div className="flex items-center justify-between text-[11px] text-slate-500">
                 <span className="inline-flex items-center gap-3">
                   <span className="inline-flex items-center gap-1">

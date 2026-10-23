@@ -12,7 +12,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div
       id="app-wrapper"
-      className="min-h-screen font-sans selection:bg-teal-500/25 selection:text-teal-700 relative overflow-x-hidden"
+      className="min-h-screen font-sans selection:bg-teal-500/25 selection:text-teal-700 relative overflow-x-clip"
     >
       <a
         href="#main-content-flow"

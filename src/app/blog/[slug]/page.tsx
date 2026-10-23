@@ -130,10 +130,10 @@ export default async function BlogPostPage({ params }: Props) {
           </span>
         ))}
       </div>
-      <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight mb-4 leading-tight">
+      <h1 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight mb-4 leading-tight">
         {post.title}
       </h1>
-      <div className="flex items-center gap-4 text-xs text-slate-500 mb-8">
+      <div className="flex items-center gap-4 text-sm text-slate-500 mb-8">
         <span className="inline-flex items-center gap-1.5">
           <Calendar className="w-3.5 h-3.5" />
           {post.date}
