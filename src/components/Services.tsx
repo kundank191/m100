@@ -38,7 +38,7 @@ const WAYS = [
       'Autonomous platforms like PGPulse (for property/co-living) and MFleet (for driver ledgers & payouts), plus custom agents for repetitive workflows.',
     bestFor: 'Operators who want rent runs, driver ledgers, and billing to run themselves.',
     cta: 'Explore operational systems',
-    href: '#products',
+    href: '/products',
   },
 ];
 

@@ -7,11 +7,8 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
-import Products from '@/components/Products';
 import Proof from '@/components/Proof';
 import HowWeWork from '@/components/HowWeWork';
-import About from '@/components/About';
-import { PRODUCTS } from '@/productsData';
 import HomeScroll from '@/components/HomeScroll';
 import { SITE_DESCRIPTION, SITE_TITLE_HOME, SITE_URL } from '@/lib/site';
 
@@ -51,9 +48,7 @@ export default function HomePage() {
       <HomeScroll />
       <Hero />
       <Services />
-      <Products products={PRODUCTS} />
       <Proof />
-      <About />
       <HowWeWork />
       <Contact />
     </div>

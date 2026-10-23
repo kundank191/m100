@@ -20,7 +20,7 @@ const STATS = [
   },
   {
     stat: 'Autonomous',
-    label: 'Live production agents shipping today',
+    label: 'Production agents for rent, payouts, and lead follow-up',
   },
 ];
 

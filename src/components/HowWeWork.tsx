@@ -38,13 +38,13 @@ export default function HowWeWork() {
           </h2>
         </div>
 
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        <ol className="relative max-w-2xl border-l border-teal-400/40 ml-3.5">
           {STEPS.map((step) => (
-            <li key={step.n} className="rounded-2xl glass-panel glass-panel-hover p-6 sm:p-7">
-              <span className="text-[11px] font-mono font-bold text-teal-400 tracking-widest block mb-4">
+            <li key={step.n} className="relative pl-8 pb-10 last:pb-0">
+              <span className="absolute -left-3.5 top-0 flex h-7 w-7 items-center justify-center rounded-full border border-teal-400/70 bg-[#070b14] text-[11px] font-mono font-bold text-teal-400">
                 {step.n}
               </span>
-              <h3 className="text-base font-bold font-display text-white mb-2">{step.title}</h3>
+              <h3 className="text-lg font-bold font-display text-white mb-2">{step.title}</h3>
               <p className="text-sm text-slate-400 leading-relaxed">{step.desc}</p>
             </li>
           ))}

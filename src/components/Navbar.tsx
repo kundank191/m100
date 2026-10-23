@@ -36,12 +36,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const sectionItems = [
-    { label: 'Services', id: 'services' },
-    { label: 'Products', id: 'products' },
-    { label: 'Case Studies', id: 'proof' },
-    { label: 'About', id: 'about' },
-  ];
+  const navItems = [
+    { label: 'Services', sectionId: 'services' },
+    { label: 'Products', href: '/products' },
+    { label: 'Case Studies', sectionId: 'proof' },
+    { label: 'About', href: '/about' },
+  ] as const;
 
   const handleSectionClick = useCallback(
     (sectionId: string) => {
@@ -77,17 +77,34 @@ export default function Navbar() {
 
           <div id="desktop-menu" className="hidden lg:flex items-center space-x-6">
             <div className="flex items-center space-x-5">
-              {sectionItems.map((item) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  onClick={() => handleSectionClick(item.id)}
-                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-150 cursor-pointer relative py-1 group whitespace-nowrap"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
-                </button>
-              ))}
+              {navItems.map((item) =>
+                'href' in item ? (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    aria-current={pathname === item.href || pathname.startsWith(`${item.href}/`) ? 'page' : undefined}
+                    className={`text-sm font-medium transition-colors duration-150 relative py-1 group whitespace-nowrap ${
+                      pathname === item.href || pathname.startsWith(`${item.href}/`)
+                        ? 'text-teal-400'
+                        : 'text-slate-300 hover:text-teal-400'
+                    }`}
+                  >
+                    {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
+                  </Link>
+                ) : (
+                  <button
+                    key={item.label}
+                    type="button"
+                    onClick={() => handleSectionClick(item.sectionId)}
+                    className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors duration-150 cursor-pointer relative py-1 group whitespace-nowrap"
+                  >
+                    {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-200 group-hover:w-full" />
+                  </button>
+                ),
+              )}
             </div>
 
             <div className="flex items-center space-x-3 border-l border-slate-800/80 pl-5">
@@ -126,16 +143,27 @@ export default function Navbar() {
       >
         <div className="px-4 space-y-4">
           <div className="flex flex-col space-y-3">
-            {sectionItems.map((item) => (
-              <button
-                key={item.label}
-                type="button"
-                onClick={() => handleSectionClick(item.id)}
-                className="text-left py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              'href' in item ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => handleSectionClick(item.sectionId)}
+                  className="text-left py-2 text-base font-medium text-slate-300 hover:text-teal-400 transition-colors"
+                >
+                  {item.label}
+                </button>
+              ),
+            )}
           </div>
           <div className="pt-4 border-t border-slate-900">
             <button
