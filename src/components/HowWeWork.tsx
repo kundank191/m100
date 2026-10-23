@@ -25,30 +25,36 @@ const STEPS = [
 
 export default function HowWeWork() {
   return (
-    <section id="audit" className="relative py-16 sm:py-20 overflow-hidden bg-[#070b14] border-t border-white/5">
+    <section id="audit" className="relative py-16 sm:py-24 overflow-hidden bg-[#070b14] border-t border-white/5">
       <div id="process" className="absolute top-0 left-0" aria-hidden="true" />
       <div id="how-we-work-section" className="absolute top-0 left-0" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-10 sm:mb-12">
-          <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
-            The Audit
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-            Find your growth leaks and operational bottlenecks
-          </h2>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          <div className="max-w-md">
+            <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
+              The Audit
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight leading-[1.1]">
+              Find your growth leaks and operational bottlenecks
+            </h2>
+          </div>
 
-        <ol className="relative max-w-2xl border-l border-teal-400/40 ml-3.5">
-          {STEPS.map((step) => (
-            <li key={step.n} className="relative pl-8 pb-10 last:pb-0">
-              <span className="absolute -left-3.5 top-0 flex h-7 w-7 items-center justify-center rounded-full border border-teal-400/70 bg-[#070b14] text-[11px] font-mono font-bold text-teal-400">
-                {step.n}
-              </span>
-              <h3 className="text-lg font-bold font-display text-white mb-2">{step.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{step.desc}</p>
-            </li>
-          ))}
-        </ol>
+          <div>
+            <ol>
+              {STEPS.map((step) => (
+                <li key={step.n} className="grid grid-cols-[2.75rem_1fr] gap-2 border-t border-white/10 py-6">
+                  <span className="pt-0.5 text-sm font-mono font-semibold text-slate-400">{step.n}</span>
+                  <div>
+                    <h3 className="text-sm font-mono font-bold uppercase tracking-[0.14em] text-white mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-base text-slate-300 leading-relaxed">{step.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
   );

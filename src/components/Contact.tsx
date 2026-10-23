@@ -5,8 +5,9 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Mail, ArrowRight, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Mail, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '@/components/GoogleAnalytics';
 import {
   clearContactPrefill,
@@ -58,6 +59,14 @@ export default function Contact() {
   const [prefillNote, setPrefillNote] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
+  const [toastOn, setToastOn] = useState(false);
+  const timers = useRef<number[]>([]);
+
+  useEffect(() => {
+    return () => {
+      timers.current.forEach((id) => window.clearTimeout(id));
+    };
+  }, []);
 
   useEffect(() => {
     const applyPrefill = (prefill: ContactPrefill) => {
@@ -140,12 +149,18 @@ export default function Contact() {
       }
 
       setSubmitState('success');
+      setToastOn(true);
       trackEvent('generate_lead', {
         method: 'contact_form',
         topic: formData.subject,
       });
       setFormData(EMPTY_FORM);
       setPrefillNote(null);
+      timers.current.forEach((id) => window.clearTimeout(id));
+      timers.current = [
+        window.setTimeout(() => setSubmitState('idle'), 2800),
+        window.setTimeout(() => setToastOn(false), 4200),
+      ];
     } catch {
       setSubmitState('error');
       setError(`Something went wrong. Please email us at ${CONTACT_EMAIL}.`);
@@ -162,7 +177,7 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="contact-header" className="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight mb-4">
             Book an audit
           </h2>
           <p className="text-slate-400 text-base leading-relaxed">
@@ -183,20 +198,20 @@ export default function Contact() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-200">Email Us</h4>
+                  <h4 className="text-base font-semibold text-slate-200">Email Us</h4>
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="text-sm text-teal-400 hover:underline mt-1 block"
+                    className="text-base text-teal-400 hover:underline mt-1 block"
                   >
                     {CONTACT_EMAIL}
                   </a>
-                  <p className="text-xs text-slate-500 mt-1">We usually reply within 24 hours.</p>
+                  <p className="text-sm text-slate-500 mt-1">We usually reply within 24 hours.</p>
                 </div>
               </div>
 
               <div className="rounded-xl border border-white/5 bg-slate-950/40 p-4 space-y-2">
-                <p className="text-xs font-semibold text-slate-200">What to include</p>
-                <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside leading-relaxed">
+                <p className="text-base font-semibold text-slate-200">What to include</p>
+                <ul className="text-base text-slate-400 space-y-1.5 list-disc list-inside leading-relaxed">
                   <li>Whether you want Customer Growth/Marketing, Operational AI Agents, or Both</li>
                   <li>Your current website or workflow bottleneck</li>
                   <li>Your rough timeline</li>
@@ -207,27 +222,11 @@ export default function Contact() {
 
           <div className="lg:col-span-7 rounded-2xl glass-panel p-8 relative">
             <h3 className="text-lg font-bold font-display text-white mb-2">Send a message</h3>
-            <p className="text-xs text-slate-500 mb-6">
+            <p className="text-base text-slate-400 mb-6">
               Example CTAs above can pre-fill the topic. You can edit everything before sending.
             </p>
 
-            {submitState === 'success' ? (
-              <div id="contact-success" className="py-12 text-center space-y-4">
-                <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto" />
-                <p className="text-lg font-semibold text-white">Message sent</p>
-                <p className="text-sm text-slate-400 max-w-sm mx-auto">
-                  Thanks for reaching out. We usually reply within 24 hours.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setSubmitState('idle')}
-                  className="mt-4 text-xs font-semibold text-teal-400 hover:text-teal-300 underline underline-offset-2"
-                >
-                  Send another message
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
                 {prefillNote && (
                   <div className="p-3 rounded-lg bg-teal-500/10 border border-teal-500/25 text-teal-200 text-xs leading-relaxed">
                     {prefillNote}
@@ -353,14 +352,32 @@ export default function Contact() {
                 <button
                   type="submit"
                   id="contact-submit-btn"
-                  disabled={submitState === 'loading'}
-                  className="w-full py-4 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wider uppercase hover:bg-teal-50 hover:scale-[1.01] transition-all duration-200 cursor-pointer flex items-center justify-center space-x-2 shadow-lg shadow-white/5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  disabled={submitState === 'loading' || submitState === 'success'}
+                  aria-label={submitState === 'success' ? 'Response recorded' : 'Book an audit'}
+                  className={`w-full py-4 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wider uppercase hover:bg-teal-50 hover:scale-[1.01] transition-all duration-200 cursor-pointer flex items-center justify-center space-x-2 shadow-lg shadow-white/5 disabled:hover:scale-100 ${
+                    submitState === 'loading' ? 'opacity-60 cursor-wait' : 'disabled:opacity-100 disabled:cursor-default'
+                  }`}
                 >
                   {submitState === 'loading' ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
                       <span>Sending...</span>
                     </>
+                  ) : submitState === 'success' ? (
+                    <svg
+                      className="audit-check h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12.5 9.5 17 19 7.5"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   ) : (
                     <>
                       <span>Book an audit</span>
@@ -370,10 +387,21 @@ export default function Contact() {
                 </button>
 
                 <p className="text-[10px] text-slate-500 text-center leading-relaxed">
-                  Submissions go directly to {CONTACT_EMAIL}. We never share your details. Privacy-first.
+                  Submissions go directly to {CONTACT_EMAIL}. We do not sell your details.{' '}
+                  <a href="/privacy" className="underline underline-offset-2 hover:text-teal-400">
+                    Privacy page
+                  </a>
+                  .
                 </p>
               </form>
-            )}
+            {toastOn
+              ? createPortal(
+                  <div id="contact-toast" className="site-toast" role="status">
+                    Response recorded.
+                  </div>,
+                  document.body,
+                )
+              : null}
           </div>
         </div>
       </div>

@@ -42,7 +42,7 @@ export default function Footer() {
 
           <div className="space-y-3">
             <h2 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Company</h2>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-sm">
               <li>
                 <a href="/#services" className="hover:text-teal-400 transition-colors">
                   Services
@@ -59,6 +59,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/privacy" className="hover:text-teal-400 transition-colors">
+                  Privacy
+                </Link>
+              </li>
+              <li>
                 <a href="/#audit" className="hover:text-teal-400 transition-colors">
                   The Audit
                 </a>
@@ -68,7 +73,7 @@ export default function Footer() {
 
           <div className="space-y-3">
             <h2 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Live products</h2>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-sm">
               {PRODUCTS.map((product) => (
                 <li key={product.href}>
                   <Link href={product.href} className="hover:text-teal-400 transition-colors">
@@ -86,7 +91,7 @@ export default function Footer() {
 
           <div className="space-y-3">
             <h2 className="text-xs font-mono font-bold text-white uppercase tracking-wider">Blog</h2>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-sm">
               {posts.map((post) => (
                 <li key={post.slug}>
                   <Link href={`/blog/${post.slug}`} className="hover:text-teal-400 transition-colors leading-relaxed">

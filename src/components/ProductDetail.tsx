@@ -82,7 +82,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
                 return (
                   <div key={idx} className="flex items-start space-x-3">
                     <CheckCircle className="w-4 h-4 text-teal-400 shrink-0 mt-1" />
-                    <p className="text-sm text-slate-300 leading-relaxed">
+                    <p className="text-base text-slate-300 leading-relaxed">
                       <strong className="text-white">{title}:</strong> {desc}
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function ProductDetailComponent({ product }: ProductDetailProps) 
             {product.features.map((feature) => (
               <div key={feature.title} className="rounded-xl glass-panel p-6">
                 <h4 className="text-base font-bold font-display text-white mb-2">{feature.title}</h4>
-                <p className="text-sm text-slate-400 leading-relaxed">{feature.desc}</p>
+                <p className="text-base text-slate-400 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>

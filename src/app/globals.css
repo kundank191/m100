@@ -146,6 +146,15 @@ html {
   color: var(--page-fg);
 }
 
+#services,
+#proof,
+#audit,
+#common-questions,
+#contact,
+#products {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   background-color: var(--page-bg);
   color: var(--page-fg);
@@ -293,24 +302,32 @@ html[data-theme="light"] .bg-slate-950\/65 {
   background-color: rgba(244, 247, 251, 0.85) !important;
 }
 
-/* Scrolled navbar surfaces (theme-aware) */
-#main-navbar.nav-scrolled {
-  background-color: rgba(7, 11, 20, 0.88);
-  border-color: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Always a solid bar. It stays pinned, and page text cannot show through it. */
+#main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--page-bg);
+  border-color: var(--border-soft);
+  box-shadow: 0 1px 0 var(--border-soft);
 }
 
-html[data-theme="light"] #main-navbar.nav-scrolled,
-html[data-theme="light"] #main-navbar[data-scrolled="true"] {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  border-color: rgba(15, 23, 42, 0.1) !important;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+html[data-theme="light"] #main-navbar,
+html[data-theme="dark"] #main-navbar {
+  background-color: var(--page-bg) !important;
+  border-color: var(--border-soft) !important;
 }
 
-html[data-theme="light"] #mobile-menu {
-  background-color: rgba(255, 255, 255, 0.98) !important;
-  border-color: rgba(15, 23, 42, 0.08) !important;
+#mobile-menu {
+  background-color: var(--page-bg);
+}
+
+html[data-theme="light"] #mobile-menu,
+html[data-theme="dark"] #mobile-menu {
+  background-color: var(--page-bg) !important;
+  border-color: var(--border-soft) !important;
 }
 
 html[data-theme="light"] .text-white {
@@ -361,6 +378,82 @@ html[data-theme="light"] [class*="text-teal-3"],
 html[data-theme="light"] [class*="text-teal-4"],
 html[data-theme="light"] [class*="text-teal-5"] {
   color: var(--accent) !important;
+}
+
+/*
+ * Proof band stays dark in both themes so the figures read as the highlight.
+ * The light-mode remaps above would otherwise flatten this slab into the page.
+ */
+.proof-band {
+  background-color: #243140;
+  color: #d5dbdf;
+}
+
+.proof-band .proof-stat,
+.proof-band .proof-chart {
+  color: #2dd4bf;
+}
+
+.proof-band .proof-kicker {
+  color: #9aada6;
+}
+
+.proof-band .text-white {
+  color: #efece6;
+}
+
+.proof-band .text-slate-300 {
+  color: #c5ced6;
+}
+
+.proof-band .text-slate-400 {
+  color: #a8b4be;
+}
+
+.proof-band .text-slate-500 {
+  color: #93a0ab;
+}
+
+html[data-theme="light"] .proof-band {
+  background-color: #243140 !important;
+  color: #d5dbdf;
+}
+
+html[data-theme="light"] .proof-band .text-white {
+  color: #efece6 !important;
+}
+
+html[data-theme="light"] .proof-band .text-slate-300 {
+  color: #c5ced6 !important;
+}
+
+html[data-theme="light"] .proof-band .text-slate-400 {
+  color: #a8b4be !important;
+}
+
+html[data-theme="light"] .proof-band .text-slate-500,
+html[data-theme="light"] .proof-band .text-slate-600 {
+  color: #93a0ab !important;
+}
+
+html[data-theme="light"] .proof-band .proof-stat,
+html[data-theme="light"] .proof-band .proof-chart,
+html[data-theme="light"] .proof-band .text-teal-300,
+html[data-theme="light"] .proof-band [class*="text-teal-3"] {
+  color: #2dd4bf !important;
+}
+
+html[data-theme="light"] .proof-band .proof-kicker,
+html[data-theme="light"] .proof-band .text-teal-400,
+html[data-theme="light"] .proof-band [class*="text-teal-4"] {
+  color: #9aada6 !important;
+}
+
+html[data-theme="light"] .proof-band.border-white\/5,
+html[data-theme="light"] .proof-band .border-white\/5,
+html[data-theme="light"] .proof-band .border-white\/10,
+html[data-theme="light"] .proof-band .border-white\/15 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 html[data-theme="light"] .hover\:text-teal-400:hover,
@@ -530,4 +623,71 @@ html[data-theme="light"] .text-emerald-400,
 html[data-theme="light"] [class*="text-emerald-3"],
 html[data-theme="light"] [class*="text-emerald-4"] {
   color: #047857 !important;
+}
+
+@keyframes audit-check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes audit-check-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.audit-check {
+  animation: audit-check-pop 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.audit-check path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: audit-check-draw 0.4s ease forwards 0.08s;
+}
+
+@keyframes site-toast-in {
+  0% {
+    transform: translate(-50%, -12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.site-toast {
+  position: fixed;
+  left: 50%;
+  top: 5.25rem;
+  z-index: 60;
+  border-radius: 9999px;
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28);
+  animation: site-toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audit-check,
+  .audit-check path,
+  .site-toast {
+    animation: none;
+  }
+
+  .audit-check path {
+    stroke-dashoffset: 0;
+  }
 }

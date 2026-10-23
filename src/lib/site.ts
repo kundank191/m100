@@ -7,7 +7,7 @@ export const SITE_URL = 'https://mach100.in';
 export const SITE_NAME = 'Mach100 Tech Solutions';
 /** ~155 chars - used in SERP snippet under the blue title */
 export const SITE_DESCRIPTION =
-  'We engineer acquisition funnels that bring in customers, and autonomous AI agents that qualify leads, collect payments, and run daily workflows.';
+  'We engineer acquisition funnels that bring in customers, and autonomous AI agents that qualify leads and run daily workflows.';
 
 export const SITE_TITLE_HOME = 'Mach100 | More Customers. Zero Manual Operations';
 

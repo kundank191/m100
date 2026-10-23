@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Proof from '@/components/Proof';
+import CommonQuestions from '@/components/CommonQuestions';
 import HowWeWork from '@/components/HowWeWork';
 import HomeScroll from '@/components/HomeScroll';
 import { SITE_DESCRIPTION, SITE_TITLE_HOME, SITE_URL } from '@/lib/site';
@@ -49,6 +50,7 @@ export default function HomePage() {
       <Hero />
       <Services />
       <Proof />
+      <CommonQuestions />
       <HowWeWork />
       <Contact />
     </div>

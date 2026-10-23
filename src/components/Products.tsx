@@ -58,10 +58,10 @@ export default function Products({ products }: ProductsProps) {
           <span className="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-4">
             Live Products
           </span>
-          <h1 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight">
             Software shipping today
           </h1>
-          <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="mt-4 text-base text-slate-400 leading-relaxed">
             PGPulse and MFleet run rent collection, driver ledgers, and payouts in production. GluCare is an
             invite-only glucose companion. It is not a medical device.
           </p>
@@ -81,7 +81,7 @@ export default function Products({ products }: ProductsProps) {
               >
                 <div>
                   <Icon className="w-7 h-7 text-teal-400 mb-5" aria-hidden="true" />
-                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-teal-400 mb-3">
+                  <p className="text-sm font-mono font-bold uppercase tracking-wider text-teal-400 mb-3">
                     {card?.category ?? product.statusLabel}
                   </p>
                   <h2 className="text-xl font-bold font-display text-white mb-3">
@@ -89,7 +89,7 @@ export default function Products({ products }: ProductsProps) {
                       {product.name}
                     </a>
                   </h2>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-6">
+                  <p className="text-base text-slate-400 leading-relaxed mb-6">
                     {card?.summary ?? product.tagline}
                   </p>
                 </div>
@@ -97,7 +97,7 @@ export default function Products({ products }: ProductsProps) {
                   id={external ? `product-demo-btn-${product.id}` : `product-access-btn-${product.id}`}
                   href={href}
                   {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-teal-400 hover:text-teal-300"
+                  className="inline-flex items-center gap-2 text-base font-semibold text-teal-400 hover:text-teal-300"
                 >
                   {card?.cta ?? 'View product'}
                   {external ? (
