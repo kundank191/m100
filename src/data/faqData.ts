@@ -26,19 +26,19 @@ export const HOME_QUESTIONS: HomeQuestion[] = [
     blocks: [
       {
         label: 'Week 1: Align',
-        text: 'Tie the work to one number: leads, paid orders, or hours taken off the team.',
+        text: 'We pick one number that matters: leads, paid orders, or hours saved.',
       },
       {
         label: 'Weeks 2-3: Diagnose',
-        text: 'Review the ads, the site, and the manual workflow. Name the few fixes worth doing first.',
+        text: 'We review your ads, site, and current workflow. We name the few fixes worth doing first.',
       },
       {
-        label: 'Weeks 4-8: Build',
-        text: 'Ship the funnel, the speed-to-lead agent, or the operational system. Production code, not a slide deck.',
+        label: 'Weeks 3-6: Build',
+        text: 'We ship the funnel, lead agent, or operational system. Live in production, not a slide deck.',
       },
       {
         label: 'After launch: Compound',
-        text: 'Measure that number every week and tighten what is already live.',
+        text: "We track that number every week and improve what's already running.",
       },
     ],
   },
@@ -46,16 +46,16 @@ export const HOME_QUESTIONS: HomeQuestion[] = [
     question: 'How long until we see results?',
     blocks: [
       {
-        label: '7 days',
-        text: 'The audit names where leads or hours are leaking.',
+        label: '3-5 days',
+        text: 'The audit shows where leads or hours are leaking.',
       },
       {
-        label: '2-3 weeks',
-        text: 'Ad and conversion funnels, and web or WhatsApp lead agents, go live.',
+        label: '7-14 days',
+        text: 'Ad funnels and website/WhatsApp lead agents go live.',
       },
       {
-        label: '4-10 weeks',
-        text: 'A custom operational system for rent, fleet, or your own workflow is in production.',
+        label: '3-6 weeks',
+        text: 'A custom system for rent, fleet, or your workflow is in production.',
       },
     ],
   },
@@ -64,37 +64,37 @@ export const HOME_QUESTIONS: HomeQuestion[] = [
     blocks: [
       {
         label: 'An owner',
-        text: 'One person who can pick the business number and approve the scope.',
+        text: 'One person who can pick the number that matters and approve the scope.',
       },
       {
         label: 'Access',
-        text: 'The ad accounts, the site, and the calendar or WhatsApp thread where leads go quiet.',
+        text: 'Ad accounts, the website, and the calendar or WhatsApp where leads currently go quiet.',
       },
       {
         label: 'The current workflow',
-        text: 'The sheet, ledger, or chat thread the new system is meant to replace.',
+        text: 'The sheet, ledger, or chat thread the new system will replace.',
       },
     ],
-    note: 'With those three, we can scope the build. We bring the engineering and the growth work.',
+    note: 'With those three, we can scope the work. We handle the build.',
   },
   {
     question: 'What is included?',
     blocks: [
       {
         label: 'Acquisition',
-        text: 'Google and Meta campaigns, landing pages, calculators, and tests that lift conversion.',
+        text: 'Google and Meta ads, landing pages, calculators, and tests that turn more visitors into customers.',
       },
       {
         label: 'Speed-to-lead',
-        text: 'Web and WhatsApp agents that answer, qualify the buyer, and book a meeting.',
+        text: 'Website and WhatsApp agents that answer, qualify the lead, and book a meeting.',
       },
       {
         label: 'Operations',
-        text: 'PGPulse for property, MFleet for fleet ledgers and payouts, or a custom agent for a repetitive workflow.',
+        text: 'PGPulse for property, MFleet for fleet ledgers and payouts, or a custom agent for a repetitive task.',
       },
       {
         label: 'Measurement',
-        text: 'Tracking tied to the number we agreed: leads, orders, or hours saved.',
+        text: 'Tracking tied to the number we agreed on: leads, orders, or hours saved.',
       },
     ],
   },
@@ -103,11 +103,11 @@ export const HOME_QUESTIONS: HomeQuestion[] = [
     blocks: [
       {
         label: 'Content calendars',
-        text: 'We do not run a daily social or blog feed.',
+        text: "We don't run daily social or blog posts.",
       },
       {
         label: 'FAQ-only chatbots',
-        text: 'If it cannot qualify, book, or update a record, it is out of scope.',
+        text: "If it can't qualify, book, or update a record, it's out of scope.",
       },
       {
         label: 'Clinical claims',
@@ -115,7 +115,7 @@ export const HOME_QUESTIONS: HomeQuestion[] = [
       },
       {
         label: 'A full company rebuild',
-        text: 'We do not replatform everything you run. We scope the system that moves the number.',
+        text: "We don't replace everything you run. We build the system that moves the number.",
       },
     ],
   },
@@ -142,7 +142,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How quickly can we start seeing results?',
     answer:
-      'Our Growth & Conversion audits deliver actionable fixes within 7 days, with initial ad/CRO funnels and AI lead agents going live in 2-3 weeks. For operational platforms like PGPulse or MFleet, you can test our live browser demo today and deploy a pilot within days.',
+      'The audit shows where leads or hours are leaking in 3-5 days. Ad funnels and website or WhatsApp lead agents go live in 7-14 days. You can try the PGPulse demo today.',
   },
   {
     question: 'What does Mach100 build?',
@@ -182,7 +182,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How long does a project usually take?',
     answer:
-      'Growth and conversion audits deliver actionable fixes within 7 days. Initial ad, CRO, and AI lead-agent funnels typically go live in 2-3 weeks. Larger custom agentic systems often take 4-10 weeks. We always give a clear timeline during scoping.',
+      'The audit shows where leads or hours are leaking in 3-5 days. Ad funnels and lead agents go live in 7-14 days. A custom system for rent, fleet, or your workflow is in production in 3-6 weeks. We give a clear timeline during scoping.',
   },
   {
     question: 'What is your pricing model?',
