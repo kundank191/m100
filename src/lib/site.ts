@@ -35,7 +35,7 @@ export const ORGANIZATION_JSON_LD = {
   logo: `${SITE_URL}/logo.jpeg`,
   image: `${SITE_URL}/logo.jpeg`,
   description:
-    'Mach100 builds agentic AI systems, operational platforms, and data-driven growth engines. Founded by Ex-DoorDash AI and data engineering leadership. Based in Bengaluru, serving the UK, US, and India.',
+    'Mach100 builds systems that bring in more customers and handle the daily work. Founded by Ex-DoorDash AI and data engineering leadership. Based in Bengaluru, serving the UK, US, and India.',
   areaServed: [
     { '@type': 'Country', name: 'India' },
     { '@type': 'Country', name: 'United Kingdom' },
@@ -121,43 +121,41 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
     addressCountry: 'IN',
   },
   serviceType: [
-    'Growth Marketing and Conversion Optimization',
-    'Agentic AI Systems',
-    'AI Agents and Workflow Automation',
-    'Intelligent Web Applications',
-    'Internal Tools and Dashboards',
-    'Fleet Management Software',
+    'Google and Meta ads and conversion',
+    'Website and WhatsApp lead agents',
+    'Operational systems for rent, fleet, and daily work',
     'PG Management Software',
+    'Fleet Management Software',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Mach100 growth and agentic AI services',
+    name: 'Mach100 growth and operations',
     itemListElement: [
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'AI-Powered Growth Marketing, SEO & Conversion Optimization',
+          name: 'Ads and conversion',
           description:
-            'Full-funnel paid acquisition, programmatic SEO, A/B testing, and AI speed-to-lead conversion for SMEs in the UK, US, and India.',
+            'Google and Meta ads, landing pages, calculators, and tests that turn more visitors into customers.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Agentic Operational Systems',
+          name: 'Website and WhatsApp lead agents',
           description:
-            'AI agents that handle multi-step business processes end-to-end with minimal human intervention.',
+            'Agents that answer instantly, check if a lead is a fit, and book the meeting.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Intelligent Web Apps, Dashboards & Custom AI Agents',
+          name: 'Operational systems',
           description:
-            'AI-native applications with embedded agents, recommendation engines, payments, and role-based access.',
+            'Systems for rent, driver ledgers, payouts, and daily tasks, including PGPulse, MFleet, or a custom agent.',
         },
       },
     ],
@@ -175,7 +173,7 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       operatingSystem: 'Web',
       url: 'https://fleet.mach100.in/',
       description:
-        'Agentic fleet, private hire, and logistics operations. Intelligent route optimization, automated ledgers, payouts, and anomaly detection. Invite-only access.',
+        'Driver ledgers, payouts, and daily exceptions for fleet, private hire, and logistics teams. Invite-only.',
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/LimitedAvailability',
@@ -192,7 +190,7 @@ export const SOFTWARE_APPLICATIONS_JSON_LD = {
       operatingSystem: 'Web',
       url: 'https://pg.mach100.in/',
       description:
-        'Agentic AI for co-living, HMO, and PG operators. AI agents handle rent invoices, payment tracking, vacancy optimization, tenant onboarding, and WhatsApp communication. Open interactive demo.',
+        'Rent invoices, payment tracking, vacancies, tenant onboarding, and WhatsApp reminders for PG and co-living operators. Open demo.',
       offers: {
         '@type': 'Offer',
         availability: 'https://schema.org/InStock',

@@ -124,89 +124,87 @@ export const HOME_QUESTIONS: HomeQuestion[] = [
 /** Longer answers. Shown on /faq and in FAQPage JSON-LD. */
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    question:
-      "How is Mach100's Marketing & Growth service different from a normal digital marketing agency?",
+    question: 'How is this different from a normal marketing agency?',
     answer:
-      'Traditional agencies hand you generic social media posts or PDF audits and expect your developers to fix your website. Because Mach100 is led by an Ex-DoorDash Data/AI Engineer who scaled Mylo from 20 to 1,000+ daily orders, we combine Growth Marketing (Ads, SEO, CRO) with Production Engineering. We build the high-converting landing pages, interactive calculators, heatmap tracking, A/B tests, and AI WhatsApp lead-conversion agents ourselves.',
+      'A typical agency sends posts or a PDF and leaves the website to someone else. We run Google and Meta ads and fix the pages so more visitors become buyers. We also reply to leads and handle the daily work. The work is led by an Ex-DoorDash engineer who took Mylo from 20 to 1,000+ orders a day. We do not run daily social or blog posts.',
   },
   {
-    question: 'Do you work with small businesses in London / the UK as well as India?',
-    answer:
-      'Yes. We work with UK and global SMEs - helping them scale customer acquisition and automate operations at a fraction of the cost of hiring an in-house UK tech and marketing team - as well as ambitious Indian SMEs and startups.',
+    question: 'Do you work with businesses in the UK and the US, or only in India?',
+    answer: 'We work with growing businesses in the UK, the US, and India. We are based in Bengaluru.',
   },
   {
-    question: 'What is the difference between a normal chatbot and your Agentic AI systems?',
+    question: 'What is the difference between a chatbot and your AI agents?',
     answer:
-      'A basic chatbot just answers FAQs. Our Agentic AI systems (like PGPulse, MFleet, and our Speed-to-Lead Agents) connect to your actual tools - they qualify leads, book calendar appointments, generate invoices, track payments, detect anomalies in spreadsheets, and trigger multi-step actions autonomously.',
+      "A chatbot only answers questions. Our agents on your website and WhatsApp answer instantly, check if the lead is a fit, and book the meeting. For daily work, they update the record: rent, driver ledgers, payouts, and the tasks still sitting in Excel or WhatsApp. If it can't qualify, book, or update a record, it is out of scope.",
   },
   {
     question: 'How quickly can we start seeing results?',
     answer:
-      'The audit shows where leads or hours are leaking in 3-5 days. Ad funnels and website or WhatsApp lead agents go live in 7-14 days. You can try the PGPulse demo today.',
+      'The audit shows where leads or hours are leaking in 3-5 days. Ad funnels and website or WhatsApp lead agents go live in 7-14 days. A custom system for rent, fleet, or your workflow is in production in 3-6 weeks. You can try the PGPulse demo today at https://pg.mach100.in/.',
   },
   {
     question: 'What does Mach100 build?',
     answer:
-      'We build two engines: data-driven growth systems (ads, SEO, conversion, and AI speed-to-lead) and agentic operational systems. That includes AI agents for property and co-living, fleet and logistics, and custom workflows, plus AI-native web apps that act on data instead of only displaying it.',
+      'We build systems that bring in more customers and handle the daily work. That is Google and Meta ads and pages that turn visitors into buyers; website and WhatsApp agents that answer, qualify, and book; and systems for rent, driver ledgers, payouts, and daily tasks. PGPulse is for property. MFleet is for fleet. We also build a custom agent for a repetitive task.',
   },
   {
     question: 'What are PGPulse and MFleet?',
     answer:
-      'PGPulse is an agentic system for co-living, HMO, and PG operators. AI agents handle rent collection, payment tracking, vacancy management, tenant onboarding, and WhatsApp communication. Open demo: https://pg.mach100.in/. MFleet is an agentic system for fleet, private hire, and logistics operators, with route intelligence, automated ledgers, payouts, and anomaly detection. MFleet is live and invite-only - request a demo via the contact form.',
+      'PGPulse is for PG and co-living operators. It handles rent invoices, payment tracking, vacancies, tenant onboarding, and WhatsApp reminders. Open demo: https://pg.mach100.in/. MFleet is for fleet teams. It handles driver ledgers, payouts, and the daily exceptions that used to live in a notebook or a chat thread. MFleet is live and invite-only. Request access from the contact form.',
   },
   {
     question: 'Do you only sell products, or can you build custom systems?',
     answer:
-      'Both. We run live products (PGPulse and MFleet) and a Growth Engine for acquisition and lead conversion. We also design custom agentic systems and intelligent tools for your specific operations.',
+      'Both. PGPulse and MFleet are live. We also build a custom system when the workflow that takes the most time is not rent or a fleet ledger. Tell us whether you want growth (ads and conversion), operations (AI agents), or both.',
   },
   {
     question: 'We currently run everything on Excel and WhatsApp. Can you help?',
     answer:
-      'Yes. This is one of the most common situations we work with. We help businesses move from spreadsheets and scattered WhatsApp chats into intelligent systems where agents handle the repetitive work (reminders, tracking, reconciliation, notifications) while giving you clean visibility and control.',
+      'Yes. We replace the sheet, ledger, or chat thread that runs the daily work. That includes rent for PG and co-living operators, driver ledgers and payouts for fleet teams, and a custom agent for another repetitive task.',
   },
   {
     question: 'Can you build systems with login, payments, client portals, or WhatsApp automation?',
     answer:
-      'Yes. Most of our systems include secure login, role-based access, payment flows (Stripe, Open Banking, or UPI), client or tenant portals, and WhatsApp automation when those capabilities are needed.',
+      'Yes, when the workflow needs them. PGPulse tracks rent invoices and payments. MFleet handles driver payouts. A custom system can include login, a client or tenant portal, and WhatsApp. We build the system that moves the number. We do not replace everything you run.',
   },
   {
     question: 'Who do you work with?',
     answer:
-      'Ambitious SMEs in London, the UK, and globally, plus fast-growing Indian businesses. Typical partners are service businesses scaling acquisition, property and co-living operators, fleet and logistics teams, and founders replacing Excel and WhatsApp with agents.',
+      'Growing businesses that want more customers or less daily manual work. That includes teams that want predictable leads and orders, clinics and high-ticket or B2B teams losing leads to slow replies, and PG, co-living, and fleet operators. We work in the UK, the US, and India.',
   },
   {
     question: 'How does your process work?',
     answer:
-      '1. We diagnose acquisition goals or operational bottlenecks. 2. You get a fixed scope, ROI milestones, and a clear timeline. 3. We build in weekly sprints with live demos. 4. We optimize conversion, customer acquisition cost, and agent accuracy in production.',
+      'Before the call we look at your ads, site, and current workflow. On a 15-minute call we show you the exact leaks. If it makes sense, you get a clear scope. No obligation. Week 1 we pick one number that matters: leads, paid orders, or hours saved. In weeks 2-3 we name the few fixes worth doing first. In weeks 3-6 we ship the funnel, lead agent, or operational system, live in production. After launch we track that number every week and improve what is already running.',
   },
   {
     question: 'How long does a project usually take?',
     answer:
-      'The audit shows where leads or hours are leaking in 3-5 days. Ad funnels and lead agents go live in 7-14 days. A custom system for rent, fleet, or your workflow is in production in 3-6 weeks. We give a clear timeline during scoping.',
+      'The audit shows where leads or hours are leaking in 3-5 days. Ad funnels and website or WhatsApp lead agents go live in 7-14 days. A custom system for rent, fleet, or your workflow is in production in 3-6 weeks. We give a clear timeline when we scope the work.',
   },
   {
     question: 'What is your pricing model?',
     answer:
-      'We work on clear project-based pricing after understanding the scope. No hidden costs. We provide a transparent quote once requirements are clear. For product demos or pilots, we discuss options case by case.',
+      'After the audit, if it makes sense, you get a clear scope and a project price. No obligation. No hidden costs. We reply within 24 hours.',
   },
   {
     question: 'What tech approach do you use?',
     answer:
-      'We build modern, maintainable systems with clean architecture. Growth work uses experimentation, heatmaps, and conversion tracking. Agentic work uses reliable orchestration and integrations with real business tools (WhatsApp, payments, existing data). The focus is systems that work in production.',
+      'We ship systems that run in production, not a slide deck. Growth work is Google and Meta ads, landing pages, calculators, and tests tied to leads, orders, or hours saved. Operations work connects to the tools you already use, including WhatsApp, and updates the record.',
   },
   {
     question: 'Where is Mach100 based?',
-    answer: 'Bengaluru, India. We serve clients across the UK, US, and India.',
+    answer: 'Bengaluru, India. We serve the UK, the US, and India.',
   },
   {
     question: 'How do I start a project or request a demo?',
     answer:
-      'Use the contact form and select a topic (growth marketing, a full-funnel AI lead agent, a custom agentic system, PGPulse, MFleet, or an internal tool). You can also email contact@mach100.in. We usually reply within 24 hours.',
+      'Book an audit. Tell us whether you want growth (ads and conversion), operations (AI agents), or both. Include your website or the workflow that takes the most time, and a rough timeline. You can also email contact@mach100.in. We reply within 24 hours.',
   },
   {
     question: 'Is GluCare a medical device?',
     answer:
-      'No. GluCare is an invite-only health companion product for evaluation and self-management support only. It is not a medical device, does not provide clinical diagnoses, and is not a substitute for professional medical advice.',
+      'No. GluCare is not a medical device and does not diagnose. It is an invite-only companion for meal logging and glucose trends. It is not a substitute for a clinician.',
   },
 ];
 

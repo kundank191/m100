@@ -50,7 +50,7 @@ export default function FaqPage() {
               Common questions
             </h1>
             <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-              How a project runs, what is in scope, and the practical questions teams ask before they start.
+              How a project runs, what is included, and what your team needs to provide.
             </p>
           </div>
           <Link

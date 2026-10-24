@@ -45,8 +45,8 @@ export function clearContactPrefill(): void {
 }
 
 export const CONTACT_TOPICS = [
-  'Get more customers (Ads, SEO, CRO)',
-  'Automate manual operations (AI Agents & Workflows)',
+  'Growth (ads & conversion)',
+  'Operations (AI agents)',
   'Both',
 ] as const;
 
@@ -69,14 +69,14 @@ export function prefillForProduct(productId: string): ContactPrefill {
     return {
       subject,
       message:
-        'Hi, I would like a growth and AI audit.\n\nWebsite:\nCurrent monthly leads or orders:\nWhat you want to scale:\n',
+        'Hi, I would like to book an audit.\n\nWebsite:\nWhat you want to grow or automate:\nRough timeline:\n',
     };
   }
   if (productId === 'custom' || productId === 'internal') {
     return {
       subject,
       message:
-        'Hi, I would like to discuss a custom agentic system or growth engine.\n\nOperations or funnel to automate:\nWho will use it:\n',
+        'Hi, I would like to book an audit.\n\nWorkflow that takes the most time:\nRough timeline:\n',
     };
   }
   const names: Record<string, string> = {
@@ -87,7 +87,7 @@ export function prefillForProduct(productId: string): ContactPrefill {
   const name = names[productId] ?? productId;
   return {
     subject,
-    message: `Hi, I would like a demo / access for ${name}.\n\nCompany / scale:\nUse case:\nPreferred timeline:\n`,
+    message: `Hi, I would like access to ${name}.\n\nWebsite or company:\nRough timeline:\n`,
   };
 }
 

@@ -9,10 +9,10 @@ import { faqJsonLd } from '@/data/faqData';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'FAQ - Growth Marketing & Agentic AI | Mach100',
+    absolute: 'Common questions | Mach100',
   },
   description:
-    'FAQ for Mach100: how growth marketing differs from a typical agency, UK and India clients, agentic AI vs chatbots, and how fast audits and pilots start.',
+    'How a Mach100 project runs, what is included, and when an audit, lead agent, or operational system goes live.',
   alternates: { canonical: '/faq' },
 };
 
