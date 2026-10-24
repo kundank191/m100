@@ -9,7 +9,7 @@ import { breadcrumbJsonLd } from '@/lib/site';
 
 const TITLE = 'About Mach100';
 const DESCRIPTION =
-  'Mach100 bridges acquisition and engineering. Led by an Ex-DoorDash Data and AI engineer who scaled e-commerce from 20 to 1,000+ daily orders.';
+  'We bring in more customers and handle the daily work. Led by an Ex-DoorDash engineer who took Mylo from 20 to 1,000+ orders a day.';
 
 export const metadata: Metadata = {
   title: { absolute: `${TITLE} | Mach100` },

@@ -34,6 +34,7 @@ export interface ProofItem {
   id: string;
   kicker: string;
   stat: string;
+  unit: string;
   detail: string;
   /** Chart values. Higher means the series improved, except where the label says otherwise. */
   series: number[];
@@ -45,8 +46,8 @@ export const PROOF_ITEMS: ProofItem[] = [
     id: 'mylo',
     kicker: 'In production',
     stat: '50x',
-    detail:
-      'daily orders for Mylo, a consumer commerce product (20 to 1,000+ orders a day). Recommendation systems took daily active users from 100K to 250K.',
+    unit: 'daily orders',
+    detail: 'Mylo went from 20 to 1,000+ orders a day. Daily active users rose from 100K to 250K.',
     series: [
       20, 26, 23, 34, 30, 48, 42, 67, 58, 92, 78, 120, 104, 165, 142, 220, 186, 280, 245, 360, 310, 450, 390, 560,
       470, 680, 590, 810, 700, 920, 800, 1000, 890, 1060,
@@ -58,8 +59,8 @@ export const PROOF_ITEMS: ProofItem[] = [
     id: 'astrocoach',
     kicker: 'Client engagement',
     stat: '20x',
-    detail:
-      'astrology leads in two months for AstroCoach, from 385 in June 2026 to 7,596 in August.',
+    unit: 'more leads',
+    detail: 'AstroCoach: 385 leads in June -> 7,596 in August.',
     series: [9, 18, 16, 79, 859, 503, 898, 1025, 1318, 1315, 1203, 2738],
     seriesLabel:
       'Weekly lead count for AstroCoach from June through the August 2026 peak. Later weeks are not on this line.',
@@ -68,8 +69,8 @@ export const PROOF_ITEMS: ProofItem[] = [
     id: 'valkyre',
     kicker: 'Client engagement',
     stat: '6.2x',
-    detail:
-      'purchase ROAS in March 2025 for Valkyre, a D2C clothing brand. The first 30 days of the account returned 0.83x.',
+    unit: 'purchase ROAS',
+    detail: 'Valkyre (D2C clothing). Started at 0.83x, hit 6.2x.',
     series: [
       0.64, 0.99, 2.08, 2.69, 1.56, 2.06, 1.67, 1.19, 1.02, 1.71, 1.45, 1.79, 2.32, 3.51, 5.17, 4.43, 4.95, 2.68,
       6.24, 3.56, 5.13, 5.06, 2.71, 3.02, 1.81, 3.86, 3.96, 4.33, 3.29, 3.74, 3.83, 2.49, 2.22, 5.1, 3.32, 5.4,
@@ -81,8 +82,8 @@ export const PROOF_ITEMS: ProofItem[] = [
     id: 'clinic',
     kicker: 'Client engagement',
     stat: '5.4x',
-    detail:
-      'lower cost per click for Hetu Clinic, an ultrasound clinic. April 2026 had no tracked conversions. August 2026 had 31 tracked conversions.',
+    unit: 'lower cost per click',
+    detail: 'Hetu Clinic: zero tracked conversions in April -> 31 in August.',
     series: [0.97, 1.28, 1.87, 5.25, 5.16],
     seriesLabel:
       'Click efficiency by month for Hetu Clinic, April through September 2026. October is not on this line. June had no spend in the export.',

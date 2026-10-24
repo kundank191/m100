@@ -23,7 +23,7 @@ export default function HeroCTAs() {
         href="#services"
         className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900/40 backdrop-blur-md border border-white/10 text-slate-200 hover:text-white hover:bg-slate-800/80 transition-all duration-200 font-semibold text-sm flex items-center justify-center space-x-2"
       >
-        <span>See services</span>
+        <span>See how it works</span>
         <ChevronRight className="w-4 h-4" aria-hidden="true" />
       </a>
     </div>

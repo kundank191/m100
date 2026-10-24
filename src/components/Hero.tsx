@@ -43,8 +43,7 @@ export default function Hero() {
             id="hero-subheadline"
             className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed font-normal"
           >
-            We engineer high-converting acquisition funnels to bring in customers, and deploy autonomous AI agents to
-            qualify leads and run your daily workflows.
+            We build systems that bring in more customers and handle the daily work for you.
           </p>
 
           <HeroCTAs />

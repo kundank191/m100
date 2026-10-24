@@ -29,16 +29,15 @@ export default function About() {
             About
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight leading-[1.1]">
-            Silicon Valley engineering discipline meets revenue growth
+            More customers, and less daily manual work
           </h1>
           <p className="mt-5 text-base text-slate-300 leading-relaxed">
-            Most marketing agencies can&apos;t write code, and most dev shops don&apos;t understand customer
-            acquisition. Mach100 was founded to bridge both.
+            We run Google and Meta ads and fix the pages so more visitors become buyers. We also build the systems
+            that reply to leads and handle rent, ledgers, payouts, and the daily work.
           </p>
           <p className="mt-4 text-base text-slate-300 leading-relaxed">
-            Led by an Ex-DoorDash Data &amp; AI Engineer who scaled e-commerce operations from 20 to 1,000+ daily
-            orders, we build technical acquisition funnels that acquire customers, and autonomous AI agents that
-            run backend operations. Production code only. No endless meetings, no slide decks.
+            Led by an Ex-DoorDash engineer who took Mylo from 20 to 1,000+ orders a day. Live in production, not a
+            slide deck.
           </p>
         </div>
 
@@ -51,6 +50,7 @@ export default function About() {
                 <p className="mt-3 text-4xl sm:text-5xl font-extrabold font-display tracking-tight text-white leading-none">
                   {item.stat}
                 </p>
+                <p className="mt-2 text-base font-semibold text-white">{item.unit}</p>
                 <p className="mt-3 text-base text-slate-300 leading-relaxed">{item.detail}</p>
               </article>
             ))}
