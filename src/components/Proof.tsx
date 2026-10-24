@@ -120,9 +120,6 @@ export default function Proof() {
           <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight">
             Proof, not just theory
           </h2>
-          <p className="mt-4 text-base text-slate-400 leading-relaxed">
-            Measured results from production systems and client ad accounts.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
@@ -134,7 +131,8 @@ export default function Proof() {
               <p className="proof-stat mt-8 text-5xl sm:text-6xl font-extrabold font-display tracking-tight leading-none">
                 {item.stat}
               </p>
-              <p className="mt-4 mb-6 flex-1 text-base text-slate-400 leading-relaxed">{item.detail}</p>
+              <p className="mt-3 text-lg font-semibold text-white tracking-tight">{item.unit}</p>
+              <p className="mt-3 mb-6 flex-1 text-base text-slate-400 leading-relaxed">{item.detail}</p>
               <Sparkline values={item.series} label={item.seriesLabel} />
             </article>
           ))}

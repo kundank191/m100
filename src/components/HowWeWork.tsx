@@ -4,22 +4,23 @@
  */
 
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const STEPS = [
   {
     n: '01',
     title: 'Before',
-    desc: 'We review your website, ad funnels, and current operational workflow.',
+    desc: 'We look at your ads, site, and current workflow.',
   },
   {
     n: '02',
     title: 'On the call (15 mins)',
-    desc: 'We identify the exact points where you are losing customer leads or wasting hours on manual tasks.',
+    desc: 'We show you the exact leaks.',
   },
   {
     n: '03',
     title: 'After',
-    desc: 'If there is a clear fit, we provide a concrete scope to fix acquisition and deploy autonomous AI agents. No obligation.',
+    desc: 'If it makes sense, you get a clear scope. No obligation.',
   },
 ];
 
@@ -35,7 +36,7 @@ export default function HowWeWork() {
               The Audit
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold font-display text-white tracking-tight leading-[1.1]">
-              Find your growth leaks and operational bottlenecks
+              Find where you&apos;re losing customers or wasting hours
             </h2>
           </div>
 
@@ -53,6 +54,16 @@ export default function HowWeWork() {
                 </li>
               ))}
             </ol>
+            <a
+              href="#contact"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold tracking-wide text-slate-950 shadow-xl shadow-white/5 hover:bg-teal-50 transition-colors"
+            >
+              Book an audit
+              <ArrowRight className="w-4 h-4 text-slate-950" aria-hidden="true" />
+            </a>
+            <p className="mt-4 max-w-md text-base text-slate-400 leading-relaxed">
+              Tell us what you want to grow or automate. We reply within 24 hours.
+            </p>
           </div>
         </div>
       </div>

@@ -212,9 +212,9 @@ export default function Contact() {
               <div className="rounded-xl border border-white/5 bg-slate-950/40 p-4 space-y-2">
                 <p className="text-base font-semibold text-slate-200">What to include</p>
                 <ul className="text-base text-slate-400 space-y-1.5 list-disc list-inside leading-relaxed">
-                  <li>Whether you want Customer Growth/Marketing, Operational AI Agents, or Both</li>
-                  <li>Your current website or workflow bottleneck</li>
-                  <li>Your rough timeline</li>
+                  <li>Growth (ads &amp; conversion), operations (AI agents), or both</li>
+                  <li>Your website or the workflow that takes the most time</li>
+                  <li>Rough timeline</li>
                 </ul>
               </div>
             </div>

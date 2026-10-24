@@ -51,6 +51,7 @@ export default function About() {
                 <p className="mt-3 text-4xl sm:text-5xl font-extrabold font-display tracking-tight text-white leading-none">
                   {item.stat}
                 </p>
+                <p className="mt-2 text-base font-semibold text-white">{item.unit}</p>
                 <p className="mt-3 text-base text-slate-300 leading-relaxed">{item.detail}</p>
               </article>
             ))}

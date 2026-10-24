@@ -10,33 +10,27 @@ const WAYS = [
   {
     id: 'growth',
     n: '01',
-    title: 'Customer Acquisition & Conversion (CRO)',
-    summary: 'Scale customer acquisition without wasting spend on broken funnels.',
-    build:
-      'High-ROAS Google and Meta ad campaigns, interactive web calculators, search visibility, and heatmap-driven A/B tests to lift checkout conversions.',
-    bestFor: 'Businesses looking to scale leads and orders predictably.',
+    title: 'Get more customers without wasting ad spend',
+    body: 'We run Google and Meta ads and fix the pages so more visitors become buyers.',
+    bestFor: 'Businesses that want predictable leads and orders.',
     cta: 'Explore growth systems',
     href: '/?topic=growth#contact',
   },
   {
     id: 'operations',
     n: '02',
-    title: '24/7 AI Lead & Speed-to-Lead Agents',
-    summary: 'Engage every prospect the second they show interest.',
-    build:
-      'Autonomous Web and WhatsApp agents that answer questions within 15 seconds, qualify buyer budgets, and book meetings directly into your calendar.',
-    bestFor: 'High-ticket services, clinics, and B2B teams losing leads to slow follow-ups.',
+    title: 'Reply to every lead in seconds',
+    body: "AI agents on your website and WhatsApp answer instantly, check if they're a fit, and book the meeting.",
+    bestFor: 'Clinics, high-ticket services, and B2B teams losing leads to slow replies.',
     cta: 'Explore AI agents',
     href: '/?topic=growth-agent#contact',
   },
   {
     id: 'live-ops',
     n: '03',
-    title: 'Autonomous Operational Systems',
-    summary: 'Stop running core operations on manual spreadsheets and chat threads.',
-    build:
-      'Autonomous platforms like PGPulse (for property/co-living) and MFleet (for driver ledgers & payouts), plus custom agents for repetitive workflows.',
-    bestFor: 'Operators who want rent runs, driver ledgers, and billing to run themselves.',
+    title: 'Stop running everything in Excel and WhatsApp',
+    body: 'Systems that handle rent, driver ledgers, payouts, and daily tasks for you.',
+    bestFor: 'PG/co-living operators and fleet teams who want the work to run itself.',
     cta: 'Explore operational systems',
     href: '/products',
   },
@@ -69,11 +63,7 @@ export default function Services() {
                 {way.n}
               </span>
               <h3 className="text-lg font-bold font-display text-white mb-3">{way.title}</h3>
-              <p className="text-base text-slate-300 leading-relaxed mb-5">{way.summary}</p>
-              <p className="text-base text-slate-400 leading-relaxed mb-3">
-                <span className="font-semibold text-slate-200">What we build: </span>
-                {way.build}
-              </p>
+              <p className="text-base text-slate-300 leading-relaxed mb-5">{way.body}</p>
               <p className="text-base text-slate-400 leading-relaxed mb-6">
                 <span className="font-semibold text-slate-200">Best for: </span>
                 {way.bestFor}
